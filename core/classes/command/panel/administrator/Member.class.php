@@ -28,6 +28,9 @@ class Member extends \core\classes\command\Editor {
         private $__lastname     = null;
         private $__description  = null;
         private $__email        = null;
+        private $__sex          = null;
+        private $__male         = null;
+        private $__female       = null;
         private $__phone        = null;
         private $__admin        = null;
         private $__publ         = null;
@@ -105,33 +108,20 @@ class Member extends \core\classes\command\Editor {
                     
                     // Extract setting - user role:
                     $d = $data->getData();
-                    $d['user_role_id'] = isset($_POST['user_role']) ? (int)$_POST['user_role'] : 3;
+                    $d['user_role_id'] = isset($_POST['user_role']) ? (int)$_POST['user_role'] : 2;
+                    $d['firstname'] = $this->__firstname->value();
+                    $d['lastname'] = $this->__lastname->value();
+                    $d['sex'] = $this->__sex->value();
+                    $d['email'] = $this->__email->value();
+                    $d['bdate'] = $this->__bdate->value();
+                    $d['phone'] = $this->__phone->value();
+                    $d['token'] = \core\functions\token($this->__firstname->value().$this->__lastname->value().$this->__email->value());
                     $data->setData($d);
                     
-                    // Extract page list if available:
-                    
-                    //$connection = \ConnectionRegistry::g
-                    
-                    \core\classes\data\UserPage::deleteByUserId($User->getID());
-                    if(isset($this->__request['page'])){
-                        $pages = $this->__request['page'];
-                        //\core\classes\data\UserPage::deleteByUserId($User->getID());
-                        foreach($pages as $id){
-                            $user_page = new \core\classes\data\UserPage();
-                            
-                            $user_page->setData(array(
-                                'user_id'   => $User->getID(),
-                                'page_id'   => (int)$id
-                            ));
-                            if(!$user_page->create()){
-                                $this->error(Error::get('update'));
-                                return false;
-                            }
-                        }
-                    }
-                    
                     // Do update:
-                    $data->setAttributeList(new \core\classes\sql\attribute\AttributeList(array('id', 'user_role_id')));
+                    $data->setAttributeList(new \core\classes\sql\attribute\AttributeList(array(
+                        'id', 'user_role_id', 'firstname', 'lastname', 'email', 'bdate', 'phone', 'token', 'sex'
+                    )));
                     if($data->update()){
                         $this->correct(Correct::get('update'));
                         return true;
@@ -160,16 +150,6 @@ class Member extends \core\classes\command\Editor {
                 // Do load user data:
                 $this->__load_member_data($User);
                 $this->__data = &$User->getPresentationData();
-                
-                // Additionally load category tree (if user is at least publicist):
-                if($this->__data['role']['access_level'] <= 1){
-                    // Loads page tree structure:
-                    $this->__page_list();
-                    // Loads user page association table:
-                    $this->__load_user_page($User);
-                    // Mark prevoiusly selected category as checked:
-                    $this->__mark_selected($this->__category);
-                }
                 
                 if(!$this->__form->submitted()){
                     // Load form:
@@ -210,7 +190,6 @@ class Member extends \core\classes\command\Editor {
                 $email              = $this->__email();
                 $phone              = $this->__phone();
                 $administrator      = $this->__administrator();
-                $publicist          = $this->__publicist();
                 $plain              = $this->__plain();
                 $cdate              = $this->__cdate();
                 $bdate              = $this->__bdate();
@@ -219,6 +198,12 @@ class Member extends \core\classes\command\Editor {
                 $activate           = $this->__activate();
                 $deactivate         = $this->__deactivate();
                 $remove             = $this->__remove();
+                // Sex:
+                $sex = $this->__sex();
+                $male = $this->__male();
+                $female = $this->__female();
+                $sex->attach($male);
+                $sex->attach($female);
                 
                 // Composing form:
                 $form->attach($firstname);
@@ -227,7 +212,6 @@ class Member extends \core\classes\command\Editor {
                 $form->attach($email);
                 $form->attach($phone);
                 $form->attach($administrator);
-                $form->attach($publicist);
                 $form->attach($plain);
                 $form->attach($cdate);
                 $form->attach($bdate);
@@ -236,9 +220,10 @@ class Member extends \core\classes\command\Editor {
                 $form->attach($activate);
                 $form->attach($deactivate);
                 $form->attach($remove);
+                $form->attach($sex);
+                $form->attach($male);
+                $form->attach($female);
                 
-                
-
                 // Button functions:
                 $activate->onsubmit(array($this, '_activate'));
                 $deactivate->onsubmit(array($this, '_deactivate'));
@@ -272,8 +257,6 @@ class Member extends \core\classes\command\Editor {
                     // User data:
                     'user'              => &$this->__data,
                     
-                    'categories'        => $this->__html_list($this->__category),
-                    
                     // Form:
                     'firstname'         => array(
                         'title'         => 'Firstname',
@@ -297,6 +280,15 @@ class Member extends \core\classes\command\Editor {
                         'title'         => 'e-mail',
                         'input'         => $email,
                         'description'   => ''
+                    ),
+                    
+                    'sex'           => array(
+                        'title'         => Text::get('reg_sex'),
+                        'male'          => $male,
+                        'male_title'    => Text::get('reg_male'),
+                        'female'        => $female,
+                        'female_title'  => Text::get('reg_female'),
+                        'description'   => Text::get('reg_sex_desc'),
                     ),
                     
                     'phone'             => array(
@@ -326,12 +318,6 @@ class Member extends \core\classes\command\Editor {
                     'administrator'     => array(
                         'title'         => 'Administrator',
                         'input'         => $administrator,
-                        'description'   => ''
-                    ),
-                    
-                    'publicist'         => array(
-                        'title'         => 'Publicist',
-                        'input'         => $publicist,
                         'description'   => ''
                     ),
                     
@@ -398,16 +384,33 @@ class Member extends \core\classes\command\Editor {
                     if(isset($this->__data['role'], $this->__data['role']['access_level'])){
                         $level = (int)$this->__data['role']['access_level'];
                         if($level == 0){ $this->__admin->checked(true); }
-                        else if($level == 1){ $this->__publ->checked(true); }
-                        else if($level == 2){ $this->__plain->checked(true); }
+                        else if($level == 1){ $this->__plain->checked(true); }
                         else { $this->__plain->checked(true); }
+                    }
+                    if($this->__data['sex'] == 'M'){
+                        $this->__male->checked(true);
+                        $this->__female->checked(false);
+                    } else if($this->__data['sex'] == 'F') {
+                        $this->__male->checked(false);
+                        $this->__female->checked(true);
+                    } else {
+                        $this->__male->checked(true);
+                        $this->__female->checked(false);
                     }
                 }
             }// end __init_form_values
             
             private function __get_user_id(\core\classes\request\Request $request){
+                $session = \core\classes\session\Session::getInstance();
                 if(isset($request['user'])){
-                    return (int)$request['user'];
+                    if(empty($request['user']))
+                        return null;
+                    $id = (int)$request['user'];
+                    $session['member'] = $id;
+                    return $id;
+                }
+                else if(isset($session['member'])){
+                    return (int)$session['member'];
                 }
                 return null;
             }// end __get_user_id
@@ -448,82 +451,6 @@ class Member extends \core\classes\command\Editor {
                 return false;
             }// end __load_member_data
             
-            private function __page_list(){
-                try {
-                    $factory = new \core\classes\domain\factory\Page();
-                    $Page = $factory->getRoot();
-                    if(!is_null($Page)){ 
-                        
-                        // Build page tree:
-                        $Page->availableTree();
-                        
-                        // Load tree data:
-                        $visitor = new \core\classes\visitor\PageLoader();
-                        $visitor->attributes(array('id', 'title'));
-                        $Page->acceptTree($visitor);
-                        
-                        // Get multidimensional page data array:
-                        $this->__category = &$Page->getPageTreeAsDataArray();
-                    }
-                } catch(\core\classes\domain\DomainException $ex){
-                    $this->error($ex->getMessage());
-                }
-            }// end __page_list
-            
-            private function __load_user_page(\core\classes\domain\AuthorizedUser $User){
-                try {
-                    $factory = new \core\classes\data\factory\UserPage();
-                    $set = $factory->getByUserId($User->getID());
-                    if(!is_null($set)){
-                        $set->accept(function($user_page){
-                            if($user_page->read()){
-                                $data = $user_page->getData();
-                                if(isset($data['page_id'])){
-                                    $this->__user_page[$data['page_id']] = $data['page_id'];
-                                }
-                            }
-                        });
-                    }
-                } catch (\core\classes\data\DataException $ex) {
-                    $this->error($ex->getMessage());
-                }
-            }// end __load_user_page
-            
-            private function __mark_selected(&$categories){
-                if(isset($categories['children'])){
-                    foreach($categories['children'] as &$category){
-                        $category['checked'] = 0;
-                        if(isset($category['id']) && isset($this->__user_page[$category['id']])){
-                            $category['checked'] = 1;
-                        }
-                        $this->__mark_selected($category);
-                    }
-                }
-            }// end __mark_selected
-            
-            private function __html_list(array &$pages, $level = 0){
-                $html = '';
-                if(isset($pages['children']) && !empty($pages['children'])){
-                    $html = '<div class="list level'.$level.'">';
-                    foreach($pages['children'] as &$data){
-                        
-                        $id = isset($data['id']) ? $data['id'] : '';
-                        $title = isset($data['title']) ? $data['title'] : '';
-                        $checked = isset($data['checked']) && ($data['checked'] == true);
-                        
-                        $html .= 
-                        '<div class="item">
-                            <div class="left"><input type="checkbox" name="page[]" value="'.$id.'" '.($checked ? 'checked="checked"' : '').' /></div>
-                            <div class="center">'.$title.'</div>
-                            <div class="right"></div>
-                        </div>';
-                        $html .= $this->__html_list($data, $level + 1);
-                    }
-                    $html .= '</div>';
-                }
-                return $html;
-            }// end __html_list
-            
             private function __activate(){
                 $f = new \core\classes\form\field\Submit('activate_button');
                 $f->value('Activate');
@@ -554,14 +481,12 @@ class Member extends \core\classes\command\Editor {
             
             private function __firstname(){
                 $f = new \core\classes\form\field\Text('firstname');
-                $f->readonly(true);
                 $this->__firstname = $f;
                 return $f;
             }// end __firstname
             
             private function __lastname(){
                 $f = new \core\classes\form\field\Text('lastname');
-                $f->readonly(true);
                 $this->__lastname = $f;
                 return $f;
             }// end __lastname
@@ -575,14 +500,12 @@ class Member extends \core\classes\command\Editor {
             
             private function __phone(){
                 $f = new \core\classes\form\field\Text('phone');
-                $f->readonly(true);
                 $this->__phone = $f;
                 return $f;
             }// end __phone
             
             private function __email(){
                 $f = new \core\classes\form\field\Email('email');
-                $f->readonly(true);
                 $this->__email = $f;
                 return $f;
             }// end __email
@@ -596,7 +519,6 @@ class Member extends \core\classes\command\Editor {
             
             private function __bdate(){
                 $f = new \core\classes\form\field\Date('bdate');
-                $f->readonly(true);
                 $this->__bdate = $f;
                 return $f;
             }// end __bdate
@@ -607,6 +529,27 @@ class Member extends \core\classes\command\Editor {
                 $this->__citation = $f;
                 return $f;
             }// end __citation
+            
+            private function __sex(){
+                $sex = new \core\classes\form\field\RadioGroup('sex');
+                $this->__sex = $sex;
+                return $sex;
+            }
+            
+            private function __male(){
+                $male = new \core\classes\form\field\Radio('sex');
+                $male->checked(true);
+                $male->value('M');
+                $this->__male = $male;
+                return $male;
+            }
+            
+            private function __female(){
+                $female = new \core\classes\form\field\Radio('sex');
+                $female->value('F');
+                $this->__female = $female;
+                return $female;
+            }
             
             private function __administrator(){
                 $f = new \core\classes\form\field\Radio('user_role');
@@ -624,7 +567,7 @@ class Member extends \core\classes\command\Editor {
             
             private function __plain(){
                 $f = new \core\classes\form\field\Radio('user_role');
-                $f->value(3);
+                $f->value(2);
                 $this->__plain = $f;
                 return $f;
             }// end __plain

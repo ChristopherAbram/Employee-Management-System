@@ -220,7 +220,7 @@ class Menu {
                             continue;
                         
                         if(isset($option['visibility']) && $option['visibility'] == "command")
-                            if($option['command'] != $request_name)
+                            if(!$this->__find_branch ($option['menu'], $request_name) && $option['command'] != $request_name)
                                 continue;
                         
                         if((isset($access[PLAIN]) && $access[PLAIN] != 'only') ||
@@ -281,9 +281,8 @@ class Menu {
                             continue;
                         
                         if(isset($option['visibility']) && $option['visibility'] == "command")
-                            if($option['command'] != $request_name)
+                            if(!$this->__find_branch ($option['menu'], $request_name) && $option['command'] != $request_name)
                                 continue;
-                            
                         
                         if(isset($access[PLAIN])){
                             $result[$name] = array(

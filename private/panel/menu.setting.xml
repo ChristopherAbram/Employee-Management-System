@@ -55,7 +55,7 @@
                     command="departments" />
                 
                 <option 
-                    name="Add new department" 
+                    name="+ New department" 
                     href="$panel/departmenteditor" 
                     command="departmenteditor" />
             </options>
@@ -67,31 +67,6 @@
             access="administrator: all" 
             command="responsibilities"
             visibility="normal" />
-        
-        <!--<option href="$panel/article" access="publicist: all" command="article">
-            Articles
-            <options>
-                <option href="$panel/articlecategories" access="publicist: all;" command="articlecategories">Categories</option>
-                <option href="$panel/article" access="publicist: all;" command="article">Management list</option>
-                <option href="$panel/articleeditor" access="publicist: all;" command="articleeditor" multistep="__articleeditor">
-                    Editor
-                    <options>
-                        <option href="$panel/articleeditor" access="publicist: all;" command="articleeditor">The basic</option>
-                        <option href="$panel/articlecategory" access="publicist: all;" command="articlecategory">Category</option>
-                        <option href="$panel/articlebody" access="publicist: all;" command="articlebody">Content</option>
-                        <option href="$panel/articlepicture" access="publicist: all;" command="articlepicture">Picture</option>
-                        <option href="$panel/articleoptions" access="publicist: all;" command="articleoptions">Options</option>
-                    </options>
-                </option>
-                <option href="$panel/comments" access="publicist: all;" command="comments">
-                    Comments
-                    <options>
-                        <option href="$panel/articlecomments" access="publicist: all;" command="articlecomments">Choose article</option>
-                        <option href="$panel/comments" access="publicist: all;" command="comments">Management list</option>
-                    </options>
-                </option>
-            </options>
-        </option>-->
         
         <option
             name="Employees"
@@ -106,21 +81,21 @@
                     command="members"/>
                 
                 <option 
-                    name="Member configurations"
-                    href="$panel/member/$user_id"
+                    name="Member details"
+                    href="$panel/member"
                     visibility="command"
                     command="member">
                     
                     <options access="administrator: all;">
                         <option 
                             name="User data"
-                            href="$panel/registration"
-                            command="registration" />
+                            href="$panel/member"
+                            command="member" />
                         
                         <option 
                             name="User Address"
-                            href="$panel/address" 
-                            command="address" />
+                            href="$panel/changeuseraddress" 
+                            command="changeuseraddress" />
                         
                         <option 
                             name="Agreements"
@@ -128,14 +103,14 @@
                             command="extra" />
                         
                         <option 
-                            name="Add agreement"
+                            name="+ Add agreement"
                             href="$panel/extra" 
                             command="extra" />
                     </options>
                 </option>
                 
                 <option 
-                    name="Add member"
+                    name="+ Add member"
                     href="$panel/registration"
                     command="registration" 
                     multistep="__adminregistration">

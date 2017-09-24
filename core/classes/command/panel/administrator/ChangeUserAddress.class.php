@@ -12,7 +12,7 @@
 
 namespace core\classes\command\panel\plain;
 
-class UserAddress extends Command {
+class ChangeUserAddress extends \core\classes\command\Editor {
     // vars {
         
         // Form:
@@ -42,7 +42,14 @@ class UserAddress extends Command {
             }// end _headers
             
             protected function _read(){
-                $User = \ApplicationRegistry::getCurrentUser();
+                // If user is not pointed:
+                $user_id = $this->__get_user_id($this->__request);
+                if(is_null($user_id)){
+                    return false;
+                }
+                
+                // Get user by its identifier or quit if there is problem:
+                $User = $this->__get_user_by_id($user_id);
                 if(is_null($User)){
                     return false;
                 }
@@ -65,7 +72,14 @@ class UserAddress extends Command {
             }// end _read
             
             protected function _update(){
-                $User = \ApplicationRegistry::getCurrentUser();
+                // If user is not pointed:
+                $user_id = $this->__get_user_id($this->__request);
+                if(is_null($user_id)){
+                    return false;
+                }
+                
+                // Get user by its identifier or quit if there is problem:
+                $User = $this->__get_user_by_id($user_id);
                 if(is_null($User)){
                     return false;
                 }
@@ -103,9 +117,27 @@ class UserAddress extends Command {
                 return false;
             }// end _update
             
+            protected function _create(){}
+            
             protected function _execute(\core\classes\request\Request $request){
+                $status = self::CMD_OK;
                 
-                $status = self::CMD_ERROR;
+                $this->__request = $request;
+                
+                // If user is not pointed:
+                $user_id = $this->__get_user_id($request);
+                if(is_null($user_id)){
+                    return self::CMD_ERROR;
+                }
+                
+                // Get user by its identifier or quit if there is problem:
+                $User = $this->__get_user_by_id($user_id);
+                if(is_null($User)){
+                    return self::CMD_ERROR;
+                }
+                
+                // Turn mode to UPDATE:
+                $this->_mode(self::UPDATE);
                 
                 // Form:
                 $this->__form = new \core\classes\form\Form('address');
@@ -134,17 +166,12 @@ class UserAddress extends Command {
                 $form->attach($flat);
                 $form->attach($submit);
                 
-                // Performing the form and saving changes:
-                if($form->perform()){
-                    if($this->_update()){
-                        $status = self::CMD_OK;
-                    }
-                }
-                else if($form->submitted()){
-                    $this->error(Error::get('form_incomplete'));
+                // Performing save operation:
+                if($this->__submit->submitted()){
+                    if($this->_save()){ }
                 }
                 
-                // Reading data if user already exists:
+                // Read user data:
                 if(!$this->_read()){
                     $this->error(Error::get('address_read'));
                 }
@@ -196,6 +223,28 @@ class UserAddress extends Command {
             }// end _execute
             
         // } private {
+            
+            private function __get_user_id(\core\classes\request\Request $request){
+                $session = \core\classes\session\Session::getInstance();
+               if(isset($session['member'])){
+                    return (int)$session['member'];
+                }
+                return null;
+            }// end __get_user_id
+            
+            private function __get_user_by_id($id){
+                try {
+                    $factory = new \core\classes\domain\factory\Plain();
+                    $User = $factory->getById($id);
+                    if(!is_null($User->getData()) && !$User->getData()->exists()){
+                        return null;
+                    }
+                    return $User;
+                } catch (\core\classes\domain\DomainException $ex) {
+                    $this->error($ex->getMessage());
+                }
+                return null;
+            }// end __get_user_by_id
             
             private function __country(){
                 $f = new \core\classes\form\field\Select('country');

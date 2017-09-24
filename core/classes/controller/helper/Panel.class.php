@@ -86,8 +86,7 @@ class Panel extends Helper {
                 try {
                     $menu = new \core\classes\menu\Menu($this->__menu_dirpath, $this->__menu_filename);
                     $menu->initialize();
-                    //$menu->filter($user);
-                    //$menu = $this->_parseMenu($this->__menu_dirpath, $this->__menu_filename);
+                    
                     \PanelRegistry::setMenu($menu);
                 } catch (\Exception $ex) {
                     throw new \core\classes\menu\MenuException(Error::get('menu_init'), 0, $ex);
@@ -102,99 +101,12 @@ class Panel extends Helper {
             
         // } protected {
         
-            protected function _parseMenu($dirpath, $filename){
-                $menu_filename = \realpath(\dirname(__FILE__).'/'.$dirpath.'/'.$filename);
-                if(\file_exists($menu_filename)){
-                    try {
-                        $menu = \simplexml_load_file($menu_filename);
-                        if($menu instanceof \SimpleXMLElement){
-                            return $this->_perform_reading_xml_file($menu);
-                        }
-                    } catch (\Exception $ex) {
-                        throw new \core\classes\controller\ControllerException(\core\functions\replace(
-                                Error::get('read_xml_file'),
-                                array('$file'   => $filename)
-                            ), 0, $ex);
-                    }
-                } else {
-                    throw new \core\classes\controller\ControllerException(\core\functions\replace(
-                            Error::get('menu_xml_file_not_exists'),
-                            array('$file' => $filename)
-                        ));
-                }
-            }// end _parseMenu
             
-            protected function _perform_reading_xml_file(\SimpleXMLElement $sxe){
-                // Menu array:
-                $menu = array();
-                // Reading options:
-                foreach($sxe->options->option as $option){
-                    $name = self::__filter((string)$option);
-                    // Fetch href attribute:
-                    $href = '';
-                    if(isset($option['href'])){
-                        $href = self::__filter((string)$option['href']);
-                        $href = \core\functions\replace($href, array(
-                            '$home'     => \core\functions\address(),
-                            '$panel'    => \core\functions\address().'/panel',
-                            '$user_id'  => \PanelRegistry::getCurrentUser()->getID(),));
-                    }
-                    // Fetch access attribute:
-                    $access = array();
-                    if(isset($option['access'])){
-                        $access = self::__filter((string)$option['access']);
-                        // Cleaning:
-                        if(\strpos($access, ';') || \strpos($access, ' ')){
-                            $access = \preg_replace('/[;\s]/i', '', $access);
-                        }
-                        if(\strpos($access, ':')){
-                            list($modifier, $value) = explode(':', $access);
-                            $access = array($modifier => $value);
-                        }
-                        else {
-                            $access = array($access => 'all');
-                        }
-                    }
-                    // Fetch command attribute:
-                    $command = '';
-                    if(isset($option['command'])){
-                        $command = self::__filter((string)$option['command']);
-                    }
-                    // Fetch submenu:
-                    $sub = array();
-                    if(isset($option->options)){
-                        $sub = $this->_perform_reading_xml_file($option);
-                    }
-                    // Assign attributes:
-                    $arr = array(
-                        'name'      => $name,
-                        'href'      => $href,
-                        'access'    => $access,
-                        'command'   => $command,
-                        'menu'      => $sub
-                    );
-                    // Optional attributes:
-                    // Fetch multistep attribute:
-                    $multistep = '';
-                    if(isset($option['multistep'])){
-                        $multistep = self::__filter((string)$option['multistep']);
-                        if(!empty($multistep)){
-                            $arr['multistep'] = $multistep;
-                        }
-                    }
-                    $menu[strtolower($name)] = $arr;
-                }
-                return $menu;
-            }// end _perform_reading_xml_file
             
         // } private {
             
             private function __construct(){}
             
-            private static function __filter($str){
-                return \htmlspecialchars(\trim($str));
-            }// end __filter
-        
         // }
     // }
 }

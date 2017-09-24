@@ -1,7 +1,7 @@
 
 <section class="form" style="margin: -30px 0 40px 0;">
     <form id="cancel" method="post" action=""></form>
-    <form id="address" method="post" action="{$panel.link}/address">
+    <form id="address" method="post" action="">
     
     <div class="field {if $country.input->error()}error{/if}">
         <span>{$country.title}</span>

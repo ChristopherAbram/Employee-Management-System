@@ -113,6 +113,13 @@
             </views>
         </command>
         
+        <command name="changeuseraddress">
+            <classroot name="ChangeUserAddress"/>
+            <views>
+                <view>admin_address</view>
+            </views>
+        </command>
+        
         <command name="registration">
             <classroot name="Registration"/>
             <views>
