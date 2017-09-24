@@ -1,0 +1,129 @@
+@charset "utf-8";
+
+/* General item */
+
+.item_list {
+    border-top: solid 1px #ddd;
+    border-right: solid 1px #ddd;
+}
+
+.item_list .item {
+    border-left: solid 3px #e1e1e1;
+    padding: 2px 0 0 0;
+}
+
+.item:hover {
+    background: #f9f9f9;
+    border-left: solid 3px #0060ff;
+}
+
+/* Item left: checkbox and buttons */
+
+.item_list .item .left {
+    width: 160px;
+}
+
+.item_list .item .check, 
+.item_list .item .hide_button, 
+.item_list .item .mark_button,
+.item_list .item .edit_button,
+.item_list .item .hide_button_active,
+.item_list .item .mark_button_active {
+    float: left;
+}
+
+.item_list .item .check {
+    margin: 5px 0 0 5px;
+}
+
+/* Item center: links */
+
+.item_list .item .center {
+    
+}
+
+.item_list .item .center > * {
+    
+    float: left;
+}
+
+/* Item right: number input */
+
+.item_list .item .right {
+    width: 100px;
+    /*border: solid 1px #f00;*/
+}
+
+.item_list .item .right .ord_input {
+    float: right;
+    border: none;
+    margin: 1px 0 0 0;
+    padding: 4px 0;
+    width: 50px;
+}
+
+.item_list .level1 .item .right .ord_input {
+    background: #ddd;
+}
+
+.item_list .level2 .item .right .ord_input {
+    background: #ccc;
+}
+
+.item_list .level3 .item .right .ord_input {
+    background: #bbb;
+}
+
+.item_list .level4 .item .right .ord_input {
+    background: #aaa;
+}
+
+.item_list .level5 .item .right .ord_input {
+    background: #999;
+}
+
+.item_list .level6 .item .right .ord_input {
+    background: #888;
+}
+
+.item_list .level7 .item .right .ord_input {
+    background: #777;
+}
+
+.item_list .level8 .item .right .ord_input {
+    background: #666;
+}
+
+.item_list .level9 .item .right .ord_input {
+    background: #555;
+}
+
+.item_list .level10 .item .right .ord_input {
+    background: #444;
+}
+
+.item_list .item:hover .right .ord_input {
+    background: #f9f9f9;
+}
+
+.item_list .item .right .item_visits {
+    float: left;
+    border: none;
+    border-radius: 15px;
+    margin: 1px 0 0 10px;
+    padding: 3px 10px 3px 20px;
+    background: #ccc url('../../img/visits_ico.png') no-repeat 4px 4px;
+    font-size: 12px;
+}
+
+.item_list .item .right .item_count {
+    display: block;
+    float: left;
+    border: none;
+    border-radius: 20px;
+    margin: 1px 0 0 10px;
+    padding: 3px 8px;
+    background: #ddd;
+    color: #888;
+    font-size: 11px;
+}

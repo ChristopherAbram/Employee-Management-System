@@ -1,0 +1,87 @@
+@charset "utf-8";
+
+#no_script {
+    margin: 0 auto;
+    padding: 10px 20px;
+    background: #e10000;
+    color: #fff;
+    font: 0.3em;
+    text-align: center;
+}
+
+header {
+    z-index: 1000;
+    height: 55px;
+    font-size: 1em;
+    color: #e1e1e1;
+    background: #1e1e1e;
+}
+
+header .belt {
+    height: 3px;
+}
+
+#show_menu, #hide_menu {
+    display: none;
+    width: 30px;
+    height: 30px;
+}
+
+#show_menu {
+    margin-left: 10px;
+}
+
+#hide_menu {
+    margin-right: 10px;
+}
+
+#show_menu a, #hide_menu a {
+    display: block;
+    width: 30px;
+    height: 30px;
+    background: #1e1e1e url('../img/hamburger.svg') no-repeat;
+}
+
+header .logo {
+    margin: 10px;
+    width: 30px;
+    height: 30px;
+    background: #1e1e1e url('../img/LogoSquareBlack.png') no-repeat;
+}
+
+header .section {
+    float: left;
+    margin-top: 10px;
+    height: 30px;
+}
+
+#extra {
+    position: absolute;
+    right: 0;
+    float: right;
+    z-index: 1001;
+    margin-right: 10px;
+}
+
+header a {
+    color: #e1e1e1;
+}
+
+header a:hover {
+    color: #a1a1a1;
+}
+
+@media screen and (max-width: 1100px){
+    
+}   
+
+@media screen and (max-width: 980px){
+    
+    #show_menu {
+        display: block;
+    }
+    
+    #hide_menu {
+        display: block;
+    }
+}   

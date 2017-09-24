@@ -1,0 +1,21 @@
+@charset "utf-8";
+
+#extra .account {
+    overflow: hidden;
+}
+
+#extra .account .button {
+    display: block;
+    padding: 4px 10px;
+    font-size: 13px;
+    border: #0060ff solid 1px;
+    border-radius: 5px;
+    font-weight: bold;
+    float: left;
+    cursor: pointer;
+    margin: 2px 0 0 10px;
+}
+
+#extra .account .button:hover {
+    box-shadow: 0 0 4px 0 #e1e1e1;
+}

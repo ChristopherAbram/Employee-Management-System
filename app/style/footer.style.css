@@ -1,0 +1,95 @@
+@charset "utf-8";
+
+footer {
+    clear: both;
+    position: relative;
+    background: #1e1e1e;
+}
+
+footer .belt {
+    height: 2px;
+}
+
+footer .index {
+    background: #e1e1e1;
+}
+
+footer .index .content {
+    margin: 0 auto;
+    padding: 0;
+    max-width: 1100px;
+    width: 90%;
+    min-width: 150px;
+    overflow: hidden;
+}
+
+footer .index .logo {
+    float: left;
+    position: relative;
+    margin: 20px 20px 20px 60px;
+    width: 60px;
+    height: 130px;
+    background: url('../img/LogoThinGray.png') no-repeat;
+}
+
+footer .index .menu {
+    float: left;
+    margin: 20px 10px;
+    width: 200px;
+}
+
+footer .index .menu ul {
+    display: block;
+    list-style: none;
+}
+
+footer .index .menu ul a {
+    display: block;
+    list-style: none;
+    color: #666;
+}
+
+footer .foot {
+    padding: 10px 0;
+    font-size: 10px;
+    text-align: center;
+    color: #e1e1e1;
+}
+
+#cookie_info {
+    width: 100%;
+    margin: 0 auto;
+    background: #0782C1;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+
+#cookie_button {
+    padding: 4px 10px; 
+    background: #3590bf; 
+    color: #fff; 
+    border: solid 1px #fff; 
+    float: right; 
+    margin: 5px 20px 0 20px;
+}
+
+#cookie_button:hover {
+    cursor: pointer;
+}
+
+@media screen and (max-width: 480px){
+    
+    footer .index .logo {
+        left: 50%;
+        margin: 20px 0 20px -30px;
+    }
+    
+    footer .index .menu {
+        text-align: center;
+        margin: 0 0 20px 0;
+        padding: 0;
+        width: 100%;
+    }
+    
+}

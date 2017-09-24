@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<control>
+    <!-- Default views -->
+    <default>
+        <layout role="administrator">panel</layout>
+        <layout role="publicist">panel</layout>
+        <layout role="plain">userpanel</layout>
+        <view>main</view>
+        <view status="CMD_OK">main</view>
+        <view status="CMD_ERROR">error</view> 
+    </default>
+    
+    <commands>
+        
+        <!-- Dashboard -->
+        <command name="dashboard">
+            <classroot name="Dashboard"/>
+            <views>
+                <view>dashboard</view>
+            </views>
+        </command>
+        
+        <command name="userdata">
+            <classroot name="Account"/>
+            <views>
+                <view>account</view>
+            </views>
+        </command>
+        
+        <command name="changepassword">
+            <classroot name="ChangePassword"/>
+            <views>
+                <view>changepassword</view>
+            </views>
+        </command>
+        
+        <command name="useraddress">
+            <classroot name="UserAddress"/>
+            <views>
+                <view>account_address</view>
+            </views>
+        </command>
+        
+        <command name="userdescription">
+            <classroot name="Description"/>
+            <views>
+                <view>account_description</view>
+            </views>
+        </command>
+        
+        <command name="yourcomments">
+            <classroot name="YourComments"/>
+            <views>
+                <view>yourcomments</view>
+            </views>
+        </command>
+        
+        <command name="userimage">
+            <classroot name="Image"/>
+            <views>
+                <view>account_image</view>
+            </views>
+        </command>
+        
+        <!-- Departments -->
+        
+        <command name="departments">
+            <classroot name="Departments"/>
+            <views>
+                <view>departments</view>
+            </views>
+        </command>
+        
+        <command name="departmenteditor">
+            <classroot name="DepartmentEditor"/>
+            <views>
+                <view>department_editor</view>
+            </views>
+        </command>
+        
+        <!-- Responsibility -->
+        
+        <command name="responsibilities">
+            <classroot name="Responsibilities"/>
+            <views>
+                <view>responsibilities</view>
+            </views>
+        </command>
+        
+        <command name="addresponsibility">
+            <classroot name="AddResponsibility"/>
+            <views>
+                <view>empty</view>
+            </views>
+            <forwards>
+                <forward>responsibilities</forward>
+            </forwards>
+        </command>
+        
+        <!-- Members -->
+        <command name="members">
+            <classroot name="Members"/>
+            <views>
+                <view>admin_member_list</view>
+            </views>
+        </command>
+        
+        <command name="member">
+            <classroot name="Member"/>
+            <views>
+                <view>admin_member</view>
+            </views>
+        </command>
+        
+        <command name="registration">
+            <classroot name="Registration"/>
+            <views>
+                <view>admin_registration</view>
+            </views>
+            <forwards>
+                <forward status="NEXT">address</forward>
+            </forwards>
+        </command>
+        
+        <command name="address">
+            <classroot name="Address"/>
+            <views>
+                <view>admin_address</view>
+            </views>
+            <forwards>
+                <forward status="NEXT">extra</forward>
+            </forwards>
+        </command>
+        
+        <command name="extra">
+            <classroot name="Extra"/>
+            <views>
+                <view>extra_1</view>
+            </views>
+            <forwards>
+                <forward status="CMD_OK">members</forward>
+            </forwards>
+        </command>
+        
+        <!-- Articles -->
+        
+        <!--<command name="article">
+            <classroot name="Article"/>
+            <views>
+                <view status="CMD_OK">article_category_list</view>
+                <view status="CMD_DEFAULT">article_all_list</view>
+            </views>
+        </command>
+        
+        <command name="articlecategories">
+            <classroot name="ArticleCategories"/>
+            <views>
+                <view>article_admin_categories</view>
+            </views>
+        </command>
+        
+        <command name="articleeditor">
+            <classroot name="ArticleEditor"/>
+            <views>
+                <view>article_admin_editor</view>
+            </views>
+            <forwards>
+                <forward status="NEXT">articlecategory</forward>
+            </forwards>
+        </command>
+        
+        <command name="articlecategory">
+            <classroot name="ArticleCategory"/>
+            <views>
+                <view>article_category</view>
+            </views>
+            <forwards>
+                <forward status="NEXT">articlebody</forward>
+            </forwards>
+        </command>
+        
+        <command name="articlebody">
+            <classroot name="ArticleBody"/>
+            <views>
+                <view>article_body</view>
+            </views>
+            <forwards>
+                <forward status="NEXT">articlepicture</forward>
+            </forwards>
+        </command>
+        
+        <command name="articlepicture">
+            <classroot name="ArticlePicture"/>
+            <views>
+                <view>article_picture</view>
+            </views>
+            <forwards>
+                <forward status="NEXT">articleoptions</forward>
+            </forwards>
+        </command>
+        
+        <command name="articleoptions">
+            <classroot name="ArticleOptions"/>
+            <views>
+                <view>article_options</view>
+            </views>
+        </command>
+        
+        <command name="comments">
+            <classroot name="Comments"/>
+            <views>
+                <view status="CMD_OK">admin_comments_by_article</view>
+                <view status="CMD_DEFAULT">admin_comments</view>
+            </views>
+        </command>
+        
+        <command name="articlecomments">
+            <classroot name="ArticleComments"/>
+            <views>
+                <view>admin_article_comments</view>
+            </views>
+        </command>-->
+        
+        <!-- Files -->
+        <command name="file">
+            <classroot name="File"/>
+            <views>
+                <view>admin_file</view>
+            </views>
+        </command>
+        
+        <command name="files">
+            <classroot name="FileList"/>
+            <views>
+                <view>admin_file_list</view>
+            </views>
+        </command>
+        
+        <command name="upload">
+            <classroot name="Upload"/>
+            <views>
+                <view>admin_browse_upload</view>
+            </views>
+        </command>
+        
+        <command name="getfilelist">
+            <classroot name="GetFileList"/>
+            <views>
+                <view status="CMD_OK">file_list</view>
+                <view status="CMD_ERROR">empty</view>
+            </views>
+        </command>
+        
+        <command name="nextfilepageexists">
+            <classroot name="NextFilePageExists"/>
+            <views>
+                <view>empty</view>
+            </views>
+        </command>
+        
+        <command name="getimagelist">
+            <classroot name="GetImageList"/>
+            <views>
+                <view status="CMD_OK">file_list</view>
+                <view status="CMD_ERROR">empty</view>
+            </views>
+        </command>
+        
+        <command name="nextimagepageexists">
+            <classroot name="NextImagePageExists"/>
+            <views>
+                <view>empty</view>
+            </views>
+        </command>
+        
+        <command name="setuseravatar">
+            <classroot name="SetUserAvatar"/>
+            <views>
+                <view>empty</view>
+            </views>
+        </command>
+        
+        <command name="deleteavatar">
+            <classroot name="DeleteUserAvatar"/>
+            <views>
+                <view>empty</view>
+            </views>
+        </command>
+        
+        <!-- Recycle Bin -->
+        <command name="recycle">
+            <classroot name="Recycle"/>
+            <views>
+                <view>admin_recycle</view>
+            </views>
+        </command>
+        
+    </commands>
+</control>

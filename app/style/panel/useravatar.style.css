@@ -1,0 +1,14 @@
+@charset "utf-8";
+
+#user_avatar {
+    width: 248px;
+    height: 248px;
+    border: solid 1px #ddd;
+    float: left;
+    position: relative;
+}
+
+#user_avatar img {
+    width: 248px;
+    height: 248px;
+}

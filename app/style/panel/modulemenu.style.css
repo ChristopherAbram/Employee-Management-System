@@ -1,0 +1,54 @@
+@charset "utf-8";
+
+#module_menu {
+    display: block;
+    float: left;
+    width: 250px;
+    height: 95%;
+    background: #1e1e1e;
+    position: fixed;
+    top: 55px;
+    left: 0;
+    z-index: 100;
+}
+
+#module_menu #theme_img {
+    display: block;
+    width: 100%;
+    height: 250px;
+    background: #1e1e1e;
+}
+
+#avatar_image {
+    width: 250px;
+    height: 250px;
+}
+
+#module_menu ul {
+    display: block;
+}
+
+#module_menu li {
+    display: block;
+}
+
+#module_menu a {
+    display: block;
+    color: #e1e1e1;
+    padding: 3px 0 3px 20px;
+    border-bottom: solid 1px #444;
+}
+
+#module_menu .active, #module_menu a:hover {
+    color: #0060ff;
+    padding-left: 15px;
+    border-left: solid 5px #0060ff;
+}
+
+#module_menu .roll li a {
+    padding-left: 40px;
+}
+
+#module_menu .roll li a:hover {
+    padding-left: 35px;
+}

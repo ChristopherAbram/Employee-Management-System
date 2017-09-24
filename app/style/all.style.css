@@ -1,0 +1,43 @@
+@charset "utf-8";
+
+html, body {
+    margin: 0 auto;
+    height: 100%;
+    width: 100%;
+}
+
+html {
+    font-family: 'OpenSansLight';
+}
+
+#no_script {
+    width: 100%;
+    margin: 0 auto;
+    padding: 10px 0;
+    background: #e10000;
+    color: #fff;
+    font: 0.3em;
+    text-align: center;
+}
+
+#cookie_info {
+    width: 100%;
+    margin: 0 auto;
+    background: #0782C1;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+}
+
+#cookie_button {
+    padding: 4px 10px; 
+    background: #3590bf; 
+    color: #fff; 
+    border: solid 1px #fff; 
+    float: right; 
+    margin: 0px 20px 0 20px;
+}
+
+#cookie_button:hover {
+    cursor: pointer;
+}

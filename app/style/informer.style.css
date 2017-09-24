@@ -1,0 +1,37 @@
+@charset "utf-8";
+
+.informer {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    width: 300px;
+    left: 50%;
+    top: 30%;
+    margin-left: -170px;
+    padding: 20px;
+}
+
+.informer.error {
+    background: #ca0000;
+    border: dashed 5px #920202;
+    color: #fff;
+}
+
+.informer.warning {
+    background: #e6b301;
+    border: dashed 5px #ca9e03;
+    color: #fff;
+}
+
+.informer.correct {
+    border: dashed 5px #036d00;
+    background: #049a00;
+    color: #fff;
+}
+
+@media screen and (max-width: 500px){
+    .informer {
+        width: 190px;
+        margin-left: -120px;
+    }
+}

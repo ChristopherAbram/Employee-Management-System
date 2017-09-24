@@ -1,0 +1,28 @@
+@charset "utf-8";
+
+.no_results {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-style: initial;
+    font-size: 15px;
+    color: #aaa;
+}
+
+#more {
+    display: none; 
+    width: 200px; 
+    outline: solid 2px #ddd;
+    border-bottom: solid 1px #fff;
+    border-right: solid 1px #fff;
+    background: #eee;
+    padding: 10px 20px; 
+    margin: 0 auto; 
+    text-align: center;
+}
+
+#more:hover {
+    cursor: pointer;
+    border-color: #eee;
+    background: #ddd;
+}

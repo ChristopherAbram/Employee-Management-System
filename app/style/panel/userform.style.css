@@ -1,0 +1,24 @@
+@charset "utf-8";
+
+.field input[type="submit"], 
+.field input[type="reset"],
+.field input[type="button"],
+button {
+    display: block;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 10px 20px;
+    border: solid 1px #fff;
+    background: #39f;
+    color: #fff;
+    font-size: 15px;
+}
+
+.field input[type="submit"]:hover, 
+.field input[type="reset"]:hover,
+.field input[type="button"]:hover,
+button:hover {
+    cursor: pointer;
+    border: solid 1px #39f;
+    color: #39f;
+    background: #fff;
+}

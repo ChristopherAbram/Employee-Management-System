@@ -1,0 +1,46 @@
+@charset "utf-8";
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    height: 55px;
+    background: #1e1e1e;
+}
+
+header .belt {
+    height: 3px;
+}
+
+header .logo {
+    margin: 10px;
+    width: 30px;
+    height: 30px;
+    background: #1e1e1e url('../../img/LogoSquareBlack.png') no-repeat;
+}
+
+header .section {
+    float: left;
+    /*border: #ff0000 solid 1px;*/
+    margin-top: 10px;
+    height: 30px;
+}
+
+#extra {
+    float: right;
+    margin-right: 20px;
+}
+
+header {
+    font-size: 1em;
+    color: #e1e1e1;
+}
+
+header a {
+    color: #e1e1e1;
+}
+
+header a:hover {
+    color: #a1a1a1;
+}

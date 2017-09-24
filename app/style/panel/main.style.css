@@ -1,0 +1,22 @@
+@charset "utf-8";
+
+main {
+    padding-bottom: 50px;
+    /*border: #f00 solid 1px;*/
+    margin-left: 250px;
+}
+
+main a {
+    color: #0060ff;
+}
+
+main a:hover {
+    color: #0060bb;
+}
+
+main article {
+    /*border: dashed 1px #f00;*/
+    padding: 20px;
+    min-height: 500px;
+    margin-top: 100px;
+}

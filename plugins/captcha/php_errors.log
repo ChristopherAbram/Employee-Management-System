@@ -1,0 +1,22 @@
+[19-Nov-2016 21:52:50 Europe/Warsaw] PHP Warning:  Uncaught exception 'core\classes\errorhandling\error\WarningException' with message 'require_once(G:\Programy\Xampp\xampp\php\pear): failed to open stream: Permission denied' in G:\Programy\Xampp\xampp\htdocs\plugins\captcha\captcha.php:15
+Stack trace:
+#0 G:\Programy\Xampp\xampp\htdocs\plugins\captcha\captcha.php(15): core\classes\errorhandling\ErrorHandler->error_handler(2, 'require_once(G:...', 'G:\\Programy\\Xam...', 15, Array)
+#1 G:\Programy\Xampp\xampp\htdocs\plugins\captcha\captcha.php(15): require_once()
+#2 {main}
+  thrown in G:\Programy\Xampp\xampp\htdocs\plugins\captcha\captcha.php on line 15
+[19-Nov-2016 21:52:50 Europe/Warsaw] PHP Stack trace:
+[19-Nov-2016 21:52:50 Europe/Warsaw] PHP   1. {main}() G:\Programy\Xampp\xampp\htdocs\plugins\captcha\captcha.php:0
+[19-Nov-2016 21:52:50 Europe/Warsaw] PHP Fatal error:  main(): Failed opening required '' (include_path='G:\Programy\Xampp\xampp\php\PEAR') in G:\Programy\Xampp\xampp\htdocs\plugins\captcha\captcha.php on line 15
+[19-Nov-2016 21:52:50 Europe/Warsaw] PHP Stack trace:
+[19-Nov-2016 21:52:50 Europe/Warsaw] PHP   1. {main}() G:\Programy\Xampp\xampp\htdocs\plugins\captcha\captcha.php:0
+[19-Nov-2016 21:53:11 Europe/Warsaw] PHP Warning:  Uncaught exception 'core\classes\errorhandling\error\WarningException' with message 'require_once(G:\Programy\Xampp\xampp\php\pear): failed to open stream: Permission denied' in G:\Programy\Xampp\xampp\htdocs\plugins\captcha\captcha.php:15
+Stack trace:
+#0 G:\Programy\Xampp\xampp\htdocs\plugins\captcha\captcha.php(15): core\classes\errorhandling\ErrorHandler->error_handler(2, 'require_once(G:...', 'G:\\Programy\\Xam...', 15, Array)
+#1 G:\Programy\Xampp\xampp\htdocs\plugins\captcha\captcha.php(15): require_once()
+#2 {main}
+  thrown in G:\Programy\Xampp\xampp\htdocs\plugins\captcha\captcha.php on line 15
+[19-Nov-2016 21:53:11 Europe/Warsaw] PHP Stack trace:
+[19-Nov-2016 21:53:11 Europe/Warsaw] PHP   1. {main}() G:\Programy\Xampp\xampp\htdocs\plugins\captcha\captcha.php:0
+[19-Nov-2016 21:53:11 Europe/Warsaw] PHP Fatal error:  main(): Failed opening required '' (include_path='G:\Programy\Xampp\xampp\php\PEAR') in G:\Programy\Xampp\xampp\htdocs\plugins\captcha\captcha.php on line 15
+[19-Nov-2016 21:53:11 Europe/Warsaw] PHP Stack trace:
+[19-Nov-2016 21:53:11 Europe/Warsaw] PHP   1. {main}() G:\Programy\Xampp\xampp\htdocs\plugins\captcha\captcha.php:0

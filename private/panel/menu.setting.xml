@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<menu>
+    <options access="plain: all;">
+        <option 
+            id="home"
+            name="Home page"
+            href="$home"
+            command="" />
+        
+        <option 
+            name="Dashboard" 
+            href="$panel/dashboard"
+            command="dashboard">
+            
+            <options access="plain: all;">
+                <option 
+                    name="Your data" 
+                    href="$panel/userdata"
+                    command="userdata" />
+                
+                <option 
+                    name="Change password" 
+                    href="$panel/changepassword"
+                    command="changepassword" />
+                
+                <option 
+                    name="Address" 
+                    href="$panel/useraddress"
+                    command="useraddress" />
+                
+                <option 
+                    name="Describe yourself" 
+                    href="$panel/userdescription"
+                    command="userdescription" />
+                
+                <option 
+                    name="Your comments" 
+                    href="$panel/yourcomments"
+                    command="yourcomments" />
+                
+            </options>
+        </option>
+        
+        <option 
+            name="Departments" 
+            href="$panel/departments" 
+            access="administrator: all" 
+            command="departments">
+            
+            <options access="administrator: all;">
+                <option 
+                    name="Management list" 
+                    href="$panel/departments"
+                    command="departments" />
+                
+                <option 
+                    name="Add new department" 
+                    href="$panel/departmenteditor" 
+                    command="departmenteditor" />
+            </options>
+        </option>
+        
+        <option 
+            name="Responsibilities"
+            href="$panel/responsibilities" 
+            access="administrator: all" 
+            command="responsibilities"
+            visibility="normal" />
+        
+        <!--<option href="$panel/article" access="publicist: all" command="article">
+            Articles
+            <options>
+                <option href="$panel/articlecategories" access="publicist: all;" command="articlecategories">Categories</option>
+                <option href="$panel/article" access="publicist: all;" command="article">Management list</option>
+                <option href="$panel/articleeditor" access="publicist: all;" command="articleeditor" multistep="__articleeditor">
+                    Editor
+                    <options>
+                        <option href="$panel/articleeditor" access="publicist: all;" command="articleeditor">The basic</option>
+                        <option href="$panel/articlecategory" access="publicist: all;" command="articlecategory">Category</option>
+                        <option href="$panel/articlebody" access="publicist: all;" command="articlebody">Content</option>
+                        <option href="$panel/articlepicture" access="publicist: all;" command="articlepicture">Picture</option>
+                        <option href="$panel/articleoptions" access="publicist: all;" command="articleoptions">Options</option>
+                    </options>
+                </option>
+                <option href="$panel/comments" access="publicist: all;" command="comments">
+                    Comments
+                    <options>
+                        <option href="$panel/articlecomments" access="publicist: all;" command="articlecomments">Choose article</option>
+                        <option href="$panel/comments" access="publicist: all;" command="comments">Management list</option>
+                    </options>
+                </option>
+            </options>
+        </option>-->
+        
+        <option
+            name="Employees"
+            href="$panel/members" 
+            access="administrator: all" 
+            command="members">
+            
+            <options access="administrator: all;" >
+                <option 
+                    name="Members"
+                    href="$panel/members"
+                    command="members"/>
+                
+                <option 
+                    name="Member configurations"
+                    href="$panel/member/$user_id"
+                    visibility="command"
+                    command="member">
+                    
+                    <options access="administrator: all;">
+                        <option 
+                            name="User data"
+                            href="$panel/registration"
+                            command="registration" />
+                        
+                        <option 
+                            name="User Address"
+                            href="$panel/address" 
+                            command="address" />
+                        
+                        <option 
+                            name="Agreements"
+                            href="$panel/extra" 
+                            command="extra" />
+                        
+                        <option 
+                            name="Add agreement"
+                            href="$panel/extra" 
+                            command="extra" />
+                    </options>
+                </option>
+                
+                <option 
+                    name="Add member"
+                    href="$panel/registration"
+                    command="registration" 
+                    multistep="__adminregistration">
+                    
+                    <options access="administrator: all;">
+                        <option 
+                            name="The basic"
+                            href="$panel/registration"
+                            command="registration" />
+                        
+                        <option 
+                            name="Address"
+                            href="$panel/address" 
+                            command="address" />
+                        
+                        <option 
+                            name="Extra"
+                            href="$panel/extra" 
+                            command="extra" />
+                    </options>
+                </option>
+            </options>
+        </option>
+        
+        <option 
+            name="Report"
+            href="$panel/report" 
+            access="administrator: all" 
+            command="report" />
+        
+        <option 
+            name="Files"
+            href="$panel/file" 
+            access="administrator: all"
+            command="file">
+            
+            <options access="administrator: all">
+                <option 
+                    name="Your files"
+                    href="$panel/file"
+                    command="file" />
+                
+                <option 
+                    name="Management list"
+                    href="$panel/files"
+                    command="files" />
+                
+                <option 
+                    name="Upload file"
+                    href="$panel/upload"
+                    command="upload" />
+            </options>
+        </option>
+        
+        <option 
+            name="Recycle Bin"
+            href="$panel/recycle" 
+            access="administrator: all" 
+            command="recycle" />
+    </options>
+</menu>

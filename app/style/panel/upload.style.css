@@ -1,0 +1,318 @@
+@charset "utf-8";
+
+/*form { 
+    display: block; 
+    margin: 0; 
+    padding: 10px 15px 35px 15px;
+    overflow: hidden; 
+}
+.progress { 
+    position: relative; 
+    width: 100%; 
+}
+.bar { 
+    background-color: #39F; 
+    width: 0%; 
+    height: 3px; 
+}
+.percent { 
+    position:absolute; 
+    display:inline-block; 
+    top: -20px; 
+    left:48%; 
+}
+#getFile { 
+    display: none; 
+    float: left;
+}
+#submit { 
+    display: block; 
+    float: left; 
+    margin: 0 10px; 
+}
+.panel {
+    display: block;
+    overflow: hidden;
+    background: #eee;
+    border: dashed 2px #ddd;
+}
+#status {
+    width: 100%;
+    overflow: hidden;
+}
+
+.tile {
+    float: left;
+    width: 200px;
+    height: 250px;
+    border: solid 1px #ddd;
+    overflow: hidden;
+    background: #fff;
+    margin: 5px 5px 0 0;
+}
+
+.tile:hover {
+    border: solid 1px #999;
+    box-shadow: 2px 2px 2px #ddd;
+}
+
+.imgContener {
+    width: 198px;
+    height: 198px;
+    margin: 1px;
+    overflow: hidden;
+}
+
+.thumb {
+    height: 198px;
+}
+
+.close {
+    
+}
+
+.close {
+    padding: 0;
+    display: block;
+    width: 16px;
+    height: 16px;
+    border: none;
+    cursor: pointer;
+    text-indent: -9000px;
+    background: url('../../img/close_ico.png') no-repeat;
+} 
+
+.close:hover {
+    background: url('../../img/close_ico_hover.png') no-repeat;
+}
+
+.cross .close {
+    float: right;
+    margin: 2px 0 0 0;
+}
+
+.file_name {
+    outline: none;
+    border: none;
+    width: 160px;
+    border: none;
+    padding: 2px 0;
+    font: 13px Arial, Helvetica, sans-serif;
+    color: #666;
+    float: left;
+}
+
+.uploadFileButton {
+    display: inline-block;
+    font: 18px 'OpenSansLight';
+    color: #fff;
+    background: #5af;
+    padding: 5px 10px;
+    border: solid 1px #39f;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+    -webkit-border-radius: 4px;
+}
+
+.uploadFileButton:hover {
+    color: #5af;
+    background: #fff;
+    cursor: pointer;
+}
+
+.responseMessage {
+    font: 14px 'OpenSansLight';
+    text-align: center;
+    color: #333;
+    margin: 5px 5px 10px 5px;
+}
+
+.tile .err { color: #F00; }
+.tile .info { color: #FC0; }
+.tile .ok { color: #090; }*/
+
+/* CSS Document */
+/* 12.07.2014 */
+/* Krzysztof Abram */
+
+.uploadForm { 
+	display: block; 
+	margin: 0; 
+	padding: 10px 15px 35px 15px;
+	overflow: hidden; 
+}
+.progress { 
+	position: relative; 
+	width: 100%; 
+}
+.bar { 
+	background-color: #39F; 
+	width: 0%; 
+	height: 3px; 
+}
+.percent { 
+	position:absolute; 
+	display:inline-block; 
+	top: -20px; 
+	left:48%; 
+}
+#getFile { 
+	display: none; 
+	float: left;
+}
+#submit { 
+	display: block; 
+	float: left; 
+	margin: 0 10px; 
+}
+.panel {
+	display: block;
+	overflow: hidden;
+	background: #eee;
+	border: dashed 2px #ddd;
+}
+#status {
+	width: 100%;
+	overflow: hidden;
+}
+
+.tile {
+	width: 200px;
+	height: 250px;
+	border: solid 1px #ddd;
+	overflow: hidden;
+	background: #fff;
+	margin: 5px 5px 0 0;
+	float: left;
+}
+
+.tile:hover {
+	border: solid 1px #999;
+	box-shadow: 2px 2px 2px #ddd;
+}
+
+.imgContener {
+	width: 198px;
+	height: 198px;
+	margin: 1px;
+	overflow: hidden;
+}
+
+.thumb {
+	height: 198px;
+}
+
+.close {
+    padding: 0;
+    display: block;
+    width: 16px;
+    height: 16px;
+    border: none;
+    cursor: pointer;
+    text-indent: -9000px;
+    background: url('../../img/close_ico.png') no-repeat;
+} 
+
+.close:hover {
+    background: url('../../img/close_ico_hover.png') no-repeat;
+}
+
+.cross {
+	padding: 2px;
+}
+
+.cross .close {
+	float: right;
+	margin: 2px 0 0 0;
+}
+
+.sentContener {
+	width: 100%;
+	height: 30px;
+	margin: 10px 0 0 0;
+}
+
+.sent {
+	width: 200px;
+	padding: 5px;
+	text-align: center;
+	color: #F90;
+	background: #FFC;
+	border: solid 1px #FC0;
+	position: relative;
+	left: 50%;
+	margin-left: -100px;
+}
+
+.file_name {
+	outline: none;
+	width: 155px;
+	border: none;
+	font: 13px Arial, Helvetica, sans-serif;
+	color: #666;
+	float: left;
+}
+
+.uploadFileButton {
+	display: inline-block;
+	font: 18px 'OpenSansLight';
+	color: #fff;
+	background: #5af;
+	padding: 5px 10px;
+	border: solid 1px #39f;
+	border-radius: 4px;
+	-moz-border-radius: 4px;
+	-ms-border-radius: 4px;
+	-o-border-radius: 4px;
+	-webkit-border-radius: 4px;
+}
+
+.uploadFileButton:hover {
+	color: #5af;
+	background: #fff;
+	cursor: pointer;
+}
+
+.responseMessage {
+	font: 14px 'OpenSansLight';
+	text-align: center;
+	color: #333;
+	margin: 5px 5px 10px 5px;
+}
+
+.info {
+    width: 100%;
+    text-align: center;
+    font-style: italic;
+    color: #666;
+}
+
+#nextResultsButton {
+	width: 200px;
+	padding: 10px 0;
+	font: 18px 'OpenSansLight';
+	color: #fff;
+	background: #5af;
+	border: solid 1px #39f;
+	border-radius: 4px;
+	-moz-border-radius: 4px;
+	-ms-border-radius: 4px;
+	-o-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	margin: 20px 0 10px -100px;
+	text-align: center;
+	position: relative;
+	left: 50%;
+}
+
+#nextResultsButton:hover {
+	color: #5af;
+	background: #fff;
+	cursor: pointer;
+}
+
+.tile .err { color: #F00; }
+.tile .info { color: #FC0; }
+.tile .ok { color: #090; }

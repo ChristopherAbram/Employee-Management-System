@@ -1,0 +1,22 @@
+
+CREATE TABLE IF NOT EXISTS file_info (
+	`id`		INT(11) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  	`name`		VARCHAR(255) NOT NULL,
+  	`description` 	TEXT,
+  	`size`		INT(10) UNSIGNED DEFAULT 0,
+  	`mtime`		INT(10) UNSIGNED,
+  	`cdate`     	DATETIME DEFAULT NULL,
+  	`mime`      	VARCHAR(255) DEFAULT 'unknown',
+  	`read`      	TINYINT(1) DEFAULT 1,
+  	`write`     	TINYINT(1) DEFAULT 1,
+  	`locked`    	TINYINT(1) DEFAULT 0,
+  	`hide`    	TINYINT(1) DEFAULT 0,
+	`bin`	      	TINYINT(1) DEFAULT 0,
+  	`width`     	INT(5) DEFAULT 0,
+  	`height`	INT(5) DEFAULT 0,
+	`extension`  	VARCHAR(8) DEFAULT 'unknown',
+  	`user_id`	INT(11) UNSIGNED NOT NULL,
+
+	CONSTRAINT `file_info_user_fk` FOREIGN KEY (`user_id`) REFERENCES `user`(`id`) ON DELETE CASCADE ON UPDATE CASCADE
+
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;

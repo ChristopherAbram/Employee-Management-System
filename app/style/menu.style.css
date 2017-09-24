@@ -1,0 +1,201 @@
+@charset "utf-8";
+
+#menu_contener {
+    position: absolute; 
+    bottom: 0;
+}
+
+header nav {
+    width: 800px;
+    position: relative;
+    z-index: 1001;
+    font-size: 15px;
+}
+
+header nav ul {
+    overflow: hidden;
+    display: block;
+}
+
+header nav li {
+    display: block;
+    padding: 0 10px;
+    margin: 0 5px 0 0;
+    float: left;
+}
+
+header nav a {
+    display: block;
+    padding: 0 0 5px 0;
+}
+
+/* Submenu 1 */
+
+header nav li.roll {
+    padding: 0 0 0 15px;
+}
+
+header nav li.roll > a {
+    padding: 0 20px 5px 0;
+    background: url('../img/menu_roll_pointer.png') no-repeat right 0px;
+}
+
+header nav li.roll > a:hover {
+    background: url('../img/menu_roll_pointer-hover.png') no-repeat right 0px;
+}
+
+header nav li.roll:hover > a {
+    color: #a1a1a1;
+    background: url('../img/menu_roll_pointer-hover.png') no-repeat right 0px;
+}
+
+header nav li.roll ul {
+    display: none;
+    background: #ffffff;
+    position: absolute; top: 25px;
+    box-shadow: 0px 3px 8px -3px #111111;
+}
+
+header nav li.roll:hover ul {
+    display: inline-block;
+}
+
+header nav li.roll ul li {
+    float: none;
+    padding: 0;
+    margin: 0;
+}
+
+header nav li.roll ul li a {
+    padding: 5px 100px 5px 20px;
+    color: #1e1e1e;
+}
+
+header nav li.roll ul li a:hover {
+    color: #0060ff;
+}
+
+/* Submenu 2 */
+
+header nav li.roll li.roll {
+    position: relative; right: 0;
+}
+
+header nav li.roll li.roll ul {
+    display: none;
+    position: absolute; left: 0;
+}
+
+header nav li.roll li.roll:hover ul {
+    display: block;
+}
+
+@media screen and (max-width: 980px){
+    
+    #menu {
+        position: fixed;
+        overflow-y: auto;
+        overflow-x: hidden;
+        display: none;
+        width: 250px;
+        height: 100%;
+    }
+    
+    #menu:target {
+        display: block;
+    }
+    
+    #hide_menu {
+        position: fixed;
+        top: 0;
+        left: 200px;
+        float: right;
+        margin: 12px 0px 0 0;
+    }
+    
+    #menu_contener {
+       position: absolute;
+       top: 0;
+       width: 250px;
+    }
+    
+    header nav.section {
+        display: block;
+        position: absolute;
+        top: 0;
+        margin: 0;
+        z-index: 9999;
+        width: 250px;
+        background: #1e1e1e;
+        border-right: solid 1px #0060ff;
+    }
+    
+    header nav ul {
+        display: block;
+        width: 100%;
+    }
+    
+    #menu_contener > ul {
+        margin: 55px 0 0 0;
+    }
+
+    header nav li {
+        display: block;
+        padding: 0;
+        margin: 0 5px 0 0;
+        float: none;
+    }
+
+    header nav li a {
+        display: block;
+        padding: 10px 10px 10px 25px;
+    }
+    
+    /* Submenu 1 */
+
+    header nav li.roll {
+        padding: 0;
+    }
+
+    header nav li.roll > a {
+        padding: 10px 10px 10px 25px;
+        background: none;
+    }
+
+    header nav li.roll > a:hover {
+        background: none;
+    }
+
+    header nav li.roll:hover > a {
+        color: #e1e1e1;
+        background: none;
+    }
+
+    header nav li.roll ul {
+        display: block;
+        background: none;
+        position: relative;
+        top: 0;
+        box-shadow: none;
+    }
+
+    header nav li.roll:hover ul {
+        display: block;
+    }
+
+    header nav li.roll ul li {
+        float: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    header nav li.roll ul li a {
+        padding: 10px 10px 10px 50px;
+        color: #e1e1e1;
+    }
+
+    header nav li.roll ul li a:hover {
+        color: #a1a1a1;
+    }
+    
+}

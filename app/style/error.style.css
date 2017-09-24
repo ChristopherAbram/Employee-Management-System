@@ -1,0 +1,13 @@
+@charset "utf-8";
+
+header .logo {
+    background: #1e1e1e url('../img/LogoThinRed.png') no-repeat 39px 0;
+}
+
+.belt {
+    background: #e10000;
+}
+
+main {
+    padding-bottom: 200px;
+}

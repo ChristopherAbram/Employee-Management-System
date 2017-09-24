@@ -1,0 +1,1 @@
+<noscript id="no_script" style="display: block;">{$noscript}</noscript>

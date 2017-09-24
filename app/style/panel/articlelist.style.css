@@ -1,0 +1,189 @@
+@charset "utf-8";
+
+/* General item */
+
+.category_label {
+    text-align: center;
+    background: #4c8fff;
+    color: #fff;
+    padding: 5px 0;
+    font-size: 20px;
+}
+
+.item_list {
+    border-top: solid 1px #ddd;
+    border-right: solid 1px #ddd;
+}
+
+.item_list .item {
+    border-left: solid 3px #e1e1e1;
+    padding: 0px 0 0 0;
+}
+
+.item:hover {
+    background: #f9f9f9;
+    border-left: solid 3px #0060ff;
+}
+
+/* Item left: checkbox and buttons */
+
+.item_list .item .left {
+    /*border: solid 1px #f00;*/
+    width: 220px;
+}
+
+.item_list .item .check, 
+.item_list .item .functions,
+.item_list .item .image {
+    display: block;
+    float: left;
+}
+
+.item_list .item .check {
+    margin: 70px 0 0 5px;
+}
+
+.item_list .item .functions {
+    border-left: dotted 1px #ddd;
+    margin: 50px 5px 0 5px;
+}
+
+.item_list .item .image {
+    width: 150px;
+    height: 150px;
+    border: solid 1px #ddd;
+}
+
+/* Item center: links */
+
+.item_list .item .center {
+    width: 65%;
+}
+
+.item .center .item_title {
+    font-weight: bold;
+}
+
+.item .edit_button {
+    margin: -2px 0 0 5px;
+    padding: 1px 15px;
+}
+
+.item:hover .edit_button {
+    display: inline-block;
+}
+
+.item_list .item .center a {
+    /*display: block;*/
+}
+
+.item_list .item .center .info {
+    overflow: hidden;
+    width: 100%;
+}
+
+.item .keys a {
+    font-size: 11px;
+    font-weight: lighter;
+    padding: 2px 4px;
+    border: solid 2px #e1e1e1;
+    border-radius: 5px;
+}
+
+.item .keys a:hover {
+    border: solid 2px #a1a1a1;
+    background: #e1e1e1;
+}
+
+.item_list .item .center .info .user,
+.item_list .item .center .info .edate {
+    padding: 5px 0 0 0;
+    font-size: 12px;
+}
+
+.item_list .item .center .info .user {
+    float: left;
+}
+
+.item_list .item .center .info .edate {
+    float: right;
+}
+
+.item_list .item .center .description {
+    font-size: 13px;
+    margin: 5px 0 0 0;
+}
+
+/* Item right: number input */
+
+.item_list .item .right {
+    margin: 55px 0 0 0;
+    width: 100px;
+}
+
+.item .preview_button {
+    width: 12px;
+    height: 16px;
+    margin: 0 0 0 5px;
+    background-position: 0 0;
+}
+
+.item .preview_button:hover {
+    background-position: 0 0;
+}
+
+.item:hover .preview_button {
+    display: inline-block;
+}
+
+.item_list .item .right .ord_input {
+    float: right;
+    border: none;
+    margin: 1px 0 0 0;
+    padding: 4px 0;
+    width: 50px;
+}
+
+.item_list .level1 .item .right .ord_input {
+    background: #ddd;
+}
+
+.item_list .level2 .item .right .ord_input {
+    background: #ccc;
+}
+
+.item_list .level3 .item .right .ord_input {
+    background: #bbb;
+}
+
+.item_list .level4 .item .right .ord_input {
+    background: #aaa;
+}
+
+.item_list .level5 .item .right .ord_input {
+    background: #999;
+}
+
+.item_list .level6 .item .right .ord_input {
+    background: #888;
+}
+
+.item_list .level7 .item .right .ord_input {
+    background: #777;
+}
+
+.item_list .level8 .item .right .ord_input {
+    background: #666;
+}
+
+.item_list .level9 .item .right .ord_input {
+    background: #555;
+}
+
+.item_list .level10 .item .right .ord_input {
+    background: #444;
+}
+
+.item_list .item:hover .right .ord_input {
+    background: #f9f9f9;
+}

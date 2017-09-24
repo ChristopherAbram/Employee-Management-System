@@ -1,0 +1,102 @@
+@charset "utf-8";
+
+/* General item */
+
+.category_label {
+    text-align: center;
+    background: #4c8fff;
+    color: #fff;
+    padding: 5px 0;
+    font-size: 20px;
+}
+
+.item_list {
+    border-top: solid 1px #ddd;
+    border-right: solid 1px #ddd;
+}
+
+.item_list .item {
+    border-left: solid 3px #e1e1e1;
+    padding: 0px 0 0 0;
+}
+
+.item:hover {
+    background: #f9f9f9;
+    border-left: solid 3px #0060ff;
+}
+
+/* Item left: checkbox and buttons */
+
+.item_list .item .left {
+    /*border: solid 1px #f00;*/
+    width: 70px;
+}
+
+.item_list .item .check, 
+.item_list .item .functions,
+.item_list .item .image {
+    display: block;
+    float: left;
+}
+
+.item_list .item .check {
+    margin: 17px 0 0 5px;
+}
+
+.item_list .item .functions {
+    border-left: dotted 1px #ddd;
+    margin: 12px 5px 0 5px;
+}
+
+/* Item center: links */
+
+.item_list .item .center {
+    width: 65%;
+}
+
+.item .center .logo {
+    width: 50px;
+    height: 50px;
+    float: left;
+}
+
+.item .center .info {
+    width: 80%;
+    margin: 0 0 0 10px;
+    float: left;
+    font-size: 14px;
+}
+
+.item .center .info .user {
+    font-size: 13px;
+}
+
+.item .center .info a {
+    font-size: 13px;
+}
+
+.item .center .keys a {
+    font-size: 11px;
+    font-weight: lighter;
+    padding: 1px 4px;
+    border: solid 2px #e1e1e1;
+    border-radius: 5px;
+}
+
+.item .keys a:hover {
+    border: solid 2px #a1a1a1;
+    background: #e1e1e1;
+}
+
+.item .center .info .date {
+    font-size: 12px;
+}
+
+.item_list .item .center .content {
+    font-size: 13px;
+    float: left;
+    width: 100%;
+    padding: 5px;
+    background: #ddd;
+    margin: 5px 0 0 0;
+}

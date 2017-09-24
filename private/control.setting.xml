@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<control>
+    <!-- Default views -->
+    <default>
+        <layout>home</layout>
+        <view>main</view>
+        <view status="CMD_OK">main</view>
+        <view status="CMD_ERROR">error</view> 
+    </default>
+    
+    <commands>
+        
+        <command name="captcha">
+            <classroot name="Captcha"/>
+        </command>
+        
+        <command name="home">
+            <classroot name="DefaultCommand"/>
+        </command>
+        
+        <command name="start">
+            <classroot name="DefaultCommand"/>
+        </command>
+        
+        <command name="registration">
+            <classroot name="Registration"/>
+            <layout>general</layout>
+            <views>
+                <view>registration</view>
+            </views>
+            <forwards>
+                <forward status="NEXT">address</forward>
+            </forwards>
+        </command>
+        
+        <command name="login">
+            <classroot name="Login" />
+            <views>
+                <view>login</view>
+            </views>
+        </command>
+        
+        <command name="logout">
+            <classroot name="Logout" />
+        </command>
+        
+        <command name="panel">
+            <classroot name="Panel" />
+        </command>
+        
+        <command name="connector">
+            <classroot name="Connector" />
+        </command>
+        
+        <command name="imageconnector">
+            <classroot name="ImageConnector" />
+        </command>
+        
+    </commands>
+</control>

@@ -1,0 +1,43 @@
+
+CREATE VIEW user_view 
+AS
+	SELECT
+		user.id AS 'id',
+		username,
+		password,
+		firstname,
+		lastname,
+		email,
+		phone,
+
+		country.name AS 'country',
+		country.short AS 'country_short',
+		city,
+		zip,
+		street,
+		house,
+		flat,
+
+		firstaccess,
+		lastaccess,
+		lastlogin,
+		avatar,
+		sex,
+		cdate,
+		bdate,
+		description,
+		citation,
+		isactive,
+		bin,
+		token,
+
+                user_role_id
+                
+                
+	FROM user
+	INNER JOIN address ON user.id = address.user_id
+	INNER JOIN country ON country.id = address.country_id
+        INNER JOIN user_role ON user_role.id = user.user_role_id;
+
+INSERT INTO user_view(username, password, firstname, lastname, email, sex, token, city, zip, street, house) 
+    VALUES('User03', 'password', 'Jan', 'Kowalski', 'jan@kowal.pl', 'M', '', 'Kraków', '33-332', 'Krakowska', '23');

@@ -1,0 +1,26 @@
+@charset "utf-8";
+
+.board {
+    width: 100%;
+    margin: 0 auto;
+    color: #000;
+    padding: 0;
+    position: relative;
+    top: 95px;
+    text-align: center;
+}
+
+.board .error {
+    background: #e10000;
+    color: #fff;
+}
+
+.board .warning {
+    background: #e1e100;
+    color: #000;
+}
+
+.board .correct {
+    background: #00e100;
+    color: #fff;
+}

@@ -1,0 +1,64 @@
+
+CREATE TABLE IF NOT EXISTS article (
+	`id`		INT(11) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+   	`link`		TEXT,
+   	`namepath` 	VARCHAR(255),
+	`title`		TEXT,
+   	`body`		LONGTEXT,
+	`description` 	TEXT,
+	`keywords`	TEXT,
+        `file_id`       INT(11) UNSIGNED NULL,
+   	`ord`		INT(3) DEFAULT 0,
+   	`bin`	 	TINYINT(1) DEFAULT 0,
+   	`hide` 		TINYINT(1) DEFAULT 0,
+   	`mark` 		TINYINT(1) DEFAULT 0,
+   	`cdate`		DATETIME DEFAULT NULL,
+   	`edate` 	DATETIME DEFAULT NULL,
+   	`user_id`	INT(11) UNSIGNED NULL,
+	`vars`		TEXT,
+	
+	CONSTRAINT `article_user_fk` FOREIGN KEY (`user_id`) REFERENCES `user`(`id`) ON DELETE SET NULL,
+        CONSTRAINT `article_file_info_fk` FOREIGN KEY (`file_id`) REFERENCES `file_info`(`id`) ON DELETE SET NULL ON UPDATE CASCADE,
+   	UNIQUE KEY `namepath` (`namepath`)
+	
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+ALTER TABLE article ADD CONSTRAINT `article_page_article_fk` FOREIGN KEY (`id`) REFERENCES `page_article`(`article_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+
+
+
+
+
+
+
+
+
+
+
+CREATE TABLE IF NOT EXISTS article (
+	`id`		INT(11) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+   	`link`		TEXT,
+   	`namepath` 	VARCHAR(255),
+	`title`		TEXT,
+   	`body`		LONGTEXT,
+	`description` 	TEXT,
+	`keywords`	TEXT,
+        `file_id`       INT(11) UNSIGNED INT NULL,
+   	`page_id`	INT(11) UNSIGNED NOT NULL,
+   	`ord`		INT(3) DEFAULT 0,
+   	`bin`	 	TINYINT(1) DEFAULT 0,
+   	`hide` 		TINYINT(1) DEFAULT 0,
+   	`mark` 		TINYINT(1) DEFAULT 0,
+   	`cdate`		DATETIME DEFAULT NULL,
+   	`edate` 	DATETIME DEFAULT NULL,
+   	`user_id`	INT(11) UNSIGNED NULL,
+	`vars`		TEXT,
+	
+	CONSTRAINT `article_page_fk` FOREIGN KEY (`page_id`) REFERENCES `page`(`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+	CONSTRAINT `article_user_fk` FOREIGN KEY (`user_id`) REFERENCES `user`(`id`) ON DELETE SET NULL,
+   	UNIQUE KEY `namepath` (`namepath`)
+	
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+ALTER TABLE article ADD CONSTRAINT `article_file_info_fk` FOREIGN KEY (`file_id`) REFERENCES `file_info`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;

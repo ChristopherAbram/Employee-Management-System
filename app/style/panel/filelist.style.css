@@ -1,0 +1,146 @@
+@charset "utf-8";
+
+/* General item */
+
+.item_list {
+    border-top: solid 1px #ddd;
+    border-right: solid 1px #ddd;
+}
+
+.item_list .item {
+    border-left: solid 3px #e1e1e1;
+    padding: 0px 0 0 0;
+}
+
+.item_list .item:hover {
+    border-left: solid 3px #0060ff;;
+    background: #eee;
+}
+
+/* Item left: checkbox and buttons */
+
+.item_list .item .left {
+    /*border: solid 1px #f00;*/
+    width: 170px;
+}
+
+.item_list .item .check, 
+.item_list .item .functions,
+.item_list .item .image {
+    display: block;
+    float: left;
+}
+
+.item_list .item .check {
+    margin: 45px 0 0 5px;
+}
+
+.item_list .item .functions {
+    border-left: dotted 1px #ddd;
+    margin: 27px 5px 0 5px;
+}
+
+.item_list .item .image {
+    width: 100px;
+    height: 100px;
+    border: solid 1px #ddd;
+}
+
+.item_list .item .hide_button {
+    display: block;
+    cursor: pointer;
+    border: none;
+    width: 25px;
+    height: 25px;
+    margin: 0px 0 0 5px;
+    background: url('../../img/hide_ico.png') no-repeat 4px 7px;
+}
+
+.item_list .item .hide_button_active {
+    display: block;
+    cursor: pointer;
+    border: none;
+    width: 25px;
+    height: 25px;
+    margin: 0px 0 0 5px;
+    background: url('../../img/hide_ico_active.png') no-repeat 4px 7px;
+}
+
+.item_list .item .hide_button:hover {
+    background: url('../../img/hide_ico_hover.png') no-repeat 4px 7px;
+}
+
+.item_list .item .lock_button {
+    display: block;
+    cursor: pointer;
+    border: none;
+    width: 25px;
+    height: 25px;
+    margin: 0px 0 0 5px;
+    background: url('../../img/locked_ico.png') no-repeat 4px 4px;
+}
+
+.item_list .item .lock_button_active {
+    display: block;
+    cursor: pointer;
+    border: none;
+    width: 25px;
+    height: 25px;
+    margin: 0px 0 0 5px;
+    background: url('../../img/locked_ico_active.png') no-repeat 4px 4px;
+}
+
+.item_list .item .lock_button:hover {
+    background: url('../../img/locked_ico_hover.png') no-repeat 4px 4px;
+}
+
+/* Item center: links */
+
+.item_list .item .center {
+    width: 75%;
+}
+
+.item_list .item .center .filename {
+    display: block;
+    width: 75%;
+    font-size: 16px;
+    border: none;
+}
+
+.item_list .item .center .info {
+    overflow: hidden;
+    width: 100%;
+}
+
+.item_list .item .center .info .user,
+.item_list .item .center .info .edate {
+    font-size: 12px;
+}
+
+.item_list .item .center .info .user {
+    float: left;
+}
+
+.item_list .item .center .info .edate {
+    float: right;
+}
+
+.item_list .item .center .description {
+    font-size: 13px;
+    margin: 5px 0 0 0;
+}
+
+/* Item right: number input */
+
+.item_list .item .right {
+    margin: 35px 0 0 0;
+    width: 70px;
+}
+
+.item_list .item:hover .right .ord_input {
+    background: #eee;
+}
+
+.item_list .item:hover .center .filename {
+    background: #eee;
+}

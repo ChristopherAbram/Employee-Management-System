@@ -1,0 +1,25 @@
+@charset "utf-8";
+
+.title {
+    font-size: 25px;
+    border-left: solid 5px #ddd;
+    padding: 0 0 0 10px;
+    margin-bottom: 20px;
+}
+
+.content {
+    margin: 0 0 20px 0;
+}
+
+.field {
+    position: relative;
+}
+
+#page_title, #page_namepath, #page_link, #page_keywords {
+    width: 98.7%;
+}
+
+#page_keywords {
+    max-width: 98.7%;
+    height: 50px;
+}

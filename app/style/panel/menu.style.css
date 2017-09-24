@@ -1,0 +1,9 @@
+@charset "utf-8";
+
+header nav {
+    width: 900px;
+}
+
+header nav .active {
+    color: #0060bb;
+}

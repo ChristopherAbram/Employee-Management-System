@@ -1,0 +1,54 @@
+@charset "utf-8";
+
+/* General item */
+.item_list {
+    border: none;
+}
+
+.list .item {
+    overflow: hidden;
+    border-bottom: none;
+    margin: 5px 0 0 0;
+}
+
+.item > div {
+    padding: 0;
+
+}
+
+.list .item {
+    border-left: none;
+}
+
+.list .item:hover {
+    border-left: none;
+    background: none;
+}
+
+/* Item center: links */
+
+.item_list .item .center {
+    width: 100%;
+}
+
+.item .center .info {
+    width: 75%;
+    margin: 0 0 0 10px;
+    float: left;
+    font-size: 14px;
+}
+
+.item .center .info .user {
+    font-size: 13px;
+}
+
+.item .center .info a {
+    font-size: 13px;
+}
+
+.item .center .keys a {
+    font-size: 11px;
+    font-weight: lighter;
+    padding: 1px 4px;
+    border: solid 2px #e1e1e1;
+}

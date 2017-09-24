@@ -1,0 +1,40 @@
+<?php
+/*
+ * Copyright (c) 2016 Christopher Abram.
+ *
+ * <description>
+ *
+ * @package    core\classes\sql\statement\delete
+ * @author     Christopher Abram
+ * @version    1.0
+ * @date	21.10.2016
+ */
+
+namespace core\classes\sql\statement\delete;
+
+class PageVisit extends Statement {
+    // vars {
+        
+        // Delete query:
+        protected $_query = 'DELETE FROM page_visit WHERE id = :id';
+        
+        // Used parameters:
+        protected $_requiredParams = array(
+            'id'            => 'id'
+        );
+        
+    // } methods {
+    
+        // public {
+            
+            
+    
+        // } protected {
+        
+            
+    
+        // } private {
+            
+        // }
+    // }
+}

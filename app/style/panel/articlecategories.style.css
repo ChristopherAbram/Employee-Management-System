@@ -1,0 +1,25 @@
+@charset "utf-8";
+
+/* General item */
+
+.item_list {
+    
+}
+
+/* Item left: checkbox and buttons */
+
+.item_list .item .left {
+    width: 20px;
+}
+
+/* Item center: links */
+
+.item_list .item .center {
+    
+}
+
+/* Item right: number input */
+
+.item_list .item .right {
+    width: 70px;
+}

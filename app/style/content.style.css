@@ -1,0 +1,216 @@
+@charset "utf-8";
+
+.content {
+    font-size: 15px;
+    font-family: 'OpenSansLight';
+    font-weight: normal;
+    /*border: solid 1px #ff0000;*/
+    margin: 0;
+}
+
+.content .article-description {
+    font-weight: 400;
+    font-size: 1.7em;
+}
+
+.content p {
+    margin: 10px 0 10px 0;
+}
+
+.content h1, h2, h3, h4, h5, h6 {
+    margin: 30px 0 15px;
+    font-weight: lighter;
+    color: #0066ff;
+}
+
+.content h1 {
+    font-size: 30px;
+}
+
+.content h2 {
+    font-size: 25px;
+}
+
+.content h3 {
+    font-size: 20px;
+}
+
+.content h4 {
+    font-size: 17px;
+}
+
+.content h5 {
+    font-size: 16px;
+}
+
+.content h6 {
+    font-size: 15px;
+}
+
+.content blockquote {
+    margin: 15px 0 15px 0;
+    font-weight: lighter;
+    font-style: italic;
+    font-size: 1.5em;
+    color: #666;
+}
+
+.content hr {
+    border-top: solid 1px #e1e1e1;
+    border-bottom: none;
+}
+
+.content sup {
+    display: inline-block;
+    position: relative;
+    top: -7px;
+}
+
+.content sub {
+    display: inline-block;
+    position: relative;
+    top: 7px;
+}
+
+main .content ul, main .content ol {
+    display: block;
+    margin-left: 25px;
+}
+
+main .content ul li, main .content ol li {
+    padding-left: 10px;
+}
+
+.content .border {
+    border-width: 1px;
+}
+
+.content table.border {
+    border-width: none;
+}
+
+.content table tr td, .content table tr th {
+    text-align: left;
+    padding: 5px;
+}
+
+.content table.border tr:first-child td, .content table.border tr:first-child th {
+    border-top-width: 0;
+}
+
+.content table.border tr td:first-child, .content table.border tr th:first-child {
+    border-left-width: 0;
+}
+
+.content table.border td, .content table.border th {
+    border-left-width: 1px;
+    border-top-width: 1px;
+}
+
+.content table.border.solid td, .content table.border.solid th {
+    border-style: solid;
+}
+
+.content table.border.dotted td, .content table.border.dotted th {
+    border-style: dotted;
+}
+
+.content table.border.dashed td, .content table.border.dashed th {
+    border-style: dashed;
+}
+
+.content table.border.double td, .content table.border.double th {
+    border-style: double;
+}
+
+.content .solid {
+    border-style: solid;
+}
+
+.content .dashed {
+    border-style: dashed;
+}
+
+.content .dotted {
+    border-style: dotted;
+}
+
+.content .double {
+    border-style: double;
+}
+
+.content table.border.column {
+    border: none;
+}
+
+.content table.border.row {
+    border: none;
+}
+
+.content table.border.column td, .content table.border.column th {
+    border-left-width: 1px;
+    border-top-width: 0;
+}
+
+.content table.border.column tr td:first-child, .content table.border.column tr th:first-child {
+    border-left-width: 0;
+}
+
+.content table.border.row td, .content table.border.row th {
+    border-top-width: 1px;
+    border-left-width: 0;
+}
+
+.content table.border.row tr:first-child td, .content table.border.row tr:first-child th {
+    border-top-width: 0;
+}
+
+.content table.border.column.row td, .content table.border.column.row th {
+    border-left-width: 1px;
+    border-top-width: 1px;
+}
+
+.content .red {
+    color: #e10000;
+    border-color: #e10000;
+    background-color: #e10000;
+}
+
+.content .blue {
+    color: #0066ff;
+    border-color: #0066ff;
+    background-color: #6d9cbe;
+}
+
+.content .green {
+    color: #006a00;
+    border-color: #006a00;
+    background-color: #006a00;
+}
+
+.content .gray {
+    color: #888;
+    border-color: #e1e1e1;
+    background-color: #e1e1e1;
+}
+
+.content figure {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.content figure.left {
+    margin-right: 15px;
+    margin-left: 0;
+}
+
+.content figure.right {
+    margin-right: 0;
+    margin-left: 15px;
+}
+
+@media screen and (max-width: 450px){
+    .content .article-description {
+        font-size: 1.4em;
+    }
+}

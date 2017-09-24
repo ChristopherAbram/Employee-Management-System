@@ -1,0 +1,161 @@
+@charset "utf-8";
+
+article .title {
+    font-weight: bold;
+    font-size: 2.5em;
+    
+}
+
+article .title, article .info, article .keywords {
+    border-bottom: #e1e1e1 solid 1px;
+}
+
+article .info, article .keywords {
+    padding: 15px 10px;
+    font-size: 12px;
+    overflow: hidden;
+}
+
+#author_avatar {
+    display: block;
+    float: left;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    margin: 0 10px 0 0;
+}
+
+article .left {
+    display: block;
+    float: left;
+}
+
+article .right {
+    display: block;
+    float: right;
+}
+
+.center {
+    width: 100%;
+    text-align: center;
+}
+
+article .center img, figcaption {
+    display: block;
+    width: auto;
+    margin: 0 auto;
+}
+
+article .keys a {
+    display: inline-block;
+    font-weight: bold;
+    font-size: 11px;
+    padding: 3px 4px;
+    margin: 0 0 2px 0;
+    border: solid 2px #e1e1e1;
+    border-radius: 5px;
+}
+
+article .keys a:hover {
+    border: solid 2px #a1a1a1;
+    background: #e1e1e1;
+}
+
+#keywords_right {
+    margin: 0;
+}
+
+.ico {
+    display: block;
+    float: left;
+    width: 15px;
+    height: 15px;
+}
+
+.count {
+    display: block;
+    text-align: right;
+    float: right;
+    width: 45px;
+    height: 15px;
+}
+
+#visit_count, #comments_count, #articles_count {
+    display: block;
+    width: 60px;
+    height: 15px;
+}
+
+#articles_count {
+    margin: 2px 0 0 0;
+}
+
+#visit_count .ico {
+    background: url('../img/visits.svg') no-repeat 0 0;
+}
+
+#comments_count .ico {
+    background: url('../img/comments.svg') no-repeat 0 0;
+}
+
+#articles_count .ico {
+    background: url('../img/articles.svg') no-repeat 0 0;
+}
+
+.social_media {
+    width: 100%;
+    margin: 15px 10px;
+}
+
+.social_media a {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    margin-right: 5px;
+}
+
+.social_media .fb {
+    background: url('../img/facebook.png') no-repeat 0 0;
+}
+
+.social_media .twitter {
+    background: url('../img/twitter.png') no-repeat 0 0;
+}
+
+.social_media .g {
+    background: url('../img/google.png') no-repeat 0 0;
+}
+
+@media screen and (max-width: 980px){
+    article .title {
+        font-size: 2em;
+
+    }
+    
+    article .info {
+        font-size: 11px;
+    }
+}
+
+@media screen and (max-width: 600px){
+    
+    article .keys {
+        display: block;
+        width: 100%;
+    }
+    
+    #keywords_right {
+        float: left;
+        width: 100%;
+        margin: 3px 0 0 0;
+    }
+}
+
+@media screen and (max-width: 450px){
+    
+    #modification_date {
+        float: left;
+        margin: 5px 0 0 0;
+        width: 100%;
+    }
+}

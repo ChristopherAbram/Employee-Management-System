@@ -1,0 +1,63 @@
+@charset "utf-8";
+
+main {
+    display: block;
+    padding: 30px 10px 50px 10px;
+    margin: 0 auto;
+    width: 700px;
+    overflow: hidden;
+}
+
+main a {
+    color: #0060ff;
+}
+
+main a:hover {
+    color: #0060bb;
+}
+
+#module_option {
+    width: 250px;
+    height: 100%;
+    float: left;
+    overflow: hidden;
+}
+
+#module_content {
+    width: 440px;
+    padding-left: 10px;
+    float: left;
+    overflow: hidden;
+}
+
+main article {
+    /*border: dashed 1px #f00;*/
+    padding: 20px;
+    min-height: 500px;
+    margin-top: 100px;
+}
+
+.no_results {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-style: initial;
+    font-size: 17px;
+    color: #aaa;
+}
+
+@media screen and (max-width: 700px){
+    main {
+        width: 250px;
+    }
+    
+    #module_option {
+        width: 250px;
+    }
+
+    #module_content {
+        width: 250px;
+        margin: 30px 0 0 0;
+        padding-left: 0;
+    }
+}

@@ -1,0 +1,227 @@
+@charset "utf-8";
+
+.list {
+    width: 100%;
+}
+
+.list .item {
+    overflow: hidden;
+    border-bottom: solid 1px #ddd;
+}
+
+.item > div {
+    padding: 5px 0;
+
+}
+
+.item {
+    border-left: solid 3px #ddd;
+}
+
+.item:hover {
+    border-left: solid 3px #0060ff;
+    background: #f9f9f9;
+}
+
+.item .left {
+    float: left;
+    width: 100px;
+}
+
+.item .right {
+    float: right;
+    width: 100px;
+}
+
+.item .center {
+    float: left;
+    width: 40%;
+}
+
+.item .center .item_title {
+    display: inline;
+    font-size: 17px;
+}
+
+.item .edit_button {
+    display: none;
+    border: solid 1px #0060ff;
+    color: #0060ff;
+    padding: 2px 15px;
+    margin: 1px 0 0 5px;
+    border-radius: 10px;
+    font-size: 11px;
+}
+
+.item:hover .edit_button {
+    display: block;
+}
+
+.item .edit_button:hover {
+    display: block;
+    background: #0060ff;
+    color: #fff;
+}
+
+.item .preview_button {
+    display: none;
+    width: 25px;
+    height: 25px;
+    margin: 0 0 0 15px;
+    background: url('../../img/overview_ico.png') no-repeat 4px 4px;
+}
+
+.item .preview_button:hover {
+    background: url('../../img/overview_ico-hover.png') no-repeat 4px 4px;
+}
+
+.item:hover .preview_button {
+    display: block;
+}
+
+.item .item_info {
+    display: none;
+    width: 25px;
+    height: 25px;
+    float: left;
+    background: url('../../img/info_ico.png') no-repeat 2px 2px;
+}
+
+.item .item_info:hover {
+    background: url('../../img/info_ico-hover.png') no-repeat 2px 2px;
+}
+
+.item:hover .item_info {
+    display: block;
+    cursor: pointer;
+}
+
+.item_list .item .hide_button {
+    display: block;
+    cursor: pointer;
+    border: none;
+    width: 25px;
+    height: 25px;
+    margin: 0px 0 0 5px;
+    background: url('../../img/hide_ico.png') no-repeat 4px 7px;
+}
+
+.item_list .item .hide_button_active {
+    display: block;
+    cursor: pointer;
+    border: none;
+    width: 25px;
+    height: 25px;
+    margin: 0px 0 0 5px;
+    background: url('../../img/hide_ico_active.png') no-repeat 4px 7px;
+}
+
+.item_list .item .hide_button:hover {
+    background: url('../../img/hide_ico_hover.png') no-repeat 4px 7px;
+}
+
+.item_list .item .mark_button {
+    display: block;
+    cursor: pointer;
+    border: none;
+    width: 25px;
+    height: 25px;
+    margin: 0px 0 0 5px;
+    background: url('../../img/star_ico.png') no-repeat 4px 4px;
+}
+
+.item_list .item .mark_button_active {
+    display: block;
+    cursor: pointer;
+    border: none;
+    width: 25px;
+    height: 25px;
+    margin: 0px 0 0 5px;
+    background: url('../../img/star_ico_active.png') no-repeat 4px 4px;
+}
+
+.item_list .item .mark_button:hover {
+    background: url('../../img/star_ico_hover.png') no-repeat 4px 4px;
+}
+
+/* Multilevel */
+.level1 .center {
+    margin-left: 20px;
+}
+
+.level1 .item {
+    background: #ddd;
+    border-bottom: solid 1px #ccc;
+}
+
+.level2 .center {
+    margin-left: 40px;
+}
+
+.level2 .item {
+    background: #ccc;
+}
+
+.level3 .center {
+    margin-left: 60px;
+}
+
+.level3 .item {
+    background: #bbb;
+}
+
+.level4 .center {
+    margin-left: 80px;
+}
+
+.level4 .item {
+    background: #aaa;
+}
+
+.level5 .center {
+    margin-left: 100px;
+}
+
+.level5 .item {
+    background: #999;
+}
+
+.level6 .center {
+    margin-left: 120px;
+}
+
+.level6 .item {
+    background: #888;
+}
+
+.level7 .center {
+    margin-left: 140px;
+}
+
+.level7 .item {
+    background: #777;
+}
+
+.level8 .center {
+    margin-left: 160px;
+}
+
+.level8 .item {
+    background: #666;
+}
+
+.level9 .center {
+    margin-left: 180px;
+}
+
+.level9 .item {
+    background: #555;
+}
+
+.level10 .center {
+    margin-left: 200px;
+}
+
+.level10 .item {
+    background: #444;
+}

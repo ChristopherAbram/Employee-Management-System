@@ -1,0 +1,89 @@
+@charset "utf-8";
+
+main {
+    top: 20%;
+}
+
+#welcome {
+    display: table;
+    margin: 0 auto;
+    width: 70%;
+}
+
+#subs {
+    display: table-cell;
+    padding-right: 20px;
+}
+
+#login {
+    display: table-cell;
+    width: 400px;
+    border: solid 1px #0060bb;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -o-border-radius: 5px;
+    background: #fff;
+}
+
+#signin {
+    display: block;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 80%;
+}
+
+#signin input {
+    width: 100%;
+    padding: 5px 0;
+}
+
+#submit {
+    color: #fff;
+    background: #0060bb;
+    border: solid 1px #0060bb;
+}
+
+#submit:hover {
+    color: #0060bb;
+    background: #fff;
+}
+
+footer {
+    bottom: 0;
+    color: #fff;
+    font-size: 0.8em;
+    text-align: center;
+    padding: 10px 0;
+}
+
+@media screen and (max-width: 1100px){ 
+    
+    #login {
+        width: 250px;
+    }
+    
+}
+
+@media screen and (max-width: 800px){ 
+    
+    main {
+        top: 15%;
+    }
+    
+    #welcome {
+        display: block;
+    }
+
+    #subs {
+        display: block;
+    }
+
+    #login {
+        display: block;
+        width: 100%;
+        margin: 25px 0 0 0;
+    }
+    
+}

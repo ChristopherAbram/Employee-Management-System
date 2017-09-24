@@ -1,0 +1,1 @@
+<div id="info" class="informer"></div>

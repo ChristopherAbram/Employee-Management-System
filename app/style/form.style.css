@@ -1,0 +1,133 @@
+@charset "utf-8";
+
+.field span {
+    display: block;
+}
+
+.field .description {
+    font-style: italic;
+    color: #777;
+    font-size: 13px;
+}
+
+.field .required {
+    font-style: italic;
+    color: #39f;
+    font-size: 13px;
+}
+
+.field .optional {
+    font-style: italic;
+    color: #ff9900;
+    font-size: 13px;
+}
+
+
+.field, .error {
+    padding: 5px 0;
+    font-size: 17px;
+}
+
+.field .error {
+    padding: 5px 0px;
+    margin: -5px 0 0 0;
+    color: #f00;
+    font-size: 14px;
+}
+
+.error .message {
+    font-size: 14px;
+    color: #f00;
+}
+
+.field input[type="submit"], 
+.field input[type="reset"],
+.field input[type="button"],
+button {
+    display: block;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 10px 20px;
+    border: solid 1px #aaa;
+    background: #fff;
+    font-size: 17px;
+}
+
+.field input[type="submit"]:hover, 
+.field input[type="reset"]:hover,
+.field input[type="button"]:hover,
+button:hover {
+    cursor: pointer;
+    border: solid 1px #39f;
+    background: #fff;
+}
+
+.field input[type="checkbox"] + span {
+    display: inline-block;
+}
+
+.field input[type="radio"] + span {
+    display: inline-block;
+}
+
+.field input[type="text"], 
+.field textarea, 
+.field input[type="number"],
+.field input[type="datetime-local"],
+.field input[type="password"],
+.field input[type="date"],
+.field input[type="time"],
+.field input[type="email"],
+.field input[type="file"],
+.field input[type="month"],
+.field input[type="week"],
+.field select {
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 6px;
+    border: solid 1px #aaa;
+    font-size: 17px;
+} 
+
+.error input[type="text"],
+.error textarea,
+.error input[type="number"],
+.error input[type="datetime-local"],
+.error input[type="password"],
+.error input[type="date"],
+.error input[type="time"],
+.error input[type="email"],
+.error input[type="file"],
+.error input[type="month"],
+.error input[type="week"],
+.error select {
+    border: solid 1px #F00;
+}
+
+.field input[type="text"]:hover, .error input[type="text"]:hover, 
+.field textarea:hover, .error textarea:hover, 
+.field input[type="number"]:hover, .error input[type="number"]:hover,
+.field input[type="datetime-local"]:hover, .error input[type="datetime-local"]:hover,
+.field input[type="password"]:hover, .error input[type="password"]:hover,
+.field input[type="date"]:hover, .error input[type="date"]:hover,
+.field input[type="time"]:hover, .error input[type="time"]:hover,
+.field input[type="email"]:hover, .error input[type="email"]:hover,
+.field input[type="file"]:hover, .error input[type="file"]:hover,
+.field input[type="month"]:hover, .error input[type="month"]:hover,
+.field input[type="week"]:hover, .errorinput[type="week"]:hover,
+.field select:hover, .error select:hover {
+    border: solid 1px #39F;
+}
+
+.field input[type="text"]:focus, 
+.field textarea:focus, 
+.field input[type="number"]:focus,
+.field input[type="datetime-local"]:focus,
+.field input[type="password"]:focus,
+.field input[type="date"]:focus,
+.field input[type="time"]:focus,
+.field input[type="email"]:focus,
+.field input[type="file"]:focus,
+.field input[type="month"]:focus,
+.field input[type="week"]:focus {
+    border: solid 1px #39F;
+    box-shadow: 2px 2px 3px #ddd inset;
+}

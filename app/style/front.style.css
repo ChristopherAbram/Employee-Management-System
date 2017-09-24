@@ -1,0 +1,179 @@
+@charset "utf-8";
+
+html, body {
+    margin: 0 auto;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+html {
+    font-family: 'OpenSansLight';
+}
+
+#container {
+    height: auto;
+    min-height: 100%;
+}
+
+#picture {
+    position: relative;
+    z-index: 0;
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    background-color: #191919;
+    background-image: url("../img/solteq_bg.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    box-sizing: border-box;
+    transform-style: inherit;
+}
+
+#no_script {
+    position: absolute;
+    bottom: 0;
+    z-index: 3;
+    width: 100%;
+    margin: 0 auto;
+    padding: 10px 0;
+    background: #e10000;
+    color: #fff;
+    font: 0.3em;
+    text-align: center;
+}
+
+#cookie_info {
+    position: absolute;
+    bottom: 0;
+    z-index: 4;
+    width: 100%;
+    margin: 0 auto;
+    background: #0782C1;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+}
+
+#cookie_button {
+    padding: 4px 10px; 
+    background: #3590bf; 
+    color: #fff; 
+    border: solid 1px #fff; 
+    float: right; 
+    margin: 0px 20px 0 20px;
+}
+
+#cookie_button:hover {
+    cursor: pointer;
+}
+
+header, main, footer {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+}
+
+header {
+    top: 0;
+    overflow: hidden;
+}
+
+#headbar {
+    width: 70%;
+    margin: 0 auto;
+}
+
+#logo {
+    padding: 10px 0;
+    font-size: 1.5em;
+    float: left;
+    color: #fff;
+}
+
+#menu {
+    float: right;
+    margin: 10px 0px;
+}
+
+#menu a {
+    padding: 5px 10px;
+    display: inline-block;
+    border: solid 2px #fff;
+    color: #fff;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -o-border-radius: 20px;
+}
+
+#menu a:hover {
+    border-color: #0060bb;
+    cursor: pointer;
+}
+
+main {
+    top: 40%;
+}
+
+#welcome {
+    margin: 0 auto;
+    width: 70%;
+}
+
+main .huge {
+    color: #fff;
+    font-size: 3em;
+    font-weight: bold;
+}
+
+main .small {
+    color: #fff;
+    font-size: 1.5em;
+}
+
+footer {
+    bottom: 0;
+    color: #fff;
+    font-size: 0.8em;
+    text-align: center;
+    padding: 10px 0;
+}
+
+@media screen and (max-width: 1000px){ 
+    
+    main .huge {
+        font-size: 2em;
+    }
+
+    main .small {
+        font-size: 1.5em;
+    }
+}
+
+@media screen and (max-width: 680px){ 
+    
+    main {
+        top: 40%;
+    }
+    
+    main .huge {
+        font-size: 1.5em;
+    }
+
+    main .small {
+        font-size: 1em;
+    }
+}
+
+@media screen and (max-width: 480px){ 
+    
+    #logo {
+        padding: 15px 0;
+        font-size: 1em;
+    }
+}
