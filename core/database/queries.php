@@ -258,6 +258,7 @@ $queries = array(
 	`salary`                DECIMAL(12,2) UNSIGNED DEFAULT 0,
         `from_date`             DATE NOT NULL,
         `to_date`               DATE,
+        `description`           TEXT,
         
         CONSTRAINT `agreement_user_fk` FOREIGN KEY (`user_id`) REFERENCES `user`(`id`) ON DELETE CASCADE ON UPDATE CASCADE,
         CONSTRAINT `agreement_department_fk` FOREIGN KEY (`department_id`) REFERENCES `department`(`id`) ON DELETE CASCADE ON UPDATE CASCADE,

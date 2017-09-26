@@ -194,6 +194,14 @@ class StrategyFactory {
                 return new Strategy($select, $update, $insert, $delete);
             }
             
+            public static function getAgreement(\core\classes\sql\attribute\AttributeList $attributes){
+                $select = new \core\classes\sql\statement\select\Agreement($attributes);
+                $update = new \core\classes\sql\statement\update\Agreement($attributes);
+                $insert = new \core\classes\sql\statement\insert\Agreement($attributes);
+                $delete = new \core\classes\sql\statement\delete\Agreement();
+                return new Strategy($select, $update, $insert, $delete);
+            }
+            
             
             
             public static function getSessionBySID(){
@@ -595,7 +603,7 @@ class StrategyFactory {
                 $insert = new \core\classes\sql\statement\insert\Blank();
                 $delete = new \core\classes\sql\statement\delete\Blank();
                 return new Strategy($select, $update, $insert, $delete);
-            }// end getArticleByPageIdAndByBin
+            }
             
             public static function getAllWorkingTimes(){
                 $select = new \core\classes\sql\statement\select\AllWorkingTimes();
@@ -605,7 +613,21 @@ class StrategyFactory {
                 return new Strategy($select, $update, $insert, $delete);
             }
             
+            public static function getAllAgreements(){
+                $select = new \core\classes\sql\statement\select\AllAgreements();
+                $update = new \core\classes\sql\statement\update\Blank();
+                $insert = new \core\classes\sql\statement\insert\Blank();
+                $delete = new \core\classes\sql\statement\delete\Blank();
+                return new Strategy($select, $update, $insert, $delete);
+            }
             
+            public static function getAgreementsByUserId(){
+                $select = new \core\classes\sql\statement\select\AgreementsByUserId();
+                $update = new \core\classes\sql\statement\update\Blank();
+                $insert = new \core\classes\sql\statement\insert\Blank();
+                $delete = new \core\classes\sql\statement\delete\Blank();
+                return new Strategy($select, $update, $insert, $delete);
+            }// end getArticleByPageIdAndByBin
             
             
             public static function getArticleByUserIdAndByBin(){
@@ -755,7 +777,9 @@ class StrategyFactory {
             }// end getCountArticle
             
             
-             public static function getCountDepartment(){
+            
+            
+            public static function getCountDepartment(){
                 $select = new \core\classes\sql\statement\select\CountDepartment();
                 $update = new \core\classes\sql\statement\update\Blank();
                 $insert = new \core\classes\sql\statement\insert\Blank();
@@ -778,6 +802,23 @@ class StrategyFactory {
                 $delete = new \core\classes\sql\statement\delete\Blank();
                 return new Strategy($select, $update, $insert, $delete);
             }
+            
+            public static function getCountAgreement(){
+                $select = new \core\classes\sql\statement\select\CountAgreement();
+                $update = new \core\classes\sql\statement\update\Blank();
+                $insert = new \core\classes\sql\statement\insert\Blank();
+                $delete = new \core\classes\sql\statement\delete\Blank();
+                return new Strategy($select, $update, $insert, $delete);
+            }
+            
+            public static function getCountAgreementByUserId(){
+                $select = new \core\classes\sql\statement\select\CountAgreementByUserId();
+                $update = new \core\classes\sql\statement\update\Blank();
+                $insert = new \core\classes\sql\statement\insert\Blank();
+                $delete = new \core\classes\sql\statement\delete\Blank();
+                return new Strategy($select, $update, $insert, $delete);
+            }
+            
             
             
             public static function getCountNotRemovedArticle(){
