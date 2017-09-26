@@ -35,9 +35,9 @@
                     command="userdescription" />
                 
                 <option 
-                    name="Your comments" 
-                    href="$panel/yourcomments"
-                    command="yourcomments" />
+                    name="Agreements"
+                    href="$panel/agreements" 
+                    command="agreements" />
                 
             </options>
         </option>

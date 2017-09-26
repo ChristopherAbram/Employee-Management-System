@@ -112,6 +112,7 @@ class Correct extends \Correct {
         
         'dep_create'            => 'Successfully created new department',
         'res_create'            => 'Successfully created new responsibility',
+        'agr_create'            => 'Successfully created new agreement',
     );
     
     private function __construct(){}
@@ -152,7 +153,16 @@ class Error extends \Error {
         
         'departments_load'  => 'Unable to load departments',
         'responsibility_load'  => 'Unable to load responsibilities',
-        'working_time_load'  => 'Unable to load working times'
+        'working_time_load'  => 'Unable to load working times',
+        
+        'desc'              => 'Used inappropriate letters',
+        
+        'agr_read'              => 'Unable to read agreement data',
+        'agr_create'            => 'An error occurred while creating new agreement',
+        'agr_update'            => 'An error occurred while updating agreement data',
+        
+        'since_date'            => 'Invalid since date - can not be in the past',
+        'to_date'               => 'Invalid until date - can\'t be lower then since date',
     );
     
     private function __construct(){}

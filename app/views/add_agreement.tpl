@@ -1,6 +1,28 @@
 <style type="text/css">
-    #department_title {
-        width: 98%;
+    
+    #departments, #responsibilities, #working-times {
+        width: 300px;
+    }
+    
+    #salary {
+        width: 250px;
+        font-size: 35px;
+        color: #0060ff;
+        border: none;
+    }
+    
+    #salary:focus {
+        box-shadow: none;
+    }
+    
+    #desc_input {
+        min-width: 80%;
+        min-height: 150px;
+    }
+    
+    #curr {
+        display: block;
+        font-size: 35px;
     }
 </style>
 
@@ -26,15 +48,22 @@
         <span class="description">{$working_time.description}</span>
     </div>
     
-    <div class="field {if $salary.input->error()}error{/if}">
-        <span>{$salary.title}</span>
-        {$salary.input}
-        <span class="description">{$salary.description}</span>
-    </div>
-    
     <table>
         <tr>
             <td>
+                <div class="field {if $salary.input->error()}error{/if}">
+                    <span>{$salary.title}</span>
+                    {$salary.input}
+                    <span class="description">{$salary.description}</span>
+                </div>
+            </td>
+            <td><div class="field" id="curr"><span style="position: relative; top: 43px;">EUR</span></div></td>
+        </tr>
+    </table>
+    
+    <table>
+        <tr>
+            <td style="width: 200px;">
                 <div class="field {if $from_date.input->error()}error{/if}">
                     <span>{$from_date.title}</span>
                     {$from_date.input}
@@ -42,7 +71,7 @@
                 </div>
             </td>
             
-            <td>
+            <td style="width: 200px; padding-left: 30px;">
                 <div class="field {if $to_date.input->error()}error{/if}">
                     <span>{$to_date.title}</span>
                     {$to_date.input}
@@ -53,6 +82,12 @@
         </tr>
         
     </table>
+                
+    <div class="field {if $desc.input->error()}error{/if}">
+        <span>{$desc.title}</span>
+        {$desc.input}
+        <span class="description">{$desc.description}</span>
+    </div>
     
     </form>
 </section>

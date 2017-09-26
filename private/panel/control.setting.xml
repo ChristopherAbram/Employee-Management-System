@@ -132,6 +132,9 @@
             <views>
                 <view>add_agreement</view>
             </views>
+            <forwards>
+                <forward status="CMD_OK">agreements</forward>
+            </forwards>
         </command>
         
         <command name="registration">

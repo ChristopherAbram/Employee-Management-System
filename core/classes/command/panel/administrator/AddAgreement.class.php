@@ -25,6 +25,7 @@ class AddAgreement extends \core\classes\command\Editor {
         private $__salary           = null;
         private $__from             = null;
         private $__to               = null;
+        private $__description      = null;
        
         private $__save             = null;
         private $__cancel           = null;
@@ -65,73 +66,38 @@ class AddAgreement extends \core\classes\command\Editor {
             }// end _read
             
             protected function _update(){
-                $id = $this->_retrieveId();
-                try {
-                    if(!is_null($id)){
-                        $factory = new \core\classes\data\factory\Department();
-                        $department = $factory->getById($id);
-                        if(!is_null($department)){
-                            $department->setAttributeList(new \core\classes\sql\attribute\AttributeList(array(
-                                'id', 'name', 'description', 'city','zip', 'street', 'house', 'flat'
-                            )));
-                            // Setting data:
-                            $data = array(
-                                'id'            => $department->getID(),
-                                
-                                'name'         => $this->__name->value(),
-                                'description'   => $this->__description->value(),
-                                'city'          => $this->__city->value(),
-                                'zip'          => $this->__zip->value(),
-                                'street'          => $this->__street->value(),
-                                'house'          => $this->__house->value(),
-                                'flat'          => $this->__flat->value(),
-                                
-                            );
-                            $department->setData($data);
-                            if($department->update()){
-                                $this->correct(Correct::get('update'));
-                                return true;
-                            }
-                        }
-                    }
-                    $this->error(Error::get('update'));
-                    return false;
-                } catch (\core\classes\data\DataException $ex) {
-                    $this->error(Error::get('dep_update'));
-                }
+                
                 return false;
             }// end _update
             
             protected function _create(){
-                /*try {
-                    $department = new \core\classes\data\Department();
-                    //$department->setAttributeList(new \core\classes\sql\attribute\AttributeList($this->__attributes));
+                try {
+                    $agr = new \core\classes\data\Agreement();
+                    
                     // Setting data:
                     $data = array(
-                        'name'         => $this->__name->value(),
-                        'namepath'      => !empty($this->__namepath->value()) ? $this->__namepath->value() : $this->__namepath_sure(\core\functions\namepath($this->__name->value())),
-                        'description'   => $this->__description->value(),
-                        'city'          => $this->__city->value(),
-                        'zip'          => $this->__zip->value(),
-                        'street'          => $this->__street->value(),
-                        'house'          => $this->__house->value(),
-                        'flat'          => $this->__flat->value(),
+                        'user_id'               => $this->__user_id,
+                        'department_id'         => (int)$this->__department->value(),
+                        'responsibility_id'     => (int)$this->__responsibility->value(),
+                        'working_time_id'       => (int)$this->__working_time->value(),
+                        'salary'                => $this->__salary->value(),
+                        'from_date'             => empty($this->__from->value()) ? \date(DATE) : $this->__from->value(),
+                        'to_date'               => empty($this->__to->value()) ? null : $this->__to->value(),
+                        'description'           => $this->__desc->value(),
                     );
-                    $department->setData($data);
+                    $agr->setData($data);
                     
-                    if($department->create()){
-                        $this->correct(Correct::get('dep_create'));
-                       
+                    if($agr->create()){
+                        $this->correct(Correct::get('agr_create'));
                         return true;
                     }
                     else {
-                        $this->error(Error::get('dep_create'));
+                        $this->error(Error::get('agr_create'));
                     }
                 } catch (\core\classes\data\DataException $ex) {
-                    $this->error(Error::get('dep_create'));
+                    $this->error(Error::get('agr_create'));
                 }
-                return false;*/
-                return true;
+                return false;
             }// end _create
             
             protected function _execute(\core\classes\request\Request $request){
@@ -151,16 +117,20 @@ class AddAgreement extends \core\classes\command\Editor {
                 $form = new \core\classes\form\Form('agreement');
                 $this->__form = $form;
                 
+                // Save button:
+                $save = $this->__save();
+                $cancel = $this->__cancel();
+                
+                $form->attach($save);
+                $form->attach($cancel);
+                
                 $department = $this->__department();
                 $responsibility = $this->__responsibility();
                 $working_time = $this->__working_time();
                 $salary = $this->__salary();
                 $from = $this->__from();
                 $to = $this->__to();
-                
-                // Save button:
-                $save = $this->__save();
-                $cancel = $this->__cancel();
+                $description = $this->__description();
                 
                 // Composing form:
                 $form->attach($department);
@@ -169,14 +139,16 @@ class AddAgreement extends \core\classes\command\Editor {
                 $form->attach($salary);
                 $form->attach($from);
                 $form->attach($to);
-                $form->attach($save);
-                $form->attach($cancel);
+                $form->attach($description);
+                
                 
                 // Executing form:
                 if($save->submitted()){
+                    
                     if($form->perform()){
                         if($this->_save()){
-                            // ...
+                            $this->correct(Correct::get('agr_create'));
+                            return self::CMD_OK;
                         }
                     }
                     else {
@@ -214,11 +186,16 @@ class AddAgreement extends \core\classes\command\Editor {
                     'from_date'       => array(
                         'title'         => 'Agreement valid since the date',
                         'input'         => $from,
-                        'description'   => '',
+                        'description'   => 'Today is set by default.',
                     ),
                     'to_date'       => array(
                         'title'         => 'Agreement valid until the date',
                         'input'         => $to,
+                        'description'   => 'Not required',
+                    ),
+                    'desc'       => array(
+                        'title'         => 'Extra data',
+                        'input'         => $description,
                         'description'   => '',
                     ),
                     
@@ -227,7 +204,7 @@ class AddAgreement extends \core\classes\command\Editor {
                     'toolbar_right' => array($cancel),
                 ));
                 
-                return $status;
+                return self::CMD_DEFAULT;
             }// end _execute
             
             protected function _cancel(){
@@ -239,6 +216,7 @@ class AddAgreement extends \core\classes\command\Editor {
             private function __department(){
                 $f = new \core\classes\form\field\Select('department');
                 $f->required(true);
+                $f->id('departments');
                 
                 try {
                     $factory = new \core\classes\data\factory\Department();
@@ -269,6 +247,7 @@ class AddAgreement extends \core\classes\command\Editor {
             private function __responsibility(){
                 $f = new \core\classes\form\field\Select('responsibility');
                 $f->required(true);
+                $f->id('responsibilities');
                 
                 try {
                     $factory = new \core\classes\data\factory\Responsibility();
@@ -299,6 +278,7 @@ class AddAgreement extends \core\classes\command\Editor {
             private function __working_time(){
                 $f = new \core\classes\form\field\Select('working_time');
                 $f->required(true);
+                $f->id('working-times');
                 
                 try {
                     $factory = new \core\classes\data\factory\WorkingTime();
@@ -331,14 +311,22 @@ class AddAgreement extends \core\classes\command\Editor {
                 $f->required(true);
                 $f->id('salary');
                 $f->step(0.01);
+                if(!$this->__form->submitted())
+                    $f->value(1950.51);
                 $this->__salary = $f;
                 return $f;
             }
             
             private function __from(){
                 $f = new \core\classes\form\field\Date('from_date');
-                $f->required(true);
-                $f->min('');
+                $f->min(\date(DATE));
+                $f->callback(function($field){
+                    if(!empty($field->value()) && ($field->value() < \date(DATE)))
+                        return false;
+                    return true;
+                }, Error::get('since_date'));
+                if(!$this->__form->submitted())
+                    $f->value(\date(DATE));
                 $this->__from = $f;
                 return $f;
             }
@@ -346,8 +334,24 @@ class AddAgreement extends \core\classes\command\Editor {
             private function __to(){
                 $f = new \core\classes\form\field\Date('to_date');
                 $f->required(false);
-                $f->min('');
+                $f->min(\date(DATE));
+                $from = $this->__from;
+                $f->callback(function($field) use($from){
+                    if(!empty($field->value()) && ($field->value() < \date(DATE)))
+                        return false;
+                    if(!empty($field->value()) && !empty($from->value()) && ($field->value() < $from->value()))
+                        return false;
+                    return true;
+                }, Error::get('to_date'));
                 $this->__to = $f;
+                return $f;
+            }
+            
+            private function __description(){
+                $f = new \core\classes\form\field\Textarea('desc');
+                $f->id('desc_input');
+                $f->expression('/^[0-9A-Za-zĄĆĘŁŃÓŚŹŻąćęłńóśźż\-\.\/\,\(\)\!\?\%\&\*\_\{\}\[\]\:\;]{3,300}$/i', Error::get('desc'));
+                $this->__desc = $f;
                 return $f;
             }
             
