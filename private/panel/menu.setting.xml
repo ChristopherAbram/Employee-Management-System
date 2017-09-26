@@ -99,13 +99,13 @@
                         
                         <option 
                             name="Agreements"
-                            href="$panel/extra" 
-                            command="extra" />
+                            href="$panel/agreements" 
+                            command="agreements" />
                         
                         <option 
                             name="+ Add agreement"
-                            href="$panel/extra" 
-                            command="extra" />
+                            href="$panel/addagreement" 
+                            command="addagreement" />
                     </options>
                 </option>
                 

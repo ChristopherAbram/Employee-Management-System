@@ -120,6 +120,20 @@
             </views>
         </command>
         
+        <command name="agreements">
+            <classroot name="Agreements"/>
+            <views>
+                <view>departments</view>
+            </views>
+        </command>
+        
+        <command name="addagreement">
+            <classroot name="AddAgreement"/>
+            <views>
+                <view>add_agreement</view>
+            </views>
+        </command>
+        
         <command name="registration">
             <classroot name="Registration"/>
             <views>

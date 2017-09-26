@@ -80,6 +80,9 @@ abstract class Command {
                 $this->_response->assignAll($values);
             }// end assignAll
             
+            
+            
+            
             public function handle(\Exception $ex){
                 //$messages = array();
                 do {
@@ -119,6 +122,9 @@ abstract class Command {
                 }
             }// end correct
             
+            
+            
+            
             public static function status($status_str){
                 try {
                     if(!is_null(constant(__NAMESPACE__.'\\Command::'.$status_str))){
@@ -149,7 +155,9 @@ abstract class Command {
         
             abstract protected function _execute(\core\classes\request\Request $request);
             
-            abstract protected function _headers($status);
+            protected function _headers($status){
+                return array();
+            }
             
             protected function _styles($status){
                 return array();

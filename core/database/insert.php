@@ -23,4 +23,14 @@ $inserts = array(
     'insert_address_1'  => "INSERT INTO address(user_id, country_id, city) VALUES(1, 233, 'New York')",
     'insert_address_2'  => "INSERT INTO address(user_id, country_id, city) VALUES(2, 232, 'Oldham')",
     
+    'insert_wt1'    => "INSERT INTO working_time(name) VALUES('Full time')",
+    'insert_wt2'    => "INSERT INTO working_time(name) VALUES('Part time')",
+    'insert_wt3'    => "INSERT INTO working_time(name) VALUES('Casual work')",
+    'insert_wt4'    => "INSERT INTO working_time(name) VALUES('Seasonal work')",
+    'insert_wt5'    => "INSERT INTO working_time(name) VALUES('Freelance work')",
+    'insert_wt6'    => "INSERT INTO working_time(name) VALUES('Contract work')",
+    'insert_wt7'    => "INSERT INTO working_time(name) VALUES('Self-employment')",
+    'insert_wt8'    => "INSERT INTO working_time(name) VALUES('Working from home')",
+    'insert_wt9'    => "INSERT INTO working_time(name) VALUES('Portfolio work')",
+    
 );

@@ -17,6 +17,7 @@ class Number extends Input {
         
         protected $_min         = null;
         protected $_max         = null;
+        protected $_step        = 'any';
     
     // } methods {
     
@@ -36,6 +37,13 @@ class Number extends Input {
                 return $this->_max;
             }// end max
             
+            public function step($step = null){
+                if(!is_null($step)){
+                    $this->_step = $step;
+                }
+                return $this->_step;
+            }
+            
         // } protected {
         
             protected function _toString(){
@@ -49,6 +57,7 @@ class Number extends Input {
                 $text .= (is_null($this->readonly()) || $this->readonly() == false) ? "" : " readonly=\"readonly\"";
                 $text .= (is_null($this->min()) || $this->min() == false) ? "" : " min=\"{$this->min()}\"";
                 $text .= (is_null($this->max()) || $this->max() == false) ? "" : " max=\"{$this->max()}\"";
+                $text .= is_null($this->step()) ? '' : " step=\"{$this->step()}\"";
                 $text .= '/>';
                 return $text;
             }// end _toString

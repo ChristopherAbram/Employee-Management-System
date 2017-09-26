@@ -79,6 +79,7 @@ class Error extends \Error {
         'department_by_namepath'       => 'Error while getting department by namepath',
         
         'all_responsibilities'        => 'Error while getting responsibilities',
+        'all_working_times'        => 'Error while getting working times',
     );
     
     private function __construct(){}

@@ -1,20 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
+        <file>
+            <url>file:/var/www/html/core/classes/menu/Menu.class.php</url>
+            <bookmark id="1">
+                <name/>
+                <line>50</line>
+                <key/>
+            </bookmark>
+        </file>
+    </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/var/www/html/core/classes/menu/Menu.class.php</file>
             <file>file:/var/www/html/core/classes/command/Extra.class.php</file>
             <file>file:/var/www/html/private/panel/control.setting.xml</file>
             <file>file:/var/www/html/private/panel/menu.setting.xml</file>
-            <file>file:/var/www/html/core/classes/command/panel/administrator/Registration.class.php</file>
+            <file>file:/var/www/html/core/classes/command/panel/administrator/ChangeUserAddress.class.php</file>
+            <file>file:/var/www/html/core/classes/command/panel/administrator/Departments.class.php</file>
             <file>file:/var/www/html/.htaccess</file>
+            <file>file:/var/www/html/core/classes/command/panel/administrator/Agreements.class.php</file>
             <file>file:/var/www/html/core/classes/controller/front/Panel.class.php</file>
-            <file>file:/var/www/html/core/classes/command/Login.class.php</file>
-            <file>file:/var/www/html/core/classes/command/panel/administrator/Extra.class.php</file>
-            <file>file:/var/www/html/core/classes/command/Registration.class.php</file>
-            <file>file:/var/www/html/core/classes/command/lang/en.php</file>
-            <file>file:/var/www/html/app/views/extra_1.tpl</file>
-            <file>file:/var/www/html/app/views/admin_address.tpl</file>
+            <file>file:/var/www/html/core/classes/command/Command.class.php</file>
+            <file>file:/var/www/html/core/classes/command/ListCommand.class.php</file>
+            <file>file:/var/www/html/core/classes/command/Editor.class.php</file>
         </group>
     </open-files>
 </project-private>

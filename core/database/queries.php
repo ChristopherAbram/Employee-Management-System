@@ -18,13 +18,13 @@ $queries = array(
     'drop_file_info'        => 'DROP TABLE IF EXISTS file_info',
     'drop_address'          => 'DROP TABLE IF EXISTS address',
     'drop_agreement'        => 'DROP TABLE IF EXISTS agreement',
-    'drop_user_department'  => 'DROP TABLE IF EXISTS user_department',
     'drop_user'             => 'DROP TABLE IF EXISTS user',
     'drop_user_archive'     => 'DROP TABLE IF EXISTS user_archive',
     'drop_user_role'        => 'DROP TABLE IF EXISTS user_role',
     'drop_country'          => 'DROP TABLE IF EXISTS country',
     'drop_department'       => 'DROP TABLE IF EXISTS department',
     'drop_responsibility'   => 'DROP TABLE IF EXISTS responsibility',
+    'drop_working_time'     => 'DROP TABLE IF EXISTS working_time',
     
     'country' =>
     'CREATE TABLE IF NOT EXISTS country (
@@ -239,29 +239,30 @@ $queries = array(
     ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;',
     
     
-    'user_department' =>
-    'CREATE TABLE IF NOT EXISTS user_department (
+    'working_time' =>
+    'CREATE TABLE IF NOT EXISTS working_time (
 	`id`		INT(11) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-        `user_id`       INT(11) UNSIGNED NOT NULL,
-        `department_id` INT(11) UNSIGNED NOT NULL,
-        
-        CONSTRAINT `user_department_user_fk` FOREIGN KEY (`user_id`) REFERENCES `user`(`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-        CONSTRAINT `user_department_department_fk` FOREIGN KEY (`department_id`) REFERENCES `department`(`id`) ON DELETE CASCADE ON UPDATE CASCADE
-
+        `name`          VARCHAR(256) NOT NULL
     ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;',
     
     
     'agreement' =>
     'CREATE TABLE IF NOT EXISTS agreement (
 	`id`                    INT(11) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        
+        `user_id`               INT(11) UNSIGNED NOT NULL,
+        `department_id`         INT(11) UNSIGNED NOT NULL,
         `responsibility_id`     INT(11) UNSIGNED NOT NULL,
-        `user_department_id`    INT(11) UNSIGNED NOT NULL,
-	`salary`                INT(11) DEFAULT 0,
+        `working_time_id`       INT(11) UNSIGNED NOT NULL,
+        
+	`salary`                DECIMAL(12,2) UNSIGNED DEFAULT 0,
         `from_date`             DATE NOT NULL,
         `to_date`               DATE,
         
+        CONSTRAINT `agreement_user_fk` FOREIGN KEY (`user_id`) REFERENCES `user`(`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+        CONSTRAINT `agreement_department_fk` FOREIGN KEY (`department_id`) REFERENCES `department`(`id`) ON DELETE CASCADE ON UPDATE CASCADE,
         CONSTRAINT `agreement_responsibility_fk` FOREIGN KEY (`responsibility_id`) REFERENCES `responsibility`(`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-        CONSTRAINT `agreement_user_department_fk` FOREIGN KEY (`user_department_id`) REFERENCES `user_department`(`id`) ON DELETE CASCADE ON UPDATE CASCADE
+        CONSTRAINT `agreement_working_time_fk` FOREIGN KEY (`working_time_id`) REFERENCES `working_time`(`id`) ON DELETE CASCADE ON UPDATE CASCADE
 
     ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;',
     

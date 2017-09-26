@@ -149,6 +149,10 @@ class Error extends \Error {
         'addr_street'       => 'Invalid street',
         'addr_house'        => 'Invalid house number',
         'addr_flat'         => 'Invalid flat number',
+        
+        'departments_load'  => 'Unable to load departments',
+        'responsibility_load'  => 'Unable to load responsibilities',
+        'working_time_load'  => 'Unable to load working times'
     );
     
     private function __construct(){}

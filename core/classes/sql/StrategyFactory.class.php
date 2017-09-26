@@ -186,6 +186,14 @@ class StrategyFactory {
                 return new Strategy($select, $update, $insert, $delete);
             }
             
+            public static function getWorkingTime(\core\classes\sql\attribute\AttributeList $attributes){
+                $select = new \core\classes\sql\statement\select\WorkingTime($attributes);
+                $update = new \core\classes\sql\statement\update\WorkingTime($attributes);
+                $insert = new \core\classes\sql\statement\insert\WorkingTime($attributes);
+                $delete = new \core\classes\sql\statement\delete\WorkingTime();
+                return new Strategy($select, $update, $insert, $delete);
+            }
+            
             
             
             public static function getSessionBySID(){
@@ -589,6 +597,15 @@ class StrategyFactory {
                 return new Strategy($select, $update, $insert, $delete);
             }// end getArticleByPageIdAndByBin
             
+            public static function getAllWorkingTimes(){
+                $select = new \core\classes\sql\statement\select\AllWorkingTimes();
+                $update = new \core\classes\sql\statement\update\Blank();
+                $insert = new \core\classes\sql\statement\insert\Blank();
+                $delete = new \core\classes\sql\statement\delete\Blank();
+                return new Strategy($select, $update, $insert, $delete);
+            }
+            
+            
             
             
             public static function getArticleByUserIdAndByBin(){
@@ -748,6 +765,14 @@ class StrategyFactory {
             
             public static function getCountResponsibility(){
                 $select = new \core\classes\sql\statement\select\CountResponsibility();
+                $update = new \core\classes\sql\statement\update\Blank();
+                $insert = new \core\classes\sql\statement\insert\Blank();
+                $delete = new \core\classes\sql\statement\delete\Blank();
+                return new Strategy($select, $update, $insert, $delete);
+            }
+            
+            public static function getCountWorkingTime(){
+                $select = new \core\classes\sql\statement\select\CountWorkingTime();
                 $update = new \core\classes\sql\statement\update\Blank();
                 $insert = new \core\classes\sql\statement\insert\Blank();
                 $delete = new \core\classes\sql\statement\delete\Blank();
