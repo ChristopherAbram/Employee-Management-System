@@ -62,6 +62,7 @@ class Panel extends Controller {
                     'description'   => '',
                     'ancestors'     => array(),
                     'messages'      => array(),
+                    'date'          => \date(DATE),
                     'time'          => date('H:i:s d M Y'),
                     'year'          => date('Y'),
                     'lang'          => \core\classes\languages\Lang::getDisplayLanguage(),

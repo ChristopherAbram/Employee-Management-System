@@ -16,7 +16,7 @@ class Agreements extends \core\classes\command\panel\ListCommand {
     // vars {
         
         // Form fields:
-        private $__form         = null;
+        protected $__form         = null;
         
         protected $_user_id     = null;
     
@@ -52,8 +52,7 @@ class Agreements extends \core\classes\command\panel\ListCommand {
             protected function _styles($status){
                 return array(
                     'panel/list.style.css',
-                    'panel/commentlist.style.css',
-                    'panel/usercommentlist.style.css',
+                    'panel/articlelist.style.css',
                     'panel/switchpage.style.css',
                 );
             }// end _styles
@@ -74,11 +73,6 @@ class Agreements extends \core\classes\command\panel\ListCommand {
 
                 // Extracting comments list:
                 $this->_load_list();
-                
-                echo '<pre>';
-                print_r($this->_list);
-                echo '</pre>';
-                exit();
 
                 // Assignments:
                 $this->assignAll(array(

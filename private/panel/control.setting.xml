@@ -120,10 +120,31 @@
             </views>
         </command>
         
+        <command name="usermoney">
+            <classroot name="UserMoney"/>
+            <views>
+                <view>money</view>
+            </views>
+        </command>
+        
+        <command name="yourmoney">
+            <classroot name="Money"/>
+            <views>
+                <view>money</view>
+            </views>
+        </command>
+        
         <command name="agreements">
             <classroot name="Agreements"/>
             <views>
-                <view>departments</view>
+                <view>agreements</view>
+            </views>
+        </command>
+        
+        <command name="youragreements">
+            <classroot name="Agreements"/>
+            <views>
+                <view>agreements</view>
             </views>
         </command>
         

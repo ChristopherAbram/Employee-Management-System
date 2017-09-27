@@ -31,6 +31,5 @@ $inserts = array(
     'insert_wt6'    => "INSERT INTO working_time(name) VALUES('Contract work')",
     'insert_wt7'    => "INSERT INTO working_time(name) VALUES('Self-employment')",
     'insert_wt8'    => "INSERT INTO working_time(name) VALUES('Working from home')",
-    'insert_wt9'    => "INSERT INTO working_time(name) VALUES('Portfolio work')",
     
 );

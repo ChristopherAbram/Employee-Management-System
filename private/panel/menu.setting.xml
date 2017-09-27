@@ -35,9 +35,14 @@
                     command="userdescription" />
                 
                 <option 
-                    name="Agreements"
-                    href="$panel/agreements" 
-                    command="agreements" />
+                    name="Earned money"
+                    href="$panel/yourmoney" 
+                    command="yourmoney" />
+                
+                <option 
+                    name="Your agreements"
+                    href="$panel/youragreements" 
+                    command="youragreements" />
                 
             </options>
         </option>
@@ -96,6 +101,11 @@
                             name="User Address"
                             href="$panel/changeuseraddress" 
                             command="changeuseraddress" />
+                        
+                        <option 
+                            name="Earned money"
+                            href="$panel/usermoney" 
+                            command="usermoney" />
                         
                         <option 
                             name="Agreements"

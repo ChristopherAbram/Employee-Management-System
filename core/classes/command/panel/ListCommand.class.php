@@ -22,9 +22,9 @@ abstract class ListCommand extends \core\classes\command\ListCommand {
         // public {
         
             public function execute(\core\classes\request\Request $request) {
-                parent::execute($request);
                 if(isset($request[\core\classes\request\Request::PANEL_CMD]))
                     $this->_command = $request[\core\classes\request\Request::PANEL_CMD];
+                parent::execute($request);
             }
             
         // } protected {

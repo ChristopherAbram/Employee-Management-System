@@ -304,4 +304,105 @@ $queries = array(
         END IF;
      END',
     
+    'drop_function_count_days'    => 'DROP FUNCTION IF EXISTS count_days',
+    'drop_function_month_job'    => 'DROP FUNCTION IF EXISTS month_job',
+    'drop_function_contract_job'    => 'DROP FUNCTION IF EXISTS contract_job',
+    'drop_function_total_job'    => 'DROP FUNCTION IF EXISTS total_job',
+    'drop_function_total_contract'    => 'DROP FUNCTION IF EXISTS total_contract',
+    'drop_function_month_salary'    => 'DROP FUNCTION IF EXISTS month_salary',
+    'drop_function_contract_salary'    => 'DROP FUNCTION IF EXISTS contract_salary',
+    
+    'count_days' =>
+    'CREATE FUNCTION count_days(a_id INT UNSIGNED)
+        RETURNS INT
+     BEGIN
+        DECLARE r INT DEFAULT 0;
+        DECLARE td DATE;
+        DECLARE fd DATE;
+        DECLARE curr_date DATE;
+        
+        SET curr_date = curdate();
+        SELECT from_date, to_date INTO fd, td FROM agreement WHERE id = a_id;
+        
+        IF td IS NULL THEN
+            SET r = datediff(curr_date, fd);
+        ELSEIF td <= curr_date THEN
+            SET r = datediff(td, fd);
+        ELSE
+            SET r = datediff(curr_date, fd);
+        END IF;
+        
+        RETURN r;
+     END',
+    
+    'month_job' =>
+    'CREATE FUNCTION month_job(working_time_id INT UNSIGNED)
+        RETURNS INT
+     BEGIN
+        DECLARE r INT DEFAULT 0;
+        
+        IF working_time_id IN(1, 2, 8) THEN
+            SET r = 1;
+        ELSE
+            SET r = 0;
+        END IF;
+        
+        RETURN r;
+     END',
+    
+    'contract_job' =>
+    'CREATE FUNCTION contract_job(working_time_id INT UNSIGNED)
+        RETURNS INT
+     BEGIN
+        RETURN (1 - month_job(working_time_id));
+     END',
+    
+    'total_job' =>
+    'CREATE FUNCTION total_job(u_id INT UNSIGNED)
+        RETURNS DECIMAL(12, 2)
+     BEGIN
+        DECLARE total DECIMAL(12,2);
+        SET total = (SELECT ROUND(SUM((count_days(id) / 30) * salary), 2) FROM agreement WHERE user_id = u_id AND month_job(working_time_id) = 1);
+        IF total IS NULL THEN
+            SET total = 0;
+        END IF;
+        RETURN total;
+     END',
+    
+    'total_contract' =>
+    'CREATE FUNCTION total_contract(u_id INT UNSIGNED)
+        RETURNS DECIMAL(12, 2)
+     BEGIN
+        DECLARE total DECIMAL(12,2);
+        SET total = (SELECT ROUND(SUM(salary), 2) FROM agreement WHERE user_id = u_id AND contract_job(working_time_id) = 1 AND (to_date <= curdate() OR to_date IS NULL));
+        IF total IS NULL THEN
+            SET total = 0;
+        END IF;
+        RETURN total;
+     END',
+    
+    'month_salary' =>
+    'CREATE FUNCTION month_salary(u_id INT UNSIGNED)
+        RETURNS DECIMAL(12, 2)
+     BEGIN
+        DECLARE total DECIMAL(12,2);
+        SET total = (SELECT ROUND(SUM(salary), 2) FROM agreement WHERE user_id = u_id AND month_job(working_time_id) = 1 AND (from_date <= curdate() && (to_date > curdate() OR to_date IS NULL)));
+        IF total IS NULL THEN
+            SET total = 0;
+        END IF;
+        RETURN total;
+     END',
+    
+    'contract_salary' =>
+    'CREATE FUNCTION contract_salary(u_id INT UNSIGNED)
+        RETURNS DECIMAL(12, 2)
+     BEGIN
+        DECLARE total DECIMAL(12,2);
+        SET total = (SELECT ROUND(SUM(salary), 2) FROM agreement WHERE user_id = u_id AND contract_job(working_time_id) = 1 AND (from_date <= curdate() && (to_date > curdate() OR to_date IS NULL)));
+        IF total IS NULL THEN
+            SET total = 0;
+        END IF;
+        RETURN total;
+     END',
+    
 );

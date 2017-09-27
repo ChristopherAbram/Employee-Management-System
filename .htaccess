@@ -46,6 +46,7 @@ DirectoryIndex application.php
     # Mangement lists:
     RewriteRule ^(panel)/(departments)(/([1-9][0-9]*)(/)?)?$ application.php?cmd=$1&panel_cmd=$2&page=$4
     RewriteRule ^(panel)/(responsibilities)(/([1-9][0-9]*)(/)?)?$ application.php?cmd=$1&panel_cmd=$2&page=$4
+    RewriteRule ^(panel)/(agreements|youragreements)(/([1-9][0-9]*)(/)?)?$ application.php?cmd=$1&panel_cmd=$2&page=$4
 
     RewriteRule ^(panel)/(articlecategories)(/([1-9][0-9]*)(/)?)?$ application.php?cmd=$1&panel_cmd=$2&page=$4
     RewriteRule ^(panel)/(article)(/([1-9][0-9]*)(/)?)?$ application.php?cmd=$1&panel_cmd=$2&page=$4

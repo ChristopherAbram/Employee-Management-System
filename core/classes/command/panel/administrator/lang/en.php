@@ -163,6 +163,8 @@ class Error extends \Error {
         
         'since_date'            => 'Invalid since date - can not be in the past',
         'to_date'               => 'Invalid until date - can\'t be lower then since date',
+        
+        'salary'                => 'Invalid salary',
     );
     
     private function __construct(){}

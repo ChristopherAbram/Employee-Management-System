@@ -313,6 +313,13 @@ class AddAgreement extends \core\classes\command\Editor {
                 $f->step(0.01);
                 if(!$this->__form->submitted())
                     $f->value(1950.51);
+                
+                $f->callback(function($field){
+                    if(empty($field->value()) || ((double)$field->value() < 0))
+                        return false;
+                    return true;
+                }, Error::get('salary'));
+                
                 $this->__salary = $f;
                 return $f;
             }
@@ -350,7 +357,7 @@ class AddAgreement extends \core\classes\command\Editor {
             private function __description(){
                 $f = new \core\classes\form\field\Textarea('desc');
                 $f->id('desc_input');
-                $f->expression('/^[0-9A-Za-zĄĆĘŁŃÓŚŹŻąćęłńóśźż\-\.\/\,\(\)\!\?\%\&\*\_\{\}\[\]\:\;]{3,300}$/i', Error::get('desc'));
+                //$f->expression('/^[0-9A-Za-zĄĆĘŁŃÓŚŹŻąćęłńóśźż\-\.\/\,\(\)\!\?\%\&\*\_\{\}\[\]\:\;]{3,300}$/i', Error::get('desc'));
                 $this->__desc = $f;
                 return $f;
             }
