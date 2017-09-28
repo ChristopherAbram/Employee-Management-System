@@ -24,8 +24,6 @@
         {foreach from=$styles item=style}
         <link href="{$home.link}/{$path.style}/{$style}" rel="stylesheet">
         {/foreach}
-        <link href="{$home.link}/{$path.style}/slider.style.css" rel="stylesheet">
-        <link href="{$home.link}/{$path.style}/front.style.css" rel="stylesheet">
         
         <script type="text/javascript" src="{$home.link}/scripts/js/jquery.min.js"></script>
         <script type="text/javascript" src="{$home.link}/scripts/js/upload/addprogress.js"></script>
@@ -33,6 +31,38 @@
         <script type="text/javascript" src="{$home.link}/scripts/js/script.js"></script>
         
         <link rel="icon" type="image/png" href="{$home.link}/{$path.img}/logo/Icon/LogoSquareBlack.png">
+        
+        <style type="text/css">
+            
+            #headbar {
+                margin: 0 auto;
+                width: 700px;
+            }
+            
+            #logo {
+                float: left;
+                 margin: 15px 0 0 0;
+            }
+            
+            #menu {
+                float: right;
+                margin: 15px 0 0 20px;
+                width: 200px;
+                text-align: right;
+            }
+            
+            #menu a {
+                display: inline;
+            }
+            
+            footer {
+                display: none;
+                color: #fff;
+                font-size: 12px;
+                padding: 10px 0;
+                text-align: center;
+            }
+        </style>
         
     </head>
     
@@ -48,7 +78,7 @@
                 {include file="cookie.tpl"}
 
                 <header>
-                    {include file="header.tpl"}
+                    {include file="user_header.tpl"}
                 </header>
 
                 {include file="messages.tpl"}

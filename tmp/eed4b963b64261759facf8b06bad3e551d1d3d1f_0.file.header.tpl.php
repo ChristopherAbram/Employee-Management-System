@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.31-dev/4, created on 2017-09-23 21:48:17
+/* Smarty version 3.1.31-dev/4, created on 2017-09-28 14:54:23
   from "/var/www/html/app/views/header.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.31-dev/4',
-  'unifunc' => 'content_59c6ba819a0bb8_79189277',
+  'unifunc' => 'content_59ccf0ffb979d9_17863626',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'eed4b963b64261759facf8b06bad3e551d1d3d1f' => 
     array (
       0 => '/var/www/html/app/views/header.tpl',
-      1 => 1506196095,
+      1 => 1506603260,
       2 => 'file',
     ),
   ),
@@ -20,10 +20,10 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_59c6ba819a0bb8_79189277 (Smarty_Internal_Template $_smarty_tpl) {
+function content_59ccf0ffb979d9_17863626 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <div id="headbar">
-    <div id="logo">Solteq Assignment</div>
+    <div id="logo">EMS</div>
     <nav id="menu">
         <?php if ($_smarty_tpl->tpl_vars['user_identified']->value) {?>
             <a href="<?php echo $_smarty_tpl->tpl_vars['home']->value['link'];?>

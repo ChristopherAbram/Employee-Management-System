@@ -305,6 +305,7 @@ $queries = array(
      END',
     
     'drop_function_count_days'    => 'DROP FUNCTION IF EXISTS count_days',
+    'drop_function_time_count_days'    => 'DROP FUNCTION IF EXISTS time_count_days',
     'drop_function_month_job'    => 'DROP FUNCTION IF EXISTS month_job',
     'drop_function_contract_job'    => 'DROP FUNCTION IF EXISTS contract_job',
     'drop_function_total_job'    => 'DROP FUNCTION IF EXISTS total_job',
@@ -330,6 +331,47 @@ $queries = array(
             SET r = datediff(td, fd);
         ELSE
             SET r = datediff(curr_date, fd);
+        END IF;
+        
+        RETURN r;
+     END',
+    
+    'time_count_days' =>
+    'CREATE FUNCTION time_count_days(a_id INT UNSIGNED, d_since DATE, d_to DATE)
+        RETURNS INT
+     BEGIN
+        DECLARE r INT DEFAULT 0;
+        DECLARE td DATE;
+        DECLARE fd DATE;
+        DECLARE curr_date DATE;
+        
+        SET curr_date = curdate();
+        SELECT from_date, to_date INTO fd, td FROM agreement WHERE id = a_id;
+        
+        IF curr_date < d_to THEN
+            SET d_to = curr_date;
+        END IF; 
+        
+        IF td IS NULL THEN
+            IF fd <= d_since THEN
+                SET r = datediff(d_to, d_since);
+            ELSEIF fd >= d_since AND fd <= d_to THEN
+                SET r = datediff(d_to, fd);
+            ELSEIF fd >= d_to THEN 
+                SET r = 0;
+            END IF;
+        ELSEIF fd <= d_since AND td <= d_since THEN
+            SET r = 0;
+        ELSEIF fd <= d_since AND td <= d_to AND td >= d_since THEN
+            SET r = datediff(td, d_since);
+        ELSEIF fd >= d_since AND fd <= d_to AND td <= d_to AND td >= d_since THEN
+            SET r = datediff(td, fd);
+        ELSEIF fd >= d_since AND fd <= d_to AND td >= d_to THEN
+            SET r = datediff(d_to, fd);
+        ELSEIF fd >= d_to AND td >= d_to THEN
+            SET r = 0;
+        ELSEIF fd <= d_since AND td >= d_to THEN
+            SET r = datediff(d_to, d_since);
         END IF;
         
         RETURN r;
@@ -369,6 +411,18 @@ $queries = array(
         RETURN total;
      END',
     
+    'time_total_job' =>
+    'CREATE FUNCTION time_total_job(u_id INT UNSIGNED, d_since DATE, d_to DATE)
+        RETURNS DECIMAL(12, 2)
+     BEGIN
+        DECLARE total DECIMAL(12,2);
+        SET total = (SELECT ROUND(SUM((time_count_days(id, d_since, d_to) / 30) * salary), 2) FROM agreement WHERE user_id = u_id AND month_job(working_time_id) = 1);
+        IF total IS NULL THEN
+            SET total = 0;
+        END IF;
+        RETURN total;
+     END',
+    
     'total_contract' =>
     'CREATE FUNCTION total_contract(u_id INT UNSIGNED)
         RETURNS DECIMAL(12, 2)
@@ -381,12 +435,36 @@ $queries = array(
         RETURN total;
      END',
     
+    'time_total_contract' =>
+    'CREATE FUNCTION time_total_contract(u_id INT UNSIGNED, d_since DATE, d_to DATE)
+        RETURNS DECIMAL(12, 2)
+     BEGIN
+        DECLARE total DECIMAL(12,2);
+        SET total = (SELECT ROUND(SUM(salary), 2) FROM agreement WHERE user_id = u_id AND contract_job(working_time_id) = 1 AND (to_date >= d_since AND to_date <= d_to));
+        IF total IS NULL THEN
+            SET total = 0;
+        END IF;
+        RETURN total;
+     END',
+    
     'month_salary' =>
     'CREATE FUNCTION month_salary(u_id INT UNSIGNED)
         RETURNS DECIMAL(12, 2)
      BEGIN
         DECLARE total DECIMAL(12,2);
         SET total = (SELECT ROUND(SUM(salary), 2) FROM agreement WHERE user_id = u_id AND month_job(working_time_id) = 1 AND (from_date <= curdate() && (to_date > curdate() OR to_date IS NULL)));
+        IF total IS NULL THEN
+            SET total = 0;
+        END IF;
+        RETURN total;
+     END',
+    
+    'time_month_salary' =>
+    'CREATE FUNCTION time_month_salary(u_id INT UNSIGNED, d_since DATE, d_to DATE)
+        RETURNS DECIMAL(12, 2)
+     BEGIN
+        DECLARE total DECIMAL(12,2);
+        SET total = (SELECT ROUND(SUM(salary), 2) FROM agreement WHERE user_id = u_id AND month_job(working_time_id) = 1 AND (from_date <= d_to && (to_date > d_to OR to_date IS NULL)));
         IF total IS NULL THEN
             SET total = 0;
         END IF;

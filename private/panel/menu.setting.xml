@@ -71,7 +71,18 @@
             href="$panel/responsibilities" 
             access="administrator: all" 
             command="responsibilities"
-            visibility="normal" />
+            visibility="normal" >
+            
+            <options>
+                <option 
+                    name="Responsibilities"
+                    href="$panel/responsibilities" 
+                    access="administrator: all" 
+                    command="responsibilities"
+                    visibility="normal" />
+            </options>
+            
+        </option>
         
         <option
             name="Employees"
@@ -149,7 +160,22 @@
             name="Report"
             href="$panel/report" 
             access="administrator: all" 
-            command="report" />
+            command="report">
+            
+            <options>
+                <option 
+                    name="Report"
+                    href="$panel/report" 
+                    access="administrator: all" 
+                    command="report"/>
+                
+                <option 
+                    name="History"
+                    href="$panel/history" 
+                    access="administrator: all" 
+                    command="history"/>
+            </options>
+        </option>
         
         <option 
             name="Files"

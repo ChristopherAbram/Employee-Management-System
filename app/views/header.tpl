@@ -1,5 +1,5 @@
 <div id="headbar">
-    <div id="logo">Solteq Assignment</div>
+    <div id="logo">EMS</div>
     <nav id="menu">
         {if $user_identified}
             <a href="{$home.link}/panel" rel="stylesheet">Panel</a>

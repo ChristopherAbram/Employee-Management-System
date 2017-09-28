@@ -1,0 +1,33 @@
+@charset "utf-8";
+
+.board {
+    width: 100%;
+    margin: 0 auto;
+    z-index: -1;
+    color: #000;
+    padding: 0;
+    font-weight: bold;
+}
+
+.board .error {
+    padding: 5px 0;
+    background: #e10000;
+    color: #fff;
+}
+
+.board .warning {
+    padding: 5px 0;
+    background: #e1e100;
+    color: #000;
+}
+
+.board .correct {
+    padding: 5px 0;
+    background: #049a00;
+    color: #fff;
+}
+
+.center {
+    width: 100%;
+    text-align: center;
+}

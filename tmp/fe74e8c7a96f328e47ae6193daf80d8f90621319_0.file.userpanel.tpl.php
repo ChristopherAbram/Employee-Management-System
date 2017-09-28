@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.31-dev/4, created on 2017-09-24 12:00:41
+/* Smarty version 3.1.31-dev/4, created on 2017-09-28 14:48:28
   from "/var/www/html/app/layouts/userpanel.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.31-dev/4',
-  'unifunc' => 'content_59c7824932e4c6_11358058',
+  'unifunc' => 'content_59ccef9c8fd970_05214687',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'fe74e8c7a96f328e47ae6193daf80d8f90621319' => 
     array (
       0 => '/var/www/html/app/layouts/userpanel.tpl',
-      1 => 1482769522,
+      1 => 1506602904,
       2 => 'file',
     ),
   ),
@@ -21,14 +21,14 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:informer.tpl' => 1,
     'file:noscript.tpl' => 1,
     'file:cookie.tpl' => 1,
-    'file:header.tpl' => 1,
+    'file:user_header.tpl' => 1,
     'file:messages.tpl' => 1,
     'file:user_avatar.tpl' => 1,
     'file:module_menu.tpl' => 1,
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_59c7824932e4c6_11358058 (Smarty_Internal_Template $_smarty_tpl) {
+function content_59ccef9c8fd970_05214687 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="<?php echo $_smarty_tpl->tpl_vars['lang']->value;?>
@@ -100,12 +100,6 @@ foreach ($_from as $_smarty_tpl->tpl_vars['style']->value) {
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 ?>
 
-        <link href="<?php echo $_smarty_tpl->tpl_vars['home']->value['link'];?>
-/<?php echo $_smarty_tpl->tpl_vars['path']->value['style'];?>
-/slider.style.css" rel="stylesheet">
-        <link href="<?php echo $_smarty_tpl->tpl_vars['home']->value['link'];?>
-/<?php echo $_smarty_tpl->tpl_vars['path']->value['style'];?>
-/front.style.css" rel="stylesheet">
         
         <?php echo '<script'; ?>
  type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['home']->value['link'];?>
@@ -128,6 +122,38 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 /<?php echo $_smarty_tpl->tpl_vars['path']->value['img'];?>
 /logo/Icon/LogoSquareBlack.png">
         
+        <style type="text/css">
+            
+            #headbar {
+                margin: 0 auto;
+                width: 700px;
+            }
+            
+            #logo {
+                float: left;
+                 margin: 15px 0 0 0;
+            }
+            
+            #menu {
+                float: right;
+                margin: 15px 0 0 20px;
+                width: 200px;
+                text-align: right;
+            }
+            
+            #menu a {
+                display: inline;
+            }
+            
+            footer {
+                display: none;
+                color: #fff;
+                font-size: 12px;
+                padding: 10px 0;
+                text-align: center;
+            }
+        </style>
+        
     </head>
     
     <body>
@@ -148,7 +174,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 
 
                 <header>
-                    <?php $_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+                    <?php $_smarty_tpl->_subTemplateRender("file:user_header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
                 </header>
