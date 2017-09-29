@@ -12,7 +12,7 @@
 
 namespace core\classes\command\panel\plain;
 
-class Dashboard extends Command {
+class Dashboard extends Money {
     // vars {
         
         
@@ -40,9 +40,8 @@ class Dashboard extends Command {
         
             protected function _execute(\core\classes\request\Request $request){
                 
+                return parent::_execute($request);
                 
-                
-                return self::CMD_OK;
             }// end _execute
             
         // } private {

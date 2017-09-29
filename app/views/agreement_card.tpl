@@ -25,7 +25,8 @@
                 {if $current_user.role.access_level eq 0}
                 <a href="{$panel.link}/departmenteditor/{$data.department.namepath}">{$data.department.name}</a>
                 {else}
-                {$data.department.name}
+                {assign var='google_link' value="{$data.department.city}, {$data.department.street}, {$data.department.house}"}
+                <a href="https://www.google.com/maps/search/?api=1&query={$google_link|urlencode}" target="_blank">{$data.department.name}</a>
                 {/if}
                 <br>
                 <span>{$data.working_time.name} job</span><br>

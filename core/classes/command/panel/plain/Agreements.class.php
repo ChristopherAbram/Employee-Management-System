@@ -117,7 +117,7 @@ class Agreements extends \core\classes\command\panel\ListCommand {
                             
                             if(isset($data['department_id'])){
                                 $Dattributes = new \core\classes\sql\attribute\AttributeList(array(
-                                    'id', 'namepath', 'name'
+                                    'id', 'namepath', 'name', 'city', 'street', 'house'
                                 ));
                                 $Dfactory = new \core\classes\data\factory\Department();
                                 $department = $Dfactory->getById((int)$data['department_id']);

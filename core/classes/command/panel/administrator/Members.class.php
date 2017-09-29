@@ -15,22 +15,22 @@ namespace core\classes\command\panel\administrator;
 class Members extends Command {
     // vars {
         
-        private $__count        = 0;
-        private $__countperpage = 15;
-        private $__page         = 1;
+        protected $__count        = 0;
+        protected $__countperpage = 15;
+        protected $__page         = 1;
     
         // Member data list:
-        private $__members      = array();
+        protected $__members      = array();
     
         // Form fields:
-        private $__form         = null;
+        protected $__form         = null;
         
         // Buttons:
-        private $__activate     = null;
-        private $__deactivate   = null;
-        private $__remove       = null;
+        protected $__activate     = null;
+        protected $__deactivate   = null;
+        protected $__remove       = null;
         
-        private $__request      = null;
+        protected $__request      = null;
     
     // } methods {
     
@@ -68,6 +68,7 @@ class Members extends Command {
                     'panel/list.style.css',
                     'panel/itemlist.style.css',
                     'panel/filelist.style.css',
+                    'panel/listbutton.style.css',
                     'panel/switchpage.style.css',
                 );
             }// end _styles
@@ -220,12 +221,22 @@ class Members extends Command {
             
         // } private {
             
-            private function __member_list(){
+            protected function __member_list(){
                 $factory = new \core\classes\domain\factory\Plain();
                 try {
+                    
                     // Get user set:
                     $set = $factory->getAllUsersNotRemoved($this->__page, $this->__countperpage);
+                    $this->_load_user_data($set);
                     
+                } catch (\core\classes\domain\DomainException $ex) {
+                    $this->error($ex->getMessage());
+                }
+            }// end __page_list
+            
+            protected function _load_user_data($set){
+                try {
+                   
                     // Load all of the data:
                     $set->accept(function($User){
                         $p = $User->load(new \core\classes\sql\attribute\AttributeList(array('id', 'firstname', 'lastname', 'email', 'sex', 'cdate', 'isactive', 'avatar')));
@@ -247,30 +258,30 @@ class Members extends Command {
                 } catch (\core\classes\domain\DomainException $ex) {
                     $this->error($ex->getMessage());
                 }
-            }// end __page_list
+            }
             
-            private function __activate(){
+            protected function __activate(){
                 $f = new \core\classes\form\field\Submit('activate_button');
                 $f->value('Activate');
                 $this->__activate = $f;
                 return $f;
             }// end __activate
             
-            private function __deactivate(){
+            protected function __deactivate(){
                 $f = new \core\classes\form\field\Submit('deactivate_button');
                 $f->value('Deactivate');
                 $this->__deactivate = $f;
                 return $f;
             }// end __deactivate
             
-            private function __remove(){
+            protected function __remove(){
                 $f = new \core\classes\form\field\Submit('remove_button');
                 $f->value('Remove');
                 $this->__remove = $f;
                 return $f;
             }// end __remove
             
-            private function __switch($namepath = ''){
+            protected function __switch($namepath = ''){
                 $all = $this->__pages_count();
                 $html = '<div class="switch_result_page">';
                 // Prev:

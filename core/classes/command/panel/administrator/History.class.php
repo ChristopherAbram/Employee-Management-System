@@ -50,7 +50,7 @@ class History extends Command {
                     $monthReport = \core\classes\data\Agreement::getMonthReportByDate($date);
                     if(isset($monthReport[0])){
                         $results[] = array(
-                            'month'         => \date('m.Y', \strtotime($date)),
+                            'month'         => \date('m-Y', \strtotime($date)),
                             'month_salary'  => $monthReport[0]['month_salary'],
                             'total_job'     => $monthReport[0]['total_job'],
                             'total_contract'=> $monthReport[0]['total_contract'],

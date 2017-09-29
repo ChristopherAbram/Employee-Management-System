@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.31-dev/4, created on 2017-09-28 15:09:02
+/* Smarty version 3.1.31-dev/4, created on 2017-09-28 20:07:32
   from "/var/www/html/app/views/agreement_card.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.31-dev/4',
-  'unifunc' => 'content_59ccf46e38d161_11601881',
+  'unifunc' => 'content_59cd3a640c5557_89197645',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e439fba19c19db92556bf5e94283a6f9dbb1d535' => 
     array (
       0 => '/var/www/html/app/views/agreement_card.tpl',
-      1 => 1506604140,
+      1 => 1506622049,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_59ccf46e38d161_11601881 (Smarty_Internal_Template $_smarty_tpl) {
+function content_59cd3a640c5557_89197645 (Smarty_Internal_Template $_smarty_tpl) {
 if (!is_callable('smarty_modifier_truncate')) require_once '/var/www/html/lib/smarty/libs/plugins/modifier.truncate.php';
 if (!is_callable('smarty_modifier_date_format')) require_once '/var/www/html/lib/smarty/libs/plugins/modifier.date_format.php';
 $_smarty_tpl->_assignInScope('invalid', !empty($_smarty_tpl->tpl_vars['data']->value['to_date']) && ($_smarty_tpl->tpl_vars['data']->value['to_date'] <= $_smarty_tpl->tpl_vars['date']->value));
@@ -57,8 +57,11 @@ $_smarty_tpl->_assignInScope('waiting', !empty($_smarty_tpl->tpl_vars['data']->v
 "><?php echo $_smarty_tpl->tpl_vars['data']->value['department']['name'];?>
 </a>
                 <?php } else { ?>
-                <?php echo $_smarty_tpl->tpl_vars['data']->value['department']['name'];?>
-
+                <?php $_smarty_tpl->_assignInScope('google_link', ((string)$_smarty_tpl->tpl_vars['data']->value['department']['city']).", ".((string)$_smarty_tpl->tpl_vars['data']->value['department']['street']).", ".((string)$_smarty_tpl->tpl_vars['data']->value['department']['house']));
+?>
+                <a href="https://www.google.com/maps/search/?api=1&query=<?php echo urlencode($_smarty_tpl->tpl_vars['google_link']->value);?>
+" target="_blank"><?php echo $_smarty_tpl->tpl_vars['data']->value['department']['name'];?>
+</a>
                 <?php }?>
                 <br>
                 <span><?php echo $_smarty_tpl->tpl_vars['data']->value['working_time']['name'];?>

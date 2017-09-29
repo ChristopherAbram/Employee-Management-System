@@ -99,7 +99,7 @@
         
         <!-- Members -->
         <command name="members">
-            <classroot name="Members"/>
+            <classroot name="MembersSearching"/>
             <views>
                 <view>admin_member_list</view>
             </views>
