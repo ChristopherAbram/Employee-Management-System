@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.31-dev/4, created on 2017-09-29 23:22:58
+/* Smarty version 3.1.31-dev/4, created on 2017-09-30 12:19:22
   from "/var/www/html/app/views/text_button.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.31-dev/4',
-  'unifunc' => 'content_59ceb9b2452761_09630054',
+  'unifunc' => 'content_59cf6faa03de50_44084166',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'ba27c4da0df5b0259847652102f6008c9920c7ca' => 
     array (
       0 => '/var/www/html/app/views/text_button.tpl',
-      1 => 1506720132,
+      1 => 1506766756,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_59ceb9b2452761_09630054 (Smarty_Internal_Template $_smarty_tpl) {
+function content_59cf6faa03de50_44084166 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <div class="buttonContener <?php echo $_smarty_tpl->tpl_vars['button']->value['side'];?>
 " id="<?php echo $_smarty_tpl->tpl_vars['button']->value['id'];?>
@@ -42,7 +42,7 @@ if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['option']->value) {
 ?>
                 <input type="submit" name="<?php echo $_smarty_tpl->tpl_vars['option']->value['name'];?>
-" class="switchList_<?php echo $_smarty_tpl->tpl_vars['option']->value['class'];?>
+" class="working-option switchList_<?php echo $_smarty_tpl->tpl_vars['option']->value['class'];?>
 " value="<?php echo $_smarty_tpl->tpl_vars['option']->value['value'];?>
 "/>
                 <?php
@@ -58,9 +58,9 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
             <ul class="expand">
                 <li>
                     Specify the conditions:
-                    <div class="field">
+                    <div class="field" style="overflow: hidden;">
                         <select name="<?php echo $_smarty_tpl->tpl_vars['button']->value['id'];?>
-_1options" style="float: left; width: 47%; margin: 0 10px 0 0;">
+_1options" style="float: left; width: 47%; margin: 0 10px 0 0; font-size: 12px;">
                             <option value=""></option>
                             <option value="<?php echo $_smarty_tpl->tpl_vars['button']->value['id'];?>
 _1equals">is equal</option>
@@ -88,9 +88,9 @@ _1contains">includes</option>
 _1notcontains">does not include</option>
                         </select>
                         <input type="text" name="<?php echo $_smarty_tpl->tpl_vars['button']->value['id'];?>
-_1input" style="float: left; width: 47%;" />
+_1input" style="float: left; width: 40%;" />
                     </div>
-                    <div class="field">
+                    <div class="field" style="overflow: hidden;">
                         <div style="float: left;">
                         	<input type="radio" name="<?php echo $_smarty_tpl->tpl_vars['button']->value['id'];?>
 _logic" id="And" value="<?php echo $_smarty_tpl->tpl_vars['button']->value['id'];?>
@@ -104,7 +104,7 @@ _or" />
                             <label for="Or">Or</label>
                         </div>
                     </div>
-                    <div class="field">
+                    <div class="field" style="overflow: hidden;">
                         <select name="<?php echo $_smarty_tpl->tpl_vars['button']->value['id'];?>
 _2options" style="float: left; width: 47%; margin: 0 10px 0 0;">
                             <option value=""></option>
@@ -134,9 +134,9 @@ _2contains">includes</option>
 _2notcontains">does not include</option>
                         </select>
                         <input type="text" name="<?php echo $_smarty_tpl->tpl_vars['button']->value['id'];?>
-_2input" style="float: left; width: 47%;" />
+_2input" style="float: left; width: 40%;" />
                     </div>
-                    <div class="field">
+                    <div class="field explain" style="overflow: hidden;">
                         Sign ? represents any single character.<br />
                         Sign * represents any string.
                     </div>

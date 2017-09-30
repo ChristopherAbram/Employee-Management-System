@@ -5,19 +5,17 @@
 
 .buttonContener {
 	float: left;
-	margin: 0 2px;
+	margin: 0;
 }
 
 .buttonContener .button {
-	width: 30px;
-	height: 25px;
 	font-family: Arial, Helvetica, sans-serif;
 	color: #666;
 	font-size: 12px;
-	border: solid 1px #ddd;
-	background: #eee;
-	border-radius: 3px 3px 3px 3px;
-	margin: 0 0px 5px 0;
+	border: solid 1px #ccc;
+	background: #f9f9f9;
+	margin: 0;
+        padding: 5px;
 	position: relative;
 	z-index: 9999;
 	cursor: pointer;
@@ -30,7 +28,7 @@
 }
 
 .left .button-panel, .right .button-panel {
-	position: relative;
+	position: absolute;
 	z-index: 9999;
 	display: none;
 }
@@ -48,6 +46,15 @@
 
 .right .button-panel .button-arrow {
 	margin: -7px 0 0 225px;
+}
+
+.buttonContener .button-panel input,
+.buttonContener .button-panel select {
+    font-size: 11px;
+}
+
+.buttonContener .button-panel .explain {
+    font-size: 11px;
 }
 
 .buttonContener .button-panel .button-list {
@@ -131,4 +138,9 @@
 
 .buttonContener .button-panel .button-list .expand input[type="submit"]:hover {
 	background: #eee;
+}
+
+.buttonContener .button-panel .button-list .working-option {
+    background: #eee;
+    color: #0060ff;
 }

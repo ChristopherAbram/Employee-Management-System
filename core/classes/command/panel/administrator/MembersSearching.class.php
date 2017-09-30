@@ -43,8 +43,8 @@ class MembersSearching extends Members {
                     'panel/list.style.css',
                     'panel/itemlist.style.css',
                     'panel/filelist.style.css',
-                    'panel/listbutton.style.css',
                     'panel/switchpage.style.css',
+                    'panel/listbutton.style.css',
                 );
             }// end _styles
         
@@ -57,21 +57,25 @@ class MembersSearching extends Members {
                 $dbLastname = new \core\classes\filter\exec\Database('lastname', 'user');
                 $dbEmail = new \core\classes\filter\exec\Database('email', 'user');
                 $dbReg = new \core\classes\filter\exec\Database('cdate', 'user');
+                $dbRole = new \core\classes\filter\exec\Database('user_role_id', 'user');
                 
                 $firstnameButton = (new \core\classes\filter\Button($dbFirstname))->setID('firstnameButton')->setName('Firstname')->setSide(0);
                 $lastnameButton = (new \core\classes\filter\Button($dbLastname))->setID('lastnameButton')->setName('Lastname')->setSide(0);
                 $emailButton = (new \core\classes\filter\Button($dbEmail))->setID('emailButton')->setName('E-mail')->setSide(0);
-                $regButton = (new \core\classes\filter\Button($dbReg))->setID('regButton')->setName('Registration')->setSide(0);
+                $regButton = (new \core\classes\filter\Button($dbReg))->setID('regButton')->setName('Registration date')->setSide(0);
+                $roleButton = (new \core\classes\filter\Button($dbRole))->setID('roleButton')->setName('Role')->setSide(0);
                 
                 $firstnameFilter = new \core\classes\filter\TextFilter($dbFirstname, $firstnameButton->getID());
                 $lastnameFilter = new \core\classes\filter\TextFilter($dbLastname, $lastnameButton->getID());
                 $emailFilter = new \core\classes\filter\TextFilter($dbEmail, $emailButton->getID());
-                $regFilter = new \core\classes\filter\TextFilter($dbReg, $regButton->getID());
+                $regFilter = new \core\classes\filter\DateFilter($dbReg, $regButton->getID());
+                $roleFilter = new \core\classes\filter\NumberFilter($dbRole, $roleButton->getID());
                 
                 $this->filterList->addFilter($firstnameFilter);
                 $this->filterList->addFilter($lastnameFilter);
                 $this->filterList->addFilter($emailFilter);
                 $this->filterList->addFilter($regFilter);
+                $this->filterList->addFilter($roleFilter);
                 
                 $this->filterList->permuteList();
                 
@@ -82,12 +86,14 @@ class MembersSearching extends Members {
                 $lastnameButton->setSubstituents( array( 'options' => $lastnameFilter->activeFilters()));
                 $emailButton->setSubstituents( array( 'options' => $emailFilter->activeFilters()));
                 $regButton->setSubstituents( array( 'options' => $regFilter->activeFilters()));
+                $roleButton->setSubstituents( array( 'options' => $roleFilter->activeFilters()))->optionsList($roleFilter->getOptionsList());
                 
                 $this->assignAll(array(
                     'firstname_button' => $firstnameButton->writeButton(),
                     'lastname_button' => $lastnameButton->writeButton(),
                     'email_button' => $emailButton->writeButton(),
                     'reg_button' => $regButton->writeButton(),
+                    'role_button' => $roleButton->writeButton(),
                 ));
                 
                 return $status;
@@ -110,7 +116,7 @@ class MembersSearching extends Members {
             protected function __member_list(){
                 $factory = new \core\classes\domain\factory\Plain();
                 try {
-                    $this->filterList->setPosition(($this->__page - 1) * $this->__countperpage)->setLimit($this->__countperpage)->setColumns( array( 'id' ) );
+                    $this->filterList->setPosition(($this->__page - 1) * $this->__countperpage)->setLimit($this->__countperpage)->setColumns( array( 'id', 'user_role_id' ) );
                     $results = $this->filterList->perform();
                     $set = new \core\classes\domain\collection\set\User($this->_extract($results));
                     

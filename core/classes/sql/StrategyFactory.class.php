@@ -597,8 +597,24 @@ class StrategyFactory {
                 return new Strategy($select, $update, $insert, $delete);
             }// end getArticleByPageIdAndByBin
             
+            public static function getDepartmentsByUserId(){
+                $select = new \core\classes\sql\statement\select\DepartmentsByUserId();
+                $update = new \core\classes\sql\statement\update\Blank();
+                $insert = new \core\classes\sql\statement\insert\Blank();
+                $delete = new \core\classes\sql\statement\delete\Blank();
+                return new Strategy($select, $update, $insert, $delete);
+            }// end getArticleByPageIdAndByBin
+            
             public static function getAllResponsibilities(){
                 $select = new \core\classes\sql\statement\select\AllResponsibilities();
+                $update = new \core\classes\sql\statement\update\Blank();
+                $insert = new \core\classes\sql\statement\insert\Blank();
+                $delete = new \core\classes\sql\statement\delete\Blank();
+                return new Strategy($select, $update, $insert, $delete);
+            }
+            
+            public static function getResponsibilitiesByUserId(){
+                $select = new \core\classes\sql\statement\select\ResponsibilitiesByUserId();
                 $update = new \core\classes\sql\statement\update\Blank();
                 $insert = new \core\classes\sql\statement\insert\Blank();
                 $delete = new \core\classes\sql\statement\delete\Blank();

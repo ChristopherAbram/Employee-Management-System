@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.31-dev/4, created on 2017-09-30 00:05:43
+/* Smarty version 3.1.31-dev/4, created on 2017-09-30 12:07:52
   from "/var/www/html/app/views/date_button.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.31-dev/4',
-  'unifunc' => 'content_59cec3b7a9ba90_25121549',
+  'unifunc' => 'content_59cf6cf8dbfef2_80764499',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e90855a2af6e2a3692cc3d22e1cb1221ae463663' => 
     array (
       0 => '/var/www/html/app/views/date_button.tpl',
-      1 => 1506722740,
+      1 => 1506766070,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_59cec3b7a9ba90_25121549 (Smarty_Internal_Template $_smarty_tpl) {
+function content_59cf6cf8dbfef2_80764499 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <div class="buttonContener <?php echo $_smarty_tpl->tpl_vars['button']->value['side'];?>
 " id="<?php echo $_smarty_tpl->tpl_vars['button']->value['id'];?>
@@ -41,7 +41,7 @@ if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['option']->value) {
 ?>
             <input type="submit" name="<?php echo $_smarty_tpl->tpl_vars['option']->value['name'];?>
-" class="switchList_<?php echo $_smarty_tpl->tpl_vars['option']->value['class'];?>
+" class="working-option switchList_<?php echo $_smarty_tpl->tpl_vars['option']->value['class'];?>
 " value="<?php echo $_smarty_tpl->tpl_vars['option']->value['value'];?>
 "/>
             <?php
@@ -56,7 +56,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
             <ul class="expand">
                 <li>
                     Specify the conditions:
-                    <div class="field">
+                    <div class="field" style="overflow: hidden;">
                         <select name="<?php echo $_smarty_tpl->tpl_vars['button']->value['id'];?>
 _1options" style="float: left; width: 47%; margin: 0 10px 0 0;">
                             <option value=""></option>
@@ -87,9 +87,9 @@ _1notcontains">does not include</option>
                         </select>
                         <input type="text" name="<?php echo $_smarty_tpl->tpl_vars['button']->value['id'];?>
 _1input" id="<?php echo $_smarty_tpl->tpl_vars['button']->value['id'];?>
-_1input" style="float: left; width: 47%;" />
+_1input" style="float: left; width: 40%;" />
                     </div>
-                     <div class="field">
+                     <div class="field" style="overflow: hidden;">
                         <div style="float: left;">
                         	<input type="radio" name="<?php echo $_smarty_tpl->tpl_vars['button']->value['id'];?>
 _logic" id="And" value="<?php echo $_smarty_tpl->tpl_vars['button']->value['id'];?>
@@ -103,7 +103,7 @@ _or" />
                             <label for="Or">Or</label>
                         </div>
                     </div>
-                    <div class="field">
+                    <div class="field" style="overflow: hidden;">
                         <select name="<?php echo $_smarty_tpl->tpl_vars['button']->value['id'];?>
 _2options" style="float: left; width: 47%; margin: 0 10px 0 0;">
                             <option value=""></option>
@@ -134,12 +134,14 @@ _2notcontains">does not include</option>
                         </select>
                         <input type="text" name="<?php echo $_smarty_tpl->tpl_vars['button']->value['id'];?>
 _2input" id="<?php echo $_smarty_tpl->tpl_vars['button']->value['id'];?>
-_2input" style="float: left; width: 47%;" />
+_2input" style="float: left; width: 40%;" />
                     </div>
-                    <div class="field">
-                        Sign ? represents any single character.<br />
-                        Sign * represents any string.<br /><br />
-                        <span style="font-size: 12px">Notice that in filters: is after, is before ( or equal )<br /> signs like " ?, * " are ignored.</span>
+                    <div class="field explain" style="overflow: hidden;">
+                        Sign ? represents any single character.<br>
+                        Sign * represents any string.<br><br>
+                        <span style="font-size: 11px; font-style: italic;">Notice that very often date is save in 'YYYY-MM-DD hh:mm:ss' format. 
+                            Applying 'is equal' filter with date only is not working in such cases.</span><br>
+                        <span style="font-size: 11px; font-style: italic;">Notice that in filters: is after, is before ( or equal ) signs like " ?, * " are ignored.</span>
                     </div>
                 </li>
                 <input type="submit" name="<?php echo $_smarty_tpl->tpl_vars['button']->value['id'];?>

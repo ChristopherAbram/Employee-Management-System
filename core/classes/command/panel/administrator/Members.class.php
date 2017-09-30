@@ -239,7 +239,7 @@ class Members extends Command {
                    
                     // Load all of the data:
                     $set->accept(function($User){
-                        $p = $User->load(new \core\classes\sql\attribute\AttributeList(array('id', 'firstname', 'lastname', 'email', 'sex', 'cdate', 'isactive', 'avatar')));
+                        $p = $User->load(new \core\classes\sql\attribute\AttributeList(array('id', 'firstname', 'lastname', 'email', 'sex', 'cdate', 'isactive', 'avatar', 'phone')));
                         if($p){
                             $p = $User->loadUserRole();
                         }
@@ -251,7 +251,54 @@ class Members extends Command {
                             $Avatar->load(new \core\classes\sql\attribute\AttributeList(array('id', 'name', 'extension')));
                         }
                         if($p){
-                            $this->__members[] = $User->getPresentationData();
+                            $data = $User->getPresentationData();
+                            
+                            // load departments:
+                            $agreements = \core\classes\data\Agreement::countByUserId($data['id']);
+                            $data['agreements_count'] = $agreements;
+                            $data['employeed'] = $agreements > 0 ? 1 : 0;
+                            $data['departments'] = array();
+                            $data['responsibilities'] = array();
+                            $data['money'] = array();
+                            
+                            if($agreements > 0){
+                                // departments:
+                                $factory = new \core\classes\data\factory\Department();
+                                $set = $factory->getByUserId($data['id'], 1, 1000);
+                                if(!is_null($set)){
+                                    $set->accept(function($department) use(&$data){
+                                        $attr = new \core\classes\sql\attribute\AttributeList(array(
+                                            'id', 'name', 'namepath', 'city', 'street', 'house'
+                                            ));
+                                        $department->setAttributeList($attr);
+                                        if($department->read()){
+                                            $data['departments'][] = $department->getData();
+                                        }
+                                    });
+                                }
+                                
+                                // responsibilities:
+                                $factory = new \core\classes\data\factory\Responsibility();
+                                $set = $factory->getByUserId($data['id'], 1, 1000);
+                                if(!is_null($set)){
+                                    $set->accept(function($res) use(&$data){
+                                        $attr = new \core\classes\sql\attribute\AttributeList(array(
+                                            'id', 'name'
+                                            ));
+                                        $res->setAttributeList($attr);
+                                        if($res->read()){
+                                            $data['responsibilities'][] = $res->getData();
+                                        }
+                                    });
+                                }
+                                
+                                // Money:
+                                $data['money']['job'] = \core\classes\data\Agreement::getMonthSalaryByUserId($data['id']);
+                                $data['money']['contract'] = \core\classes\data\Agreement::getContractSalaryByUserId($data['id']);
+                                
+                            }
+                            
+                            $this->__members[] = &$data;
                         }
                         return $p;
                     });

@@ -7,7 +7,7 @@
             <input type="submit" name="{$button.id}_sortLS" value="Sort largest to smallest"/>
             <input type="submit" name="{$button.id}_sortSL" value="Sort smallest to largest"/>
             {foreach from=$button.options item=option}
-            <input type="submit" name="{$option.name}" class="switchList_{$option.class}" value="{$option.value}"/>
+            <input type="submit" name="{$option.name}" class="working-option switchList_{$option.class}" value="{$option.value}"/>
             {/foreach}
             </form>
             <form action="" method="POST" enctype="multipart/form-data">
@@ -15,7 +15,7 @@
             <ul class="expand">
                 <li>
                     Specify the conditions:
-                    <div class="field">
+                    <div class="field" style="overflow: hidden;">
                         <select name="{$button.id}_1options" style="float: left; width: 47%; margin: 0 10px 0 0;">
                             <option value=""></option>
                             <option value="{$button.id}_1equals">is equal</option>
@@ -33,7 +33,7 @@
                         </select>
                         <input type="text" name="{$button.id}_1input" style="float: left; width: 47%;" />
                     </div>
-                    <div class="field">
+                    <div class="field" style="overflow: hidden;">
                         <div style="float: left;">
                         	<input type="radio" name="{$button.id}_logic" id="And" value="{$button.id}_and" checked="checked" />
                             <label for="And">And</label>
@@ -43,7 +43,7 @@
                             <label for="Or">Or</label>
                         </div>
                     </div>
-                    <div class="field">
+                    <div class="field" style="overflow: hidden;">
                         <select name="{$button.id}_2options" style="float: left; width: 47%; margin: 0 10px 0 0;">
                             <option value=""></option>
                             <option value="{$button.id}_2equals">is equal</option>
@@ -61,7 +61,7 @@
                         </select>
                         <input type="text" name="{$button.id}_2input" style="float: left; width: 47%;" />
                     </div>
-                    <div class="field">
+                    <div class="field" style="overflow: hidden;">
                         Sign ? represents any single character.<br />
                         Sign * represents any string.
                     </div>

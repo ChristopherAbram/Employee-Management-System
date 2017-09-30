@@ -37,8 +37,8 @@ class DateFilter extends Filter {
                 if( $flag == self::A_Z ) $how = 'ASC';
                 elseif( $flag == self::Z_A ) $how = 'DESC';
                 $exec = $this->getExecMode( );
-                $this->setSQLExp( preg_replace( '/\$column/i', $exec->getColumn( ), $this->getSQLExp( ) ) );
-                $this->setSQLExp( preg_replace( '/\$how/i', $how, $this->getSQLExp( ) ) );
+                $this->setSQLExp( preg_replace( '/\$column\$/i', $exec->getColumn( ), $this->getSQLExp( ) ) );
+                $this->setSQLExp( preg_replace( '/\$how\$/i', $how, $this->getSQLExp( ) ) );
             }
         }// end alphabeticSort
 
@@ -54,8 +54,8 @@ class DateFilter extends Filter {
                     $input = $_SESSION[ self::_COND ][ $this->getID( ) ][ $inputN ];
                     $input = $this->transformInput( $input );
                     // } 
-                    $this->setSQLExp( preg_replace( '/\$conditions/i', $exec->getColumn( ).' '.$sign.' \'^'.$input.'$\' $conditions', $this->getSQLExp( ) ) );
-                    $this->setSecondSQLExp( preg_replace( '/\$conditions/i', $exec->getColumn( ).' '.$sign.' \'^'.$input.'$\' $conditions', $this->getSecondSQLExp( ) ) );
+                    $this->setSQLExp( preg_replace( '/\$conditions\$/i', $exec->getColumn( ).' '.$sign.' \'^'.$input.'$\' $conditions$', $this->getSQLExp( ) ) );
+                    $this->setSecondSQLExp( preg_replace( '/\$conditions\$/i', $exec->getColumn( ).' '.$sign.' \'^'.$input.'$\' $conditions$', $this->getSecondSQLExp( ) ) );
                 }
                 $i++;
             }
@@ -70,9 +70,9 @@ class DateFilter extends Filter {
                     // input {
                     $input = $_SESSION[ self::_COND ][ $this->getID( ) ][ $inputN ];
                     if( strlen( $input ) > 0 ){
-                        $this->setSQLExp( preg_replace( '/\$conditions/i', $exec->getColumn( ).' > \''.$input.'\' $conditions', 
+                        $this->setSQLExp( preg_replace( '/\$conditions\$/i', $exec->getColumn( ).' > \''.$input.'\' $conditions$', 
                                                           $this->getSQLExp( ) ) );
-                        $this->setSecondSQLExp( preg_replace( '/\$conditions/i', $exec->getColumn( ).' > \''.$input.'\' $conditions', 
+                        $this->setSecondSQLExp( preg_replace( '/\$conditions\$/i', $exec->getColumn( ).' > \''.$input.'\' $conditions$', 
                                                                     $this->getSecondSQLExp( ) ) );
                     }
                     // }
@@ -90,9 +90,9 @@ class DateFilter extends Filter {
                     // input {
                     $input = $_SESSION[ self::_COND ][ $this->getID( ) ][ $inputN ];
                     if( strlen( $input ) > 0 ){
-                        $this->setSQLExp( preg_replace( '/\$conditions/i', $exec->getColumn( ).' >= \''.$input.'\' $conditions', 
+                        $this->setSQLExp( preg_replace( '/\$conditions\$/i', $exec->getColumn( ).' >= \''.$input.'\' $conditions$', 
                                                           $this->getSQLExp( ) ) );
-                        $this->setSecondSQLExp( preg_replace( '/\$conditions/i', $exec->getColumn( ).' >= \''.$input.'\' $conditions', 
+                        $this->setSecondSQLExp( preg_replace( '/\$conditions\$/i', $exec->getColumn( ).' >= \''.$input.'\' $conditions$', 
                                                                     $this->getSecondSQLExp( ) ) );
                     }
                     // }
@@ -110,9 +110,9 @@ class DateFilter extends Filter {
                     // input {
                     $input = $_SESSION[ self::_COND ][ $this->getID( ) ][ $inputN ];
                     if( strlen( $input ) > 0 ){
-                        $this->setSQLExp( preg_replace( '/\$conditions/i', $exec->getColumn( ).' < \''.$input.'\' $conditions', 
+                        $this->setSQLExp( preg_replace( '/\$conditions\$/i', $exec->getColumn( ).' < \''.$input.'\' $conditions$', 
                                                           $this->getSQLExp( ) ) );
-                        $this->setSecondSQLExp( preg_replace( '/\$conditions/i', $exec->getColumn( ).' < \''.$input.'\' $conditions', 
+                        $this->setSecondSQLExp( preg_replace( '/\$conditions\$/i', $exec->getColumn( ).' < \''.$input.'\' $conditions$', 
                                                                     $this->getSecondSQLExp( ) ) );
                     }
                     // }
@@ -130,9 +130,9 @@ class DateFilter extends Filter {
                     // input {
                     $input = $_SESSION[ self::_COND ][ $this->getID( ) ][ $inputN ];
                     if( strlen( $input ) > 0 ){
-                        $this->setSQLExp( preg_replace( '/\$conditions/i', $exec->getColumn( ).' <= \''.$input.'\' $conditions', 
+                        $this->setSQLExp( preg_replace( '/\$conditions\$/i', $exec->getColumn( ).' <= \''.$input.'\' $conditions$', 
                                                           $this->getSQLExp( ) ) );
-                        $this->setSecondSQLExp( preg_replace( '/\$conditions/i', $exec->getColumn( ).' <= \''.$input.'\' $conditions', 
+                        $this->setSecondSQLExp( preg_replace( '/\$conditions\$/i', $exec->getColumn( ).' <= \''.$input.'\' $conditions$', 
                                                                     $this->getSecondSQLExp( ) ) );
                     }
                     // }
@@ -152,8 +152,8 @@ class DateFilter extends Filter {
                     // input {
                     $input = $_SESSION[ self::_COND ][ $this->getID( ) ][ $inputN ];
                     $input = $this->transformInput( $input );
-                    $this->setSQLExp( preg_replace( '/\$conditions/i', $exec->getColumn( ).' '.$sign.' \'^'.$input.'\' $conditions', $this->getSQLExp( ) ) );
-                    $this->setSecondSQLExp( preg_replace( '/\$conditions/i', $exec->getColumn( ).' '.$sign.' \'^'.$input.'\' $conditions', $this->getSecondSQLExp( ) ) );
+                    $this->setSQLExp( preg_replace( '/\$conditions\$/i', $exec->getColumn( ).' '.$sign.' \'^'.$input.'\' $conditions$', $this->getSQLExp( ) ) );
+                    $this->setSecondSQLExp( preg_replace( '/\$conditions\$/i', $exec->getColumn( ).' '.$sign.' \'^'.$input.'\' $conditions$', $this->getSecondSQLExp( ) ) );
                 }
                 $i++;
             }
@@ -170,8 +170,8 @@ class DateFilter extends Filter {
                     // input {
                     $input = $_SESSION[ self::_COND ][ $this->getID( ) ][ $inputN ];
                     $input = $this->transformInput( $input );
-                    $this->setSQLExp( preg_replace( '/\$conditions/i', $exec->getColumn( ).' '.$sign.' \''.$input.'$\' $conditions', $this->getSQLExp( ) ) );
-                    $this->setSecondSQLExp( preg_replace( '/\$conditions/i', $exec->getColumn( ).' '.$sign.' \''.$input.'$\' $conditions', $this->getSecondSQLExp( ) ) );
+                    $this->setSQLExp( preg_replace( '/\$conditions\$/i', $exec->getColumn( ).' '.$sign.' \''.$input.'$\' $conditions$', $this->getSQLExp( ) ) );
+                    $this->setSecondSQLExp( preg_replace( '/\$conditions\$/i', $exec->getColumn( ).' '.$sign.' \''.$input.'$\' $conditions$', $this->getSecondSQLExp( ) ) );
                 }
                 $i++;
             }
@@ -188,8 +188,8 @@ class DateFilter extends Filter {
                     // input {
                         $input = $_SESSION[ self::_COND ][ $this->getID( ) ][ $inputN ];
                         $input = $this->transformInput( $input );
-                    $this->setSQLExp( preg_replace( '/\$conditions/i', $exec->getColumn( ).' '.$sign.' \''.$input.'\' $conditions', $this->getSQLExp( ) ) );
-                    $this->setSecondSQLExp( preg_replace( '/\$conditions/i', $exec->getColumn( ).' '.$sign.' \''.$input.'\' $conditions', $this->getSecondSQLExp( ) ) );
+                    $this->setSQLExp( preg_replace( '/\$conditions\$/i', $exec->getColumn( ).' '.$sign.' \''.$input.'\' $conditions$', $this->getSQLExp( ) ) );
+                    $this->setSecondSQLExp( preg_replace( '/\$conditions\$/i', $exec->getColumn( ).' '.$sign.' \''.$input.'\' $conditions$', $this->getSecondSQLExp( ) ) );
                 }
                 $i++;
             }
@@ -201,8 +201,8 @@ class DateFilter extends Filter {
                 if( ( isset( $_SESSION[ Filter::_COND ][ $this->getID( ) ][ Filter::_NAME.'1' ] ) ||
                     isset( $_SESSION[ Filter::_COND ][ $this->getID( ) ][ Filter::_NAME.'2' ] ) ) ){
                     if( $_SESSION[ self::_COND ][ $this->getID( ) ][ self::_NAME.'1' ] != '' && $_SESSION[ self::_COND ][ $this->getID( ) ][ self::_NAME.'2' ] != '' ){
-                        $this->setSQLExp( preg_replace( '/\$conditions/i', $operator.' $conditions', $this->getSQLExp( ) ) );
-                        $this->setSecondSQLExp( preg_replace( '/\$conditions/i', $operator.' $conditions', $this->getSecondSQLExp( ) ) );
+                        $this->setSQLExp( preg_replace( '/\$conditions\$/i', $operator.' $conditions$', $this->getSQLExp( ) ) );
+                        $this->setSecondSQLExp( preg_replace( '/\$conditions\$/i', $operator.' $conditions$', $this->getSecondSQLExp( ) ) );
                     }
                 }
             }
@@ -233,7 +233,7 @@ class DateFilter extends Filter {
                             $string[ ] = 'REGEXP \'^'.$row[ 0 ].'-('.$s.').*\'';
                         }
                     }
-                    $this->setSQLExp( preg_replace( '/\$conditions/i', $exec->getColumn( ).' '.implode( ' or ', $string ).' $conditions', $this->getSQLExp( ) ) );
+                    $this->setSQLExp( preg_replace( '/\$conditions\$/i', $exec->getColumn( ).' '.implode( ' or ', $string ).' $conditions$', $this->getSQLExp( ) ) );
                 }
             }
         }// end optionsList
@@ -245,8 +245,8 @@ class DateFilter extends Filter {
             // } first part {
             // grouping syntax
             if( $this->groupExp( ) ){ 
-                $this->setSecondSQLExp( preg_replace( '/\$conditions/i', '( $conditions', $this->getSecondSQLExp( ) ) );
-                $this->setSQLExp( preg_replace( '/\$conditions/i', '( $conditions', $this->getSQLExp( ) ) );
+                $this->setSecondSQLExp( preg_replace( '/\$conditions\$/i', '( $conditions$', $this->getSecondSQLExp( ) ) );
+                $this->setSQLExp( preg_replace( '/\$conditions\$/i', '( $conditions$', $this->getSQLExp( ) ) );
             }
             $this->equal( $this->getID( ).self::CONJUCTION.'1'.self::$_inX[ self::_COND ][ 0 ] );
             $this->equal( $this->getID( ).self::CONJUCTION.'1'.self::$_inX[ self::_COND ][ 1 ], self::OFF );
@@ -281,8 +281,8 @@ class DateFilter extends Filter {
             $this->optionsList( );
             // grouping syntax
             if( $this->groupExp( ) ){
-                $this->setSecondSQLExp( preg_replace( '/\$conditions/i', ') $conditions', $this->getSecondSQLExp( ) ) );
-                $this->setSQLExp( preg_replace( '/\$conditions/i', ') $conditions', $this->getSQLExp( ) ) );
+                $this->setSecondSQLExp( preg_replace( '/\$conditions\$/i', ') $conditions$', $this->getSecondSQLExp( ) ) );
+                $this->setSQLExp( preg_replace( '/\$conditions\$/i', ') $conditions$', $this->getSQLExp( ) ) );
             }	
             // }
         }// end prepareSQL

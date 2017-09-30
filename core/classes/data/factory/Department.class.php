@@ -60,6 +60,22 @@ class Department extends Factory {
                 return null;
             }// end getAll
             
+            public function getByUserId($id, $pointer, $count){
+                $strategy = \core\classes\sql\StrategyFactory::getDepartmentsByUserId();
+                try {
+                    $offset = ($pointer - 1) * $count;
+                    $data = array(
+                        'user_id'   => $id,
+                        'offset' => $offset,
+                        'count'  => $count
+                    );
+                    return $this->_getSetByData($strategy, $data, 'id');
+                } catch (\core\classes\mapper\MapperException $ex) {
+                    throw new \core\classes\data\DataException(Error::get('article_by_page_id'), 0, $ex);
+                }
+                return null;
+            }// end getAll
+            
             public static function namepathExists($namepath){
                 $factory = new self();
                 $dep = $factory->getByNamepath($namepath);

@@ -487,6 +487,10 @@ class ListFilters {
                 // }
                 //Functions::debugView( $SQL );
 
+                /*echo '<pre>';
+                print_r($SQL);
+                echo '</pre>';*/
+                        
                 $q = $db->prepare( $SQL );
                 $q->execute( );
                 $results = $this->_createAssocTable( $q );

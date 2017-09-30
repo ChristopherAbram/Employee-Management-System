@@ -7,7 +7,7 @@
             <input type="submit" name="{$button.id}_sortSN" value="Sort oldest to newest"/>
             <input type="submit" name="{$button.id}_sortNS" value="Sort newest to oldest"/>
             {foreach from=$button.options item=option}
-            <input type="submit" name="{$option.name}" class="switchList_{$option.class}" value="{$option.value}"/>
+            <input type="submit" name="{$option.name}" class="working-option switchList_{$option.class}" value="{$option.value}"/>
             {/foreach}
             </form>
             <form action="" method="POST" enctype="multipart/form-data">
@@ -15,7 +15,7 @@
             <ul class="expand">
                 <li>
                     Specify the conditions:
-                    <div class="field">
+                    <div class="field" style="overflow: hidden;">
                         <select name="{$button.id}_1options" style="float: left; width: 47%; margin: 0 10px 0 0;">
                             <option value=""></option>
                             <option value="{$button.id}_1equals">is equal</option>
@@ -31,9 +31,9 @@
                             <option value="{$button.id}_1contains">includes</option>
                             <option value="{$button.id}_1notcontains">does not include</option>
                         </select>
-                        <input type="text" name="{$button.id}_1input" id="{$button.id}_1input" style="float: left; width: 47%;" />
+                        <input type="text" name="{$button.id}_1input" id="{$button.id}_1input" style="float: left; width: 40%;" />
                     </div>
-                     <div class="field">
+                     <div class="field" style="overflow: hidden;">
                         <div style="float: left;">
                         	<input type="radio" name="{$button.id}_logic" id="And" value="{$button.id}_and" checked="checked" />
                             <label for="And">And</label>
@@ -43,7 +43,7 @@
                             <label for="Or">Or</label>
                         </div>
                     </div>
-                    <div class="field">
+                    <div class="field" style="overflow: hidden;">
                         <select name="{$button.id}_2options" style="float: left; width: 47%; margin: 0 10px 0 0;">
                             <option value=""></option>
                             <option value="{$button.id}_2equals">is equal</option>
@@ -59,12 +59,14 @@
                             <option value="{$button.id}_2contains">includes</option>
                             <option value="{$button.id}_2notcontains">does not include</option>
                         </select>
-                        <input type="text" name="{$button.id}_2input" id="{$button.id}_2input" style="float: left; width: 47%;" />
+                        <input type="text" name="{$button.id}_2input" id="{$button.id}_2input" style="float: left; width: 40%;" />
                     </div>
-                    <div class="field">
-                        Sign ? represents any single character.<br />
-                        Sign * represents any string.<br /><br />
-                        <span style="font-size: 12px">Notice that in filters: is after, is before ( or equal )<br /> signs like " ?, * " are ignored.</span>
+                    <div class="field explain" style="overflow: hidden;">
+                        Sign ? represents any single character.<br>
+                        Sign * represents any string.<br><br>
+                        <span style="font-size: 11px; font-style: italic;">Notice that very often date is save in 'YYYY-MM-DD hh:mm:ss' format. 
+                            Applying 'is equal' filter with date only is not working in such cases.</span><br>
+                        <span style="font-size: 11px; font-style: italic;">Notice that in filters: is after, is before ( or equal ) signs like " ?, * " are ignored.</span>
                     </div>
                 </li>
                 <input type="submit" name="{$button.id}_1submit" value="Show results" style="text-align: right;"/>
