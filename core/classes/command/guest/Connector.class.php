@@ -12,7 +12,7 @@
 
 namespace core\classes\command\guest;
 
-class Connector extends Command {
+class Connector extends \core\classes\command\Command {
     // vars {
         
         
