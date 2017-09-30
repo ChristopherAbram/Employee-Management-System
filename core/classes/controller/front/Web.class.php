@@ -171,26 +171,7 @@ class Web extends Controller {
             
             protected function _menu($level = 2, $count = 10){
                 try {
-                    // Get root page:
-                    $factory = new \core\classes\domain\factory\Page();
-                    $root = $factory->getRoot();
-                    // Load tree:
-                    $root->tree($level, $count);
-                    // Load page data:
-                    $visitor = new \core\classes\visitor\PageLoader();
-                    $visitor->attributes(array('id', 'title', 'namepath', 'link', 'bin', 'hide'));
-                    $root->acceptTree($visitor);
-                    // Show not hidden and not removed:
-                    $root->filter(function($page){
-                        return !($page->isHidden() or $page->isRemoved());
-                    });
-                    // Acquire menu data:
-                    $array = $root->getPageTreeAsDataArray();
-                    
-                    if(isset($array['children']))
-                        $array = $this->_transform_menu($array['children']);
-                    
-                    return $array;
+                    return array();
                 } catch (\core\classes\domain\DomainException $ex) {
                     throw new \core\classes\controller\ControllerException(Error::get('menu'), 0, $ex);
                 }

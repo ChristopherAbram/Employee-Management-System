@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.31-dev/4, created on 2017-09-30 14:19:38
+/* Smarty version 3.1.31-dev/4, created on 2017-09-30 14:25:26
   from "/var/www/html/app/views/user_card.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.31-dev/4',
-  'unifunc' => 'content_59cf8bdab2c598_32453572',
+  'unifunc' => 'content_59cf8d36766818_64565451',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd0697dcf828366651dc206a8f798e2103b990413' => 
     array (
       0 => '/var/www/html/app/views/user_card.tpl',
-      1 => 1506773977,
+      1 => 1506774152,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_59cf8bdab2c598_32453572 (Smarty_Internal_Template $_smarty_tpl) {
+function content_59cf8d36766818_64565451 (Smarty_Internal_Template $_smarty_tpl) {
 if (!is_callable('smarty_modifier_date_format')) require_once '/var/www/html/lib/smarty/libs/plugins/modifier.date_format.php';
 ?>
 <div class="item">
@@ -93,9 +93,6 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
                 <?php }?>
                 </div>
             </div>
-            
-           
-            
         </div>
     </div>
     <div class="right" style="margin: 0; width: 200px;">
@@ -111,12 +108,5 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
         </div>
         <?php }?>
     </div>
-</div>
-
-
-
-
-
-
-<?php }
+</div><?php }
 }

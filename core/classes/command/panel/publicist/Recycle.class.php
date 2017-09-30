@@ -36,8 +36,6 @@ class Recycle extends Command {
             
             public function _remove(){
                 try {
-                    // Articles:
-                    $this->_remove_articles();
                     
                     // Files:
                     $this->_remove_files();
@@ -58,9 +56,6 @@ class Recycle extends Command {
             
             public function _restore(){
                 try {
-                    // Articles:
-                    $this->_restore_articles();
-                    
                     // Files:
                     $this->_restore_files();
                     
@@ -84,8 +79,7 @@ class Recycle extends Command {
                     if(is_null($User)){
                         return;
                     }
-                    if(\core\classes\data\Article::removeByUserId($User->getID()) &&
-                            \core\classes\data\FileInfo::removeByUserId($User->getID())){
+                    if(\core\classes\data\FileInfo::removeByUserId($User->getID())){
                         $this->correct(Correct::get('update'));
                     }
                     else {
@@ -102,8 +96,7 @@ class Recycle extends Command {
                     if(is_null($User)){
                         return;
                     }
-                    if(\core\classes\data\Article::restoreByUserId($User->getID()) &&
-                            \core\classes\data\FileInfo::restoreByUserId($User->getID())){
+                    if(\core\classes\data\FileInfo::restoreByUserId($User->getID())){
                         $this->correct(Correct::get('update'));
                     }
                     else {
@@ -168,7 +161,6 @@ class Recycle extends Command {
                 }
                 
                 // Load data:
-                $this->_load_articles($User);
                 $this->_load_files($User);
                 
                 // Assign data:
@@ -178,7 +170,6 @@ class Recycle extends Command {
                     'title'             => 'Recycle bin',
                     
                     // Data:
-                    'articles'          => $this->_articles,
                     'files'             => $this->_files,
                     
                     // Toolbar:
@@ -190,31 +181,7 @@ class Recycle extends Command {
                 return self::CMD_DEFAULT;
             }// end _execute
             
-            protected function _load_articles(\core\classes\domain\User $User){
-                try {
-                    $factory = new \core\classes\domain\factory\Article();
-                    $set = $factory->getRemovedByUserId($User->getID());
-                    if(!is_null($set)){
-                        $set->accept(function($Article){
-                            // Load basic data:
-                            $p = $Article->load(new \core\classes\sql\attribute\AttributeList(array(
-                                'id', 'title'
-                            )));
-                            // Load picture data:
-                            if($p){
-                                $Article->loadFile(array('id', 'name', 'extension'));
-                            }
-                            // Extract data:
-                            $this->_articles[] = $Article->getPresentationData();
-                            return $p;
-                        });
-                    }
-                } catch (\core\classes\domain\DomainException $ex) {
-                    $this->error($ex->getMessage());
-                }
-                return false;
-            }// end _load_articles
-            
+                        
             protected function _load_files(\core\classes\domain\User $User){
                 try {
                     $factory = new \core\classes\domain\factory\File();
@@ -240,9 +207,7 @@ class Recycle extends Command {
                 return false;
             }// end _load_files
             
-            protected function _restore_articles(){
-                $this->_restore_item('article', new \core\classes\domain\factory\Article());
-            }// end _restore_articles
+           
             
             protected function _restore_files(){
                 $this->_restore_item('file', new \core\classes\domain\factory\File());
@@ -266,9 +231,7 @@ class Recycle extends Command {
                 }
             }// end _restore_item
             
-            protected function _remove_articles(){
-                $this->_remove_item('article', new \core\classes\data\factory\Article());
-            }// end _remove_articles
+            
             
             protected function _remove_files(){
                 $this->_remove_item('file', new \core\classes\data\factory\FileInfo());

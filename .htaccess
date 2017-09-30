@@ -41,34 +41,17 @@ DirectoryIndex application.php
     RewriteRule ^(panel)(/([A-Za-z1-9_]+)(/)?)?$ application.php?cmd=$1&panel_cmd=$3
 
     # Editors:
-    RewriteRule ^(panel)/(pageeditor|articleeditor|departmenteditor)(/(([0-9]*[A-Za-z\_\,\.\-]+[0-9]*)+)(/)?)?$ application.php?cmd=$1&panel_cmd=$2&namepath=$4
+    RewriteRule ^(panel)/(departmenteditor)(/(([0-9]*[A-Za-z\_\,\.\-]+[0-9]*)+)(/)?)?$ application.php?cmd=$1&panel_cmd=$2&namepath=$4
     
     # Mangement lists:
     RewriteRule ^(panel)/(departments)(/([1-9][0-9]*)(/)?)?$ application.php?cmd=$1&panel_cmd=$2&page=$4
     RewriteRule ^(panel)/(responsibilities)(/([1-9][0-9]*)(/)?)?$ application.php?cmd=$1&panel_cmd=$2&page=$4
     RewriteRule ^(panel)/(agreements|youragreements)(/([1-9][0-9]*)(/)?)?$ application.php?cmd=$1&panel_cmd=$2&page=$4
 
-    RewriteRule ^(panel)/(articlecategories)(/([1-9][0-9]*)(/)?)?$ application.php?cmd=$1&panel_cmd=$2&page=$4
-    RewriteRule ^(panel)/(article)(/([1-9][0-9]*)(/)?)?$ application.php?cmd=$1&panel_cmd=$2&page=$4
-    RewriteRule ^(panel)/(article)/(([0-9]*[A-Za-z\_\,\.\-]+[0-9]*)+)(/)?$ application.php?cmd=$1&panel_cmd=$2&category=$3
-    RewriteRule ^(panel)/(article)/(([0-9]*[A-Za-z\_\,\.\-]+[0-9]*)+)(/([1-9][0-9]*)(/)?)?$ application.php?cmd=$1&panel_cmd=$2&category=$3&page=$6
+    
     RewriteRule ^(panel)/(file)(/([1-9][0-9]*)(/)?)?$ application.php?cmd=$1&panel_cmd=$2&page=$4
     RewriteRule ^(panel)/(files)(/([1-9][0-9]*)(/)?)?$ application.php?cmd=$1&panel_cmd=$2&page=$4
 
-    RewriteRule ^(panel)/(articlecomments)(/([1-9][0-9]*)(/)?)?$ application.php?cmd=$1&panel_cmd=$2&page=$4
-    RewriteRule ^(panel)/(comments)(/([1-9][0-9]*)(/)?)?$ application.php?cmd=$1&panel_cmd=$2&page=$4
-    RewriteRule ^(panel)/(comments)/(([0-9]*[A-Za-z\_\,\.\-]+[0-9]*)+)(/)?$ application.php?cmd=$1&panel_cmd=$2&article=$3
-    RewriteRule ^(panel)/(comments)/(([0-9]*[A-Za-z\_\,\.\-]+[0-9]*)+)(/([1-9][0-9]*)(/)?)?$ application.php?cmd=$1&panel_cmd=$2&article=$3&page=$6
-    RewriteRule ^(panel)/(yourcomments)(/([1-9][0-9]*)(/)?)?$ application.php?cmd=$1&panel_cmd=$2&page=$4
-    
-    # Article:
-    RewriteRule ^(articles)/([1-9][0-9]*)(/)?$ application.php?cmd=$1&page=$2
-    RewriteRule ^(article)/(([0-9]*[A-Za-z\_\,\.\-]+[0-9]*)+)(/)?$ application.php?cmd=$1&namepath=$2
-    
-    # Page:
-    RewriteRule ^(page)/(([0-9]*[A-Za-z\_\,\.\-]+[0-9]*)+)(/)?$ application.php?cmd=$1&namepath=$2
-    RewriteRule ^(page)/(([0-9]*[A-Za-z\_\,\.\-]+[0-9]*)+)(/([1-9][0-9]*)(/)?)?$ application.php?cmd=$1&namepath=$2&page=$5
-    
     # Connector:
     RewriteRule ^(connector|imageconnector)/(save|delete)(/)?$ application.php?cmd=$1&command=$2
     RewriteRule ^(connector|imageconnector)/(get|miniature)/([1-9][0-9]*)(/)?$ application.php?cmd=$1&command=$2&file=$3
@@ -80,11 +63,5 @@ DirectoryIndex application.php
 
     RewriteRule ^(member)(/([1-9][0-9]*)(/)?)?$ application.php?cmd=$1&user=$3
     RewriteRule ^(member)(/([1-9][0-9]*))(/([1-9][0-9]*)(/)?)?$ application.php?cmd=$1&user=$3&page=$5
-	
-    #RewriteRule ^([A-Za-z0-9-_.,]+)/([A-Za-z0-9-_,.]+)/([A-Za-z0-9-_,.]+)(/)?$ index.php?dir1=$1&dir2=$2&dir3=$3&link=3 [L]
-    #RewriteRule ^authorization(/([A-Za-z]*))?$  /SCRIPTS/PHP/AUTHORIZATION/index.php?dir=$2
-    #RewriteRule ^(user|viewer|bidder|publisher|guest)(/([A-Za-z0-9-_.,]*)(/([A-Za-z0-9-_.,]*))?)?$ index.php?dir1=$1&dir2=$3&dir3=$5&link=1
-    #RewriteRule ^((user|viewer|bidder|publisher|guest)(/([A-Za-z0-9-_.,/]*))?)$ index.php?uri=$1&link=1
-    #RewriteRule ^(directory|page|artpage|article|auction)/([A-Za-z0-9-_.,]+)(/([0-9])*)?$ index.php?dir1=$1&dir2=$2&dir3=$4&link=2
 	
 </IfModule>

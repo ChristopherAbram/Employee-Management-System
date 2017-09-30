@@ -48,13 +48,6 @@
             </views>
         </command>
         
-        <command name="yourcomments">
-            <classroot name="YourComments"/>
-            <views>
-                <view>yourcomments</view>
-            </views>
-        </command>
-        
         <command name="userimage">
             <classroot name="Image"/>
             <views>

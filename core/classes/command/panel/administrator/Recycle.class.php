@@ -25,8 +25,7 @@ class Recycle extends Command {
         protected $_restore_all    = null;
         
         // Data containers:
-        protected $_pages           = array();
-        protected $_articles        = array();
+        
         protected $_files           = array();
         protected $_members         = array();
         
@@ -38,10 +37,7 @@ class Recycle extends Command {
             
             public function _remove(){
                 try {
-                    // Pages:
-                    $this->_remove_pages();
-                    // Articles:
-                    $this->_remove_articles();
+                   
                     // Files:
                     $this->_remove_files();
                     // Members:
@@ -63,10 +59,7 @@ class Recycle extends Command {
             
             public function _restore(){
                 try {
-                    // Pages:
-                    $this->_restore_pages();
-                    // Articles:
-                    $this->_restore_articles();
+                    
                     // Files:
                     $this->_restore_files();
                     // Members:
@@ -96,9 +89,7 @@ class Recycle extends Command {
             
             public function _remove_all(){
                 try {
-                    if(\core\classes\data\Page::remove() &&
-                            \core\classes\data\Article::remove() &&
-                            \core\classes\data\User::remove() &&
+                    if(\core\classes\data\User::remove() &&
                             \core\classes\data\FileInfo::remove()){
                         $this->correct(Correct::get('update'));
                     }
@@ -112,9 +103,7 @@ class Recycle extends Command {
             
             public function _restore_all(){
                 try {
-                    if(\core\classes\data\Page::restore() &&
-                            \core\classes\data\Article::restore() &&
-                            \core\classes\data\User::restore() &&
+                    if(\core\classes\data\User::restore() &&
                             \core\classes\data\FileInfo::restore()){
                         $this->correct(Correct::get('update'));
                     }
@@ -180,8 +169,7 @@ class Recycle extends Command {
                 }
                 
                 // Load data:
-                $this->_load_pages();
-                $this->_load_articles();
+                
                 $this->_load_files();
                 $this->_load_members();
                 
@@ -192,8 +180,7 @@ class Recycle extends Command {
                     'title'             => 'Recycle bin',
                     
                     // Data:
-                    'pages'             => $this->_pages,
-                    'articles'          => $this->_articles,
+                   
                     'files'             => $this->_files,
                     'members'           => $this->_members,
                     
@@ -206,51 +193,7 @@ class Recycle extends Command {
                 return self::CMD_DEFAULT;
             }// end _execute
             
-            protected function _load_pages(){
-                try {
-                    $factory = new \core\classes\domain\factory\Page();
-                    $set = $factory->getRemoved();
-                    if(!is_null($set)){
-                        $set->accept(function($Page){
-                            // Load basic data:
-                            $p = $Page->load(new \core\classes\sql\attribute\AttributeList(array(
-                                'id', 'title'
-                            )));
-                            // Extract data:
-                            $this->_pages[] = $Page->getPresentationData();
-                            return $p;
-                        });
-                    }
-                } catch (\core\classes\domain\DomainException $ex) {
-                    $this->error($ex->getMessage());
-                }
-                return false;
-            }// end _load_pages
-            
-            protected function _load_articles(){
-                try {
-                    $factory = new \core\classes\domain\factory\Article();
-                    $set = $factory->getRemoved();
-                    if(!is_null($set)){
-                        $set->accept(function($Article){
-                            // Load basic data:
-                            $p = $Article->load(new \core\classes\sql\attribute\AttributeList(array(
-                                'id', 'title'
-                            )));
-                            // Load picture data:
-                            if($p){
-                                $Article->loadFile(array('id', 'name', 'extension'));
-                            }
-                            // Extract data:
-                            $this->_articles[] = $Article->getPresentationData();
-                            return $p;
-                        });
-                    }
-                } catch (\core\classes\domain\DomainException $ex) {
-                    $this->error($ex->getMessage());
-                }
-                return false;
-            }// end _load_articles
+           
             
             protected function _load_files(){
                 try {
@@ -298,17 +241,11 @@ class Recycle extends Command {
                 return false;
             }// end _load_files
             
-            protected function _restore_articles(){
-                $this->_restore_item('article', new \core\classes\domain\factory\Article());
-            }// end _restore_articles
             
             protected function _restore_files(){
                 $this->_restore_item('file', new \core\classes\domain\factory\File());
             }// end _restore_files
             
-            protected function _restore_pages(){
-                $this->_restore_item('page', new \core\classes\domain\factory\Page());
-            }// end _restore_pages
             
             protected function _restore_members(){
                 $this->_restore_item('member', new \core\classes\domain\factory\Plain());
@@ -338,17 +275,11 @@ class Recycle extends Command {
                 }
             }// end _restore_item
             
-            protected function _remove_articles(){
-                $this->_remove_item('article', new \core\classes\data\factory\Article());
-            }// end _remove_articles
             
             protected function _remove_files(){
                 $this->_remove_item('file', new \core\classes\data\factory\FileInfo());
             }// end _remove_articles
             
-            protected function _remove_pages(){
-                $this->_remove_item('page', new \core\classes\data\factory\Page());
-            }// end _remove_pages
             
             protected function _remove_members(){
                 $this->_remove_item('member', new \core\classes\data\factory\User());

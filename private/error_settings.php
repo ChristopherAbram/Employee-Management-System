@@ -20,7 +20,7 @@ $error_handler = ErrorHandler::getInstance( );
 $error_handler->initialize( DISPLAY_ERRORS | DISPLAY_STARTUP_ERRORS |  LOG_ERRORS | IGNORE_REPEATED_ERRORS | IGNORE_REPEATED_SOURCE | REPORT_MEMLEAKS | TRACK_ERRORS );
 $error_handler->setIniOptions( array(
 					LOG_ERRORS_MAX_LEN	=> 2048,
-					ERROR_LOG		=> '/php_errors.log',
+					ERROR_LOG		=> '/private/php_errors.log',
 				) );			
 $error_handler->error_reporting( E_ALL );
 
