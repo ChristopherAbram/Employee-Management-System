@@ -309,8 +309,11 @@ $queries = array(
     'drop_function_month_job'    => 'DROP FUNCTION IF EXISTS month_job',
     'drop_function_contract_job'    => 'DROP FUNCTION IF EXISTS contract_job',
     'drop_function_total_job'    => 'DROP FUNCTION IF EXISTS total_job',
+    'drop_function_time_total_job'    => 'DROP FUNCTION IF EXISTS time_total_job',
     'drop_function_total_contract'    => 'DROP FUNCTION IF EXISTS total_contract',
+    'drop_function_time_total_contract'    => 'DROP FUNCTION IF EXISTS time_total_contract',
     'drop_function_month_salary'    => 'DROP FUNCTION IF EXISTS month_salary',
+    'drop_function_time_month_salary'    => 'DROP FUNCTION IF EXISTS time_month_salary',
     'drop_function_contract_salary'    => 'DROP FUNCTION IF EXISTS contract_salary',
     
     'count_days' =>
